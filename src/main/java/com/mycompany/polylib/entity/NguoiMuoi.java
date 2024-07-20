@@ -12,6 +12,7 @@ public class NguoiMuoi {
        private String  MaNM;
        private String TenNM ;
        private boolean GioiTinh ;
+       private String NgaySinh;
        private String SoDienThoai ;
        private String Email ;
 
@@ -39,22 +40,31 @@ public class NguoiMuoi {
         this.GioiTinh = GioiTinh;
     }
 
-    public String getSODIENTHOAI() {
+    public String getNgaySinh() {
+        return NgaySinh;
+    }
+
+    public void setNgaySinh(String NgaySinh) {
+        this.NgaySinh = NgaySinh;
+    }
+
+    public String getSoDienThoai() {
         return SoDienThoai;
     }
 
-    public void setSODIENTHOAI(String SoDienThoai) {
+    public void setSoDienThoai(String SoDienThoai) {
         this.SoDienThoai = SoDienThoai;
     }
 
-    public String getEMAIL() {
+    public String getEmail() {
         return Email;
     }
 
-    public void setEMAIL(String Email) {
+    public void setEmail(String Email) {
         this.Email = Email;
     }
-
+    
     public NguoiMuoi() {
+        
     }
 }
