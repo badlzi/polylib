@@ -71,12 +71,10 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\locked-computer.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 30, -1));
 
         jButton1.setBackground(new java.awt.Color(51, 0, 204));
@@ -92,7 +90,6 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
         btn_thoat.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         btn_thoat.setForeground(new java.awt.Color(255, 255, 255));
-        btn_thoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Delete.png")); // NOI18N
         btn_thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_thoatActionPerformed(evt);
@@ -106,7 +103,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 150, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\toi.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/toi.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 530, 640));
 
         pack();
