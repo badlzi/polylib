@@ -8,6 +8,14 @@ package com.mycompany.polylib.ui;
  *
  * @author ngocquy
  */
+import com.mycompany.polylib.dao.PhieuMuonDao;
+import com.mycompany.polylib.entity.phieuMuon;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 public class PhieuMuonJFrame extends javax.swing.JFrame {
 
     /**
@@ -15,6 +23,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
      */
     public PhieuMuonJFrame() {
         initComponents();
+        HienThiLenban();
     }
 //tfygyvyg
     /**
@@ -58,7 +67,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_PhieuMuon = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -304,7 +313,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("phiếu mượn", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_PhieuMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -315,7 +324,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_PhieuMuon);
 
         jButton6.setText("Xóa phiếu mượn");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +357,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jTabbedPane1.addTab("Danh sách phiếu mượn", jPanel5);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User.png")); // NOI18N
         jLabel8.setText("Phan Huỳnh Ngọc Quý");
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
@@ -356,8 +364,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Logobook.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -381,7 +387,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton18.setBackground(new java.awt.Color(255, 153, 0));
         jButton18.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Book.png")); // NOI18N
         jButton18.setText("Sách");
         jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton18.addActionListener(new java.awt.event.ActionListener() {
@@ -392,7 +397,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 153, 0));
         jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Users.png")); // NOI18N
         jButton4.setText("Đọc giả");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -403,7 +407,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 204, 204));
         jButton5.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\List.png")); // NOI18N
         jButton5.setText("Phiếu Mượn");
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -414,7 +417,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(255, 153, 0));
         jButton14.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User group.png")); // NOI18N
         jButton14.setText("Nhân Viên");
         jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -425,7 +427,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(255, 153, 0));
         jButton15.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Text.png")); // NOI18N
         jButton15.setText("Giới Thiệu");
         jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -436,7 +437,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(255, 153, 0));
         jButton16.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\graph.png")); // NOI18N
         jButton16.setText("Thống Kê");
         jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -498,10 +498,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Microsoft.png")); // NOI18N
         jLabel3.setText("Phần mềm quản lí thư viện");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\gio.png")); // NOI18N
         jLabel4.setText("8:00");
 
         jMenu2.setText("Quản lí");
@@ -599,9 +597,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel8)
@@ -708,7 +706,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    PhieuMuonDao PMD = new PhieuMuonDao();
+    List<phieuMuon> PML = new ArrayList<>();
+    DefaultTableModel model;
+    DefaultComboBoxModel Bcmodel;
     /**
      * @param args the command line arguments
      */
@@ -744,6 +745,17 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         });
     }
 
+     public void HienThiLenban() {
+        PML = PMD.selectAll();
+        String[] headers = {"Mã Phiếu Mượn", "Ngày Mượn", "Ngày trả", "Người mượn", "Ghi chú"};
+        model = new DefaultTableModel(headers, 0);
+        for (phieuMuon pml : PML) {
+            Object[] row = new Object[]{
+             pml.getSoPhieuMuon(),pml.getNgayMuon(),pml.getNgayTra(),pml.getNguoiMuon().getTenNM(),pml.getNhanVien().getMaNhanVien()};
+            model.addRow(row);
+        }
+        tbl_PhieuMuon.setModel(model);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -773,7 +785,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
@@ -796,14 +807,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -812,5 +821,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tbl_PhieuMuon;
     // End of variables declaration//GEN-END:variables
 }
