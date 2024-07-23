@@ -19,8 +19,8 @@ public class DangNhapJDialog extends javax.swing.JFrame {
      */
     public DangNhapJDialog() {
         initComponents();
-        txt_TaiKhoan.setBackground(new java.awt.Color(0,0,0,1));
-        txt_MatKhau.setBackground(new java.awt.Color(0,0,0,1));
+        txt_TaiKhoan.setBackground(new java.awt.Color(0, 0, 0, 1));
+        txt_MatKhau.setBackground(new java.awt.Color(0, 0, 0, 1));
     }
 
     /**
@@ -123,11 +123,11 @@ public class DangNhapJDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_MatKhauActionPerformed
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
-       dangNhap();
+        dangNhap();
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
     private void btn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thoatActionPerformed
-   
+
     }//GEN-LAST:event_btn_thoatActionPerformed
 
     /**
@@ -166,21 +166,35 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         });
     }
     NhanVienDao NVD = new NhanVienDao();
+
     void dangNhap() {
         String manv = txt_TaiKhoan.getText();
         String matKhau = new String(txt_MatKhau.getPassword());
         NhanVien nhanVien = NVD.selectById(manv);
-        if(nhanVien == null){
+        // kiểm tra gía trị rỗng
+        if (manv.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Tài khoản không được bỏ trống!", "THÔNG BÁO!", 0);
+            return;
+        } else if (matKhau.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được bỏ trống!", "THÔNG BÁO!", 0);
+            return;
+        }
+        try {
+            if (nhanVien == null) {
 //            MsgBox.alert(this, "Sai tên đăng nhập!");
-              JOptionPane.showMessageDialog(this,"Sai tên đăng nhập");
-        }
-        else if(!matKhau.equals(nhanVien.getMatKhau())){
-            JOptionPane.showMessageDialog(this,"Sai tên Mật khẩu");
-        }
-        else{
+                JOptionPane.showMessageDialog(this, "Sai tên đăng nhập!");
+            } else if (!matKhau.equals(nhanVien.getMatKhau())) {
+//            Msg.alert(this, "Sai mật khẩu!")
+                JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
+            } else {
 //            Auth.user = nhanVien;
-            this.dispose();
+                this.dispose();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra trong quá trình đăng nhập!", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
