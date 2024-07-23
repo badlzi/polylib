@@ -4,6 +4,10 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.dao.NhanVienDao;
+import com.mycompany.polylib.entity.NhanVien;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ngocquy
@@ -15,7 +19,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
      */
     public DangNhapJDialog() {
         initComponents();
-        txt_DangNhap.setBackground(new java.awt.Color(0,0,0,1));
+        txt_TaiKhoan.setBackground(new java.awt.Color(0,0,0,1));
         txt_MatKhau.setBackground(new java.awt.Color(0,0,0,1));
     }
 
@@ -30,11 +34,11 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txt_DangNhap = new javax.swing.JTextField();
+        txt_TaiKhoan = new javax.swing.JTextField();
         txt_MatKhau = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_DangNhap = new javax.swing.JButton();
         btn_thoat = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -47,16 +51,16 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         jLabel1.setText("ĐĂNG NHẬP");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 230, 70));
 
-        txt_DangNhap.setBackground(new java.awt.Color(242, 242, 242));
-        txt_DangNhap.setFont(new java.awt.Font("Source Sans Pro SemiBold", 1, 18)); // NOI18N
-        txt_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
-        txt_DangNhap.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-        txt_DangNhap.addActionListener(new java.awt.event.ActionListener() {
+        txt_TaiKhoan.setBackground(new java.awt.Color(242, 242, 242));
+        txt_TaiKhoan.setFont(new java.awt.Font("Source Sans Pro SemiBold", 1, 18)); // NOI18N
+        txt_TaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        txt_TaiKhoan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        txt_TaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_DangNhapActionPerformed(evt);
+                txt_TaiKhoanActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_DangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 270, 30));
+        getContentPane().add(txt_TaiKhoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 270, 30));
 
         txt_MatKhau.setBackground(new java.awt.Color(242, 242, 242));
         txt_MatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -71,28 +75,25 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User.png")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\locked-computer.png")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 30, -1));
 
-        jButton1.setBackground(new java.awt.Color(51, 0, 204));
-        jButton1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Đăng nhập");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_DangNhap.setBackground(new java.awt.Color(51, 0, 204));
+        btn_DangNhap.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        btn_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
+        btn_DangNhap.setText("Đăng nhập");
+        btn_DangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_DangNhapActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 260, 40));
+        getContentPane().add(btn_DangNhap, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 260, 40));
 
         btn_thoat.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         btn_thoat.setForeground(new java.awt.Color(255, 255, 255));
-        btn_thoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Delete.png")); // NOI18N
         btn_thoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_thoatActionPerformed(evt);
@@ -106,24 +107,24 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 150, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\toi.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/toi.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -100, 530, 640));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DangNhapActionPerformed
+    private void txt_TaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TaiKhoanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_DangNhapActionPerformed
+    }//GEN-LAST:event_txt_TaiKhoanActionPerformed
 
     private void txt_MatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_MatKhauActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_MatKhauActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
+       dangNhap();
+    }//GEN-LAST:event_btn_DangNhapActionPerformed
 
     private void btn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thoatActionPerformed
    
@@ -164,17 +165,34 @@ public class DangNhapJDialog extends javax.swing.JFrame {
             }
         });
     }
+    NhanVienDao NVD = new NhanVienDao();
+    void dangNhap() {
+        String manv = txt_TaiKhoan.getText();
+        String matKhau = new String(txt_MatKhau.getPassword());
+        NhanVien nhanVien = NVD.selectById(manv);
+        if(nhanVien == null){
+//            MsgBox.alert(this, "Sai tên đăng nhập!");
+              JOptionPane.showMessageDialog(this,"Sai tên đăng nhập");
+        }
+        else if(!matKhau.equals(nhanVien.getMatKhau())){
+            JOptionPane.showMessageDialog(this,"Sai tên Mật khẩu");
+        }
+        else{
+//            Auth.user = nhanVien;
+            this.dispose();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_DangNhap;
     private javax.swing.JButton btn_thoat;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txt_DangNhap;
     private javax.swing.JPasswordField txt_MatKhau;
+    private javax.swing.JTextField txt_TaiKhoan;
     // End of variables declaration//GEN-END:variables
 }

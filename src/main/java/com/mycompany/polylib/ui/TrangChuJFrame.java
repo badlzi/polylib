@@ -96,8 +96,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Logobook.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -130,7 +128,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 153, 0));
         jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Users.png")); // NOI18N
         jButton4.setText("Đọc giả");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +138,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 153, 0));
         jButton3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/polylib/icon/Book.png"))); // NOI18N
         jButton3.setText("Sách");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +148,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 153, 0));
         jButton5.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\List.png")); // NOI18N
         jButton5.setText("Phiếu Mượn");
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +158,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(255, 153, 0));
         jButton14.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User group.png")); // NOI18N
         jButton14.setText("Nhân Viên");
         jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -174,7 +168,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(255, 153, 0));
         jButton15.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Text.png")); // NOI18N
         jButton15.setText("Giới Thiệu");
         jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +178,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(255, 153, 0));
         jButton16.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\graph.png")); // NOI18N
         jButton16.setText("Thống Kê");
         jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -237,26 +229,22 @@ public class TrangChuJFrame extends javax.swing.JFrame {
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\CT.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/CT.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 800, 510));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Phan Huỳnh Ngọc Quý");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User.png")); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Yen.png")); // NOI18N
         jLabel11.setText("Phần mền quản lý thư viện");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\gio.png")); // NOI18N
         jLabel12.setText("8:44");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 560, -1, -1));
 
