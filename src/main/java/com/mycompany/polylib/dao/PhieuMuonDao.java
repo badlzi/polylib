@@ -66,7 +66,7 @@ public class PhieuMuonDao extends PolyLibDao<phieuMuon, String> {
                 NhanVien childentity = new NhanVien();
                 childentity.setMaNhanVien(rs.getString("MaNV"));
                 NguoiMuoi childentitytow = new NguoiMuoi();
-                childentitytow.setMaNM(rs.getString("MANXB"));
+                childentitytow.setMaNM(rs.getString("MANM"));
                 entity.setNhanVien(childentity);
                 entity.setNguoiMuon(childentitytow);
                 list.add(entity);
