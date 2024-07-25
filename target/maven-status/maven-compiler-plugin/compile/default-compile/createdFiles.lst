@@ -17,6 +17,7 @@ com\mycompany\polylib\ui\PhieuMuonJFrame.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$1.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$22.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$10.class
+com\mycompany\polylib\ui\QuenMatKhauJFrame$6.class
 com\mycompany\polylib\ui\ThongkeFrame$1.class
 com\mycompany\polylib\ui\ThongkeFrame$8.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$4.class
@@ -44,6 +45,7 @@ com\mycompany\polylib\ui\ChoTaiJFrame$1.class
 com\mycompany\polylib\ui\SachJFrame$1.class
 com\mycompany\polylib\ui\ChoTaiJFrame.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$13.class
+com\mycompany\polylib\ui\QuenMatKhauJFrame$7.class
 com\mycompany\polylib\ui\NhanVienJFrame$8.class
 com\mycompany\polylib\ui\TrangChuJFrame$3.class
 com\mycompany\polylib\utils\ExcelUtil.class
