@@ -56,7 +56,7 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\polylib\\src\\main\\resources\\icon\\load-31_256.gif")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 250, 260));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 250, 420));
 
         pgb_chotai.setBackground(new java.awt.Color(255, 255, 255));
         pgb_chotai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
