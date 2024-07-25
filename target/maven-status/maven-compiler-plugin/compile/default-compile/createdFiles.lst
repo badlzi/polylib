@@ -5,6 +5,7 @@ com\mycompany\polylib\ui\SachJFrame$14.class
 com\mycompany\polylib\ui\TrangChuJFrame$7.class
 com\mycompany\polylib\ui\DangNhapJDialog$2.class
 com\mycompany\polylib\dao\NhaXuatBanDao.class
+com\mycompany\polylib\ui\NhanVienJFrame$24.class
 com\mycompany\polylib\utils\Ximage.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$5.class
 com\mycompany\polylib\ui\SachJFrame$2.class
@@ -72,6 +73,7 @@ com\mycompany\polylib\ui\NhanVienJFrame$14.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$19.class
 com\mycompany\polylib\ui\ThongkeFrame$10.class
 com\mycompany\polylib\dao\PhieuMuonDao.class
+com\mycompany\polylib\ui\NhanVienJFrame$21.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$21.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$17.class
 com\mycompany\polylib\ui\ThongkeFrame.class
@@ -125,6 +127,7 @@ com\mycompany\polylib\ui\QuenMatKhauJFrame$4.class
 com\mycompany\polylib\ui\DangNhapJDialog$4.class
 com\mycompany\polylib\ui\SachJFrame$7.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$7.class
+com\mycompany\polylib\ui\NhanVienJFrame$22.class
 com\mycompany\polylib\ui\NhanVienJFrame$3.class
 com\mycompany\polylib\ui\NhanVienJFrame$19.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$7.class
@@ -147,3 +150,4 @@ com\mycompany\polylib\ui\QuenMatKhauJFrame$2.class
 com\mycompany\polylib\ui\SachJFrame$13.class
 com\mycompany\polylib\entity\phieuMuon.class
 com\mycompany\polylib\ui\SachJFrame$6.class
+com\mycompany\polylib\ui\NhanVienJFrame$23.class

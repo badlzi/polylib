@@ -18,11 +18,12 @@ import java.util.List;
  */
 public class NhanVienDao extends PolyLibDao<NhanVien, String>{
       public void insert(NhanVien model){
-        String sql="INSERT INTO NhanVien (MANV, MATKHAU, HoTen, CHUCVU,SODIENTHOAI,EMAIL) VALUES (?, ?, ?, ?,?, ?)";
+        String sql="INSERT INTO NhanVien (MANV , TENNV, TAIKHOAN, MATKHAU,CHUCVU, SODIENTHOAI, EMAIL) VALUES (?, ?, ?, ? ,?, ?,?)";
         XJdbc.update(sql, 
                 model.getMaNhanVien(),
-                model.getMatKhau(), 
                 model.getTenNhanVien(),
+                model.getTaiKhoan(),
+                model.getMatKhau(),
                 model.isChucVu(),
                 model.getSDT(),
                 model.getEmail()
@@ -31,10 +32,11 @@ public class NhanVienDao extends PolyLibDao<NhanVien, String>{
 
     @Override
     public void update(NhanVien model) {
-            String sql="UPDATE NHANVIEN SET MATKHAU=?, HoTen=?, CHUCVU=?, SODIENTHOAI=?, EMAIL=? WHERE MANV=?";
-        XJdbc.update(sql, 
-                model.getMatKhau(), 
+            String sql="UPDATE NHANVIEN SET TENNV=?, TAIKHOAN=?, MATKHAU=?, CHUCVU=?, SODIENTHOAI=?, EMAIL=? WHERE MANV=?";
+        XJdbc.update(sql,
                 model.getTenNhanVien(),
+                model.getTaiKhoan(),
+                model.getMatKhau(), 
                 model.isChucVu(),
                 model.getSDT(),
                 model.getEmail(),
@@ -71,9 +73,10 @@ public class NhanVienDao extends PolyLibDao<NhanVien, String>{
                 while(rs.next()){
                     NhanVien entity = new NhanVien();
                     entity.setMaNhanVien(rs.getString("MaNV"));
+                    entity.setTenNhanVien(rs.getString("TENNV"));
+                    entity.setTaiKhoan(rs.getString("TAIKHOAN"));
                     entity.setMatKhau(rs.getString("MatKhau"));
-                    entity.setTenNhanVien(rs.getString("HoTen"));
-                    entity.setChucVu(rs.getBoolean("VaiTro"));
+                    entity.setChucVu(rs.getBoolean("CHUCVU"));
                     entity.setSDT(rs.getString("SODIENTHOAI"));
                     entity.setEmail(rs.getString("EMAIL"));
                     list.add(entity);
