@@ -77,6 +77,11 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void init(){
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

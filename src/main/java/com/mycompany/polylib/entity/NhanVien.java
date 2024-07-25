@@ -9,72 +9,75 @@ package com.mycompany.polylib.entity;
  * @author ngocquy
  */
 public class NhanVien {
-      private String MaNhanVien;
-      private String TenNhanVien;
-      private String MatKhau;
-      private String TaiKhoan;
-      private String SDT;
-      private String Email;
-
-    public String getSDT() {
-        return SDT;
-    }
-
-    public void setSDT(String SDT) {
-        this.SDT = SDT;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-      private boolean ChucVu;
+      private String maNhanVien;
+      private String tenNhanVien;
+      private String taiKhoan;
+      private String matKhau;
+      private boolean chucVu;
+      private String soDienThoai;
+      private String email;
 
     public NhanVien() {
     }
 
-    public String getMaNhanVien() {
-        return MaNhanVien;
+    public NhanVien(String maNhanVien, String tenNhanVien, String taiKhoan, String matKhau, String soDienThoai, String email) {
+        this.maNhanVien = maNhanVien;
+        this.tenNhanVien = tenNhanVien;
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
     }
 
-    public void setMaNhanVien(String MaNhanVien) {
-        this.MaNhanVien = MaNhanVien;
+    public String getMaNhanVien() {
+        return maNhanVien;
+    }
+
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
     public String getTenNhanVien() {
-        return TenNhanVien;
+        return tenNhanVien;
     }
 
-    public void setTenNhanVien(String TenNhanVien) {
-        this.TenNhanVien = TenNhanVien;
-    }
-
-    public String getMatKhau() {
-        return MatKhau;
-    }
-
-    public void setMatKhau(String MatKhau) {
-        this.MatKhau = MatKhau;
+    public void setTenNhanVien(String tenNhanVien) {
+        this.tenNhanVien = tenNhanVien;
     }
 
     public String getTaiKhoan() {
-        return TaiKhoan;
+        return taiKhoan;
     }
 
-    public void setTaiKhoan(String TaiKhoan) {
-        this.TaiKhoan = TaiKhoan;
+    public void setTaiKhoan(String taiKhoan) {
+        this.taiKhoan = taiKhoan;
     }
 
-    public boolean isChucVu() {
-        return ChucVu;
+    public String getMatKhau() {
+        return matKhau;
     }
 
-    public void setChucVu(boolean ChucVu) {
-        this.ChucVu = ChucVu;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
+
+    public String getSoDienThoai() {
+        return soDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        this.soDienThoai = soDienThoai;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
       
       
 }
