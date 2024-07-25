@@ -4,6 +4,15 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.dao.NguoiMuonDao;
+import com.mycompany.polylib.dao.PhieuMuonDao;
+import com.mycompany.polylib.entity.NguoiMuoi;
+import com.mycompany.polylib.entity.phieuMuon;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ngocquy
@@ -15,7 +24,9 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
      */
     public NguoiMuonJFrame() {
         initComponents();
+        HienThiLenban();
     }
+    int row = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +57,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_NguoiMuon = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -92,8 +103,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Phan Huỳnh Ngọc Quý");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User.png")); // NOI18N
-
         jLabel21.setBackground(new java.awt.Color(255, 102, 51));
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 102, 102));
@@ -104,8 +113,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Logobook.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -129,7 +136,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 153, 0));
         jButton3.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Book.png")); // NOI18N
         jButton3.setText("Sách");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +146,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
         jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Users.png")); // NOI18N
         jButton4.setText("Đọc giả");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +156,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 153, 0));
         jButton5.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\List.png")); // NOI18N
         jButton5.setText("Phiếu Mượn");
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +166,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(255, 153, 0));
         jButton14.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\User group.png")); // NOI18N
         jButton14.setText("Nhân Viên");
         jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +176,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton15.setBackground(new java.awt.Color(255, 153, 0));
         jButton15.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Text.png")); // NOI18N
         jButton15.setText("Giới Thiệu");
         jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +186,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(255, 153, 0));
         jButton16.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\graph.png")); // NOI18N
         jButton16.setText("Thống Kê");
         jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -247,13 +248,11 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\Yen.png")); // NOI18N
         jLabel11.setText("Phần mền quản lý thư viện");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\Quan_Ly_Thu_Vien\\src\\main\\icon\\gio.png")); // NOI18N
         jLabel12.setText("8:44");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_NguoiMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -264,7 +263,12 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_NguoiMuon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_NguoiMuonMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_NguoiMuon);
 
         jButton6.setText("Xóa người mượn");
 
@@ -542,7 +546,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 540, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel12)
                         .addGap(28, 28, 28))
                     .addGroup(layout.createSequentialGroup()
@@ -660,6 +664,37 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void tbl_NguoiMuonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NguoiMuonMousePressed
+//        if (evt.getClickCount() == 2) {
+//            this.row = tbl_NguoiMuon.getSelectedRow();
+//            this.edit();
+//        }
+    }//GEN-LAST:event_tbl_NguoiMuonMousePressed
+//    void edit() {
+//        String manm = (String) tbl_NguoiMuon.getValueAt(this.row, 0);
+//        NguoiMuoi nm = NMD.selectById(manm);
+//        this.setForm(kh);
+//        tabsKhoaHoc.setSelectedIndex(0);
+//        this.updateStatus();
+//    }
+    NguoiMuonDao NMD = new NguoiMuonDao();
+    List<NguoiMuoi> NML = new ArrayList<>();
+
+    DefaultTableModel model;
+    DefaultComboBoxModel Bcmodel;
+
+    public void HienThiLenban() {
+        NML = NMD.selectAll();
+        String[] headers = {"Mã Người Mượn", "Tên Người Mượn", "Giới Tính", "Ngày Sinh", "SDT", "Email"};
+        model = new DefaultTableModel(headers, 0);
+        for (NguoiMuoi nml : NML) {
+            Object[] row = new Object[]{
+                nml.getMaNM(), nml.getTenNM(), nml.isGioiTinh() ? "Nam" : "Nữ", nml.getNgaySinh(), nml.getSoDienThoai(), nml.getEmail()};
+            model.addRow(row);
+        }
+        tbl_NguoiMuon.setModel(model);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -750,11 +785,11 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTable tbl_NguoiMuon;
     // End of variables declaration//GEN-END:variables
 }
