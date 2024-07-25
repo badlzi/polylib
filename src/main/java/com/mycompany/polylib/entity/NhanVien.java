@@ -15,6 +15,7 @@ public class NhanVien {
       private String TaiKhoan;
       private String SDT;
       private String Email;
+      private boolean ChucVu;
 
     public String getSDT() {
         return SDT;
@@ -31,7 +32,6 @@ public class NhanVien {
     public void setEmail(String Email) {
         this.Email = Email;
     }
-      private boolean ChucVu;
 
     public NhanVien() {
     }

@@ -6,6 +6,7 @@ package com.mycompany.polylib.ui;
 
 import com.mycompany.polylib.dao.NhanVienDao;
 import com.mycompany.polylib.entity.NhanVien;
+import com.mycompany.polylib.utils.Auth;
 import javax.swing.JOptionPane;
 
 /**
@@ -206,7 +207,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 //            Msg.alert(this, "Sai mật khẩu!")
                 JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
             } else {
-//            Auth.user = nhanVien;
+                Auth.user = nhanVien;
                 this.dispose();
             }
         } catch (Exception e) {
