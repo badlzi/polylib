@@ -138,6 +138,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         btnSach.setBackground(new java.awt.Color(255, 153, 0));
         btnSach.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Book.png"))); // NOI18N
         btnSach.setText("Sách");
         btnSach.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSach.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +149,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
         jButton4.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/graduated.png"))); // NOI18N
         jButton4.setText("Đọc giả");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {

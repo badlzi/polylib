@@ -4,6 +4,7 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.utils.SoundUtils;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -30,6 +31,7 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
                 int value = pgb_chotai.getValue();
                 if(value < 100){
                     pgb_chotai.setValue(value + 1);
+//                    SoundUtils.playSound(".\\src\\main\\resources\\mp3\\thymeloop16-71407.mp3");
                 }
                 else{
                     ChoTaiJFrame.this.dispose();
