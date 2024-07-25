@@ -58,13 +58,12 @@ public class NguoiMuonDao extends PolyLibDao<NguoiMuoi, String> {
             ResultSet rs = XJdbc.query(sql, args);
             while (rs.next()) {
                 NguoiMuoi entity = new NguoiMuoi();
-                entity.setMaNM(rs.getString("MANXB"));
+                entity.setMaNM(rs.getString("MANM"));
                 entity.setTenNM(rs.getString("TENNM"));
                 entity.setGioiTinh(rs.getBoolean("GIOITINH"));
                 entity.setNgaySinh(rs.getString("NGAYSINH"));
                 entity.setSoDienThoai(rs.getString("SODIENTHOAI"));
-                entity.setMaNM(rs.getString("EMAIL"));
-
+                entity.setEmail(rs.getString("EMAIL"));
                 list.add(entity);
             }
         } catch (Exception e) {

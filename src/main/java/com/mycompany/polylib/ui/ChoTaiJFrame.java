@@ -4,6 +4,10 @@
  */
 package com.mycompany.polylib.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 /**
  *
  * @author ngocquy
@@ -15,6 +19,24 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
      */
     public ChoTaiJFrame() {
         initComponents();
+        init();
+
+    }
+    void init() {
+        setLocationRelativeTo(null);
+        new Timer(60, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int value = pgb_chotai.getValue();
+                if(value < 100){
+                    pgb_chotai.setValue(value + 1);
+                }
+                else{
+                    ChoTaiJFrame.this.dispose();
+                    
+                }
+            }
+        }).start();
     }
 
     /**
@@ -26,18 +48,25 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        pgb_chotai = new javax.swing.JProgressBar();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\polylib\\src\\main\\resources\\icon\\load-31_256.gif")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 250, 420));
+
+        pgb_chotai.setBackground(new java.awt.Color(255, 255, 255));
+        pgb_chotai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pgb_chotai.setForeground(new java.awt.Color(0, 0, 0));
+        pgb_chotai.setToolTipText("Loading...");
+        pgb_chotai.setStringPainted(true);
+        getContentPane().add(pgb_chotai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 710, 26));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\polylib\\src\\main\\resources\\icon\\nenchotai.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +108,8 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar pgb_chotai;
     // End of variables declaration//GEN-END:variables
 }

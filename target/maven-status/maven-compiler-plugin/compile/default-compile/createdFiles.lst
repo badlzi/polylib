@@ -5,6 +5,7 @@ com\mycompany\polylib\ui\SachJFrame$14.class
 com\mycompany\polylib\ui\TrangChuJFrame$7.class
 com\mycompany\polylib\ui\DangNhapJDialog$2.class
 com\mycompany\polylib\dao\NhaXuatBanDao.class
+com\mycompany\polylib\utils\Ximage.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$5.class
 com\mycompany\polylib\ui\SachJFrame$2.class
 com\mycompany\polylib\ui\NhanVienJFrame$9.class
@@ -46,6 +47,7 @@ com\mycompany\polylib\ui\NhanVienJFrame$13.class
 com\mycompany\polylib\ui\NhanVienJFrame$12.class
 com\mycompany\polylib\ui\TrangChuJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$14.class
+com\mycompany\polylib\ui\NguoiMuonJFrame$21.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$1.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$11.class
 com\mycompany\polylib\ui\NhanVienJFrame$11.class
@@ -83,6 +85,7 @@ com\mycompany\polylib\ui\NguoiMuonJFrame$11.class
 com\mycompany\polylib\entity\TacGia.class
 com\mycompany\polylib\ui\TrangChuJFrame$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$3.class
+com\mycompany\polylib\ui\ChoTaiJFrame$2.class
 com\mycompany\polylib\ui\NhanVienJFrame$6.class
 com\mycompany\polylib\entity\PhieuMuonChiTiet.class
 com\mycompany\polylib\entity\NhanVien.class
