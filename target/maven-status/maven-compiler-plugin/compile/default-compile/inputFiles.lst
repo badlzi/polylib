@@ -1,4 +1,7 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\TacGia.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\ViTri.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\PhieuMuonChiTiet.java
@@ -9,6 +12,10 @@ E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\dao\TacGiaDao.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\ui\SachJFrame.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\dao\LoaiSachDao.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\LoaiSach.java
+<<<<<<< Updated upstream
+=======
+E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\utils\Ximage.java
+>>>>>>> Stashed changes
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\Sach.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\dao\NhaXuatBanDao.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\ui\DangNhapJDialog.java
@@ -28,4 +35,7 @@ E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\entity\NhaXuatBan.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\ui\NguoiMuonJFrame.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\dao\ViTriDao.java
 E:\DUAN1\polylib\src\main\java\com\mycompany\polylib\ui\PhieuMuonJFrame.java
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
