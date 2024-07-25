@@ -4,6 +4,8 @@
  */
 package com.mycompany.polylib.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author ngocquy
@@ -12,7 +14,7 @@ public class NguoiMuoi {
        private String  MaNM;
        private String TenNM ;
        private boolean GioiTinh ;
-       private String NgaySinh;
+       private Date NgaySinh;
        private String SoDienThoai ;
        private String Email ;
 
@@ -40,11 +42,11 @@ public class NguoiMuoi {
         this.GioiTinh = GioiTinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return NgaySinh;
     }
 
-    public void setNgaySinh(String NgaySinh) {
+    public void setNgaySinh(Date NgaySinh) {
         this.NgaySinh = NgaySinh;
     }
 

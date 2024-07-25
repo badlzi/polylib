@@ -29,7 +29,7 @@ public class NguoiMuonDao extends PolyLibDao<NguoiMuoi, String> {
 
     @Override
     public void update(NguoiMuoi entity) {
-        XJdbc.update(UPDATE_SQL, entity.getMaNM(), entity.getTenNM(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getSoDienThoai(), entity.getEmail());
+        XJdbc.update(UPDATE_SQL, entity.getTenNM(), entity.isGioiTinh(), entity.getNgaySinh(), entity.getSoDienThoai(), entity.getEmail(),entity.getMaNM());
     }
 
     @Override
@@ -61,7 +61,7 @@ public class NguoiMuonDao extends PolyLibDao<NguoiMuoi, String> {
                 entity.setMaNM(rs.getString("MANM"));
                 entity.setTenNM(rs.getString("TENNM"));
                 entity.setGioiTinh(rs.getBoolean("GIOITINH"));
-                entity.setNgaySinh(rs.getString("NGAYSINH"));
+                entity.setNgaySinh(rs.getDate("NGAYSINH"));
                 entity.setSoDienThoai(rs.getString("SODIENTHOAI"));
                 entity.setEmail(rs.getString("EMAIL"));
                 list.add(entity);
