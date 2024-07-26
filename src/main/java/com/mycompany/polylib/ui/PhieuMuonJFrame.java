@@ -992,9 +992,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             bill.setText(bill.getText() + "\t Cao đẳng fptPolytenic, \n");
             bill.setText(bill.getText() + "\t dự án cấp 1\n");
             bill.setText(bill.getText() + "\t Nhóm 4 , \n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-            bill.setText(bill.getText() + " Tên sách\t người mượn\t số lượng mượn \n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "---------------------------------------------------------------------------\n");
+            bill.setText(bill.getText() + " Tên sách \t người mượn \t số lượng sách mượn \n");
+            bill.setText(bill.getText() + "----------------------------------------------------------------------------\n");
            bill.setText(bill.getText() + " Những lời yêu thương\t phan huỳnh ngọc quý\t 2 \n");
            bill.setText(bill.getText() + " tình yêu thương\t phan huỳnh ngọc quý\t 1 \n");
             
@@ -1008,13 +1008,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 //                bill.setText(bill.getText() + name+"\t"+qt+"\t"+prc+" \n");
                 
 //            }
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
-            bill.setText(bill.getText() + "SubTotal :\t"+"01/03/2024"+"\n");
-            bill.setText(bill.getText() + "Cash :\t"+"01/03/2024"+"\n");
-            bill.setText(bill.getText() + "Ballance :\t"+"NV001"+"\n");
-            bill.setText(bill.getText() + "====================================\n");
+            bill.setText(bill.getText() + "-----------------------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "Ngày mượn :\t"+"01/03/2024"+"\n");
+            bill.setText(bill.getText() + "Ngày trả :\t"+"01/03/2024"+"\n");
+            bill.setText(bill.getText() + "Nhân viên :\t"+"NV001"+"\n");
+            bill.setText(bill.getText() + "==================================\n");
             bill.setText(bill.getText() +"                     Thanks For Your Business...!"+"\n");
-            bill.setText(bill.getText() + "----------------------------------------------------------------\n");
+            bill.setText(bill.getText() + "-------------------------------------------------------------------------------\n");
             bill.setText(bill.getText() +"                     Software polylib"+"\n");
             
             
