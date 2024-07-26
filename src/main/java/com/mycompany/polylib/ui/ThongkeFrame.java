@@ -4,6 +4,17 @@
  */
 package com.mycompany.polylib.ui;
 
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+
 /**
  *
  * @author ngocquy
@@ -15,8 +26,90 @@ public class ThongkeFrame extends javax.swing.JFrame {
      */
     public ThongkeFrame() {
         initComponents();
+        JFreeChart pieChart = createChart(createDataset());
+        ChartPanel chartPanel = new ChartPanel(pieChart);
+        TBP_TKNM.addTab("Thống kê người mượn",chartPanel);
+        ChartPanel chartPanel2 = new ChartPanel(createCharts());
+        TBP_TKNM.addTab("Thống kê phiếu mượn",chartPanel2);
+        ChartPanel chartPane4 = new ChartPanel(createLineChart());
+        TBP_TKNM.addTab("Thống kê người mượn",chartPane4);
     }
 
+       private static JFreeChart createChart(PieDataset datasets) {
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Thống kê số lượng người mượn sách trong 1 năm", datasets, true, true, true);
+        return chart;
+    }
+
+    private static PieDataset createDataset() {
+        DefaultPieDataset datasets = new DefaultPieDataset();
+        datasets.setValue("Nhóm 0 - 14", new Double(25.0));
+        datasets.setValue("Nhóm 15 - 59", new Double(67.0));
+        datasets.setValue("Nhóm trên 60", new Double(9.0));
+         datasets.setValue("Nhóm trên 70", new Double(9.0));
+        return datasets;
+    }
+   //------------------------------------//
+    public static JFreeChart createCharts() {
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "BIỂU ĐỒ phiếu mượn",
+                "Tháng", "Số người",
+                createDatasets(), PlotOrientation.VERTICAL, false, false, false);
+        return barChart;
+    }
+     private static CategoryDataset createDatasets() {
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(0, "Số người", "Tháng 4");
+        dataset.addValue(25, "Số người", "Tháng 5");
+        dataset.addValue(75, "Số người", "Tháng 6");
+        dataset.addValue(200, "Số người", "Tháng 7");
+        return dataset;
+    }
+    //------------------------------------------------------
+     public static JFreeChart createLineChart() {
+    // Thay đổi hàm tạo để tạo biểu đồ đường
+    JFreeChart lineChart = ChartFactory.createLineChart(
+        "BIỂU ĐỒ Thống kê", // Tiêu đề
+        "Tháng", // Trục hoành
+        "Số người", // Trục tung
+        createDatasetss(), // Dữ liệu
+        PlotOrientation.VERTICAL, // Phương hướng biểu đồ
+        true, // Hiển thị legend
+        true, // Tooltips
+        false // URL
+    );
+    return lineChart;
+}
+        private static CategoryDataset createDatasetss() {
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(0, "Số người", "Tháng 4");
+        dataset.addValue(25, "Số người", "Tháng 5");
+        dataset.addValue(75, "Số người", "Tháng 6");
+        dataset.addValue(200, "Số người", "Tháng 7");
+        dataset.addValue(0, "Số người", "Tháng 8");
+        dataset.addValue(25, "Số người", "Tháng 9");
+        dataset.addValue(75, "Số người", "Tháng 10");
+        dataset.addValue(200, "Số người", "Tháng 11");
+        //-------------------
+        dataset.addValue(200, "Số sách", "Tháng 4");
+        dataset.addValue(75, "Số sách", "Tháng 5");
+        dataset.addValue(25, "Số sách", "Tháng 6");
+        dataset.addValue(100, "Số sách", "Tháng 7");
+        dataset.addValue(50, "Số sách", "Tháng 8");
+        dataset.addValue(85, "Số sách", "Tháng 9");
+        dataset.addValue(175, "Số sách", "Tháng 10");
+        dataset.addValue(45, " Số sách", "Tháng 11");
+        //---------------------
+        dataset.addValue(125, "Phiếu mượn", "Tháng 4");
+        dataset.addValue(3, "Phiếu mượn", "Tháng 5");
+        dataset.addValue(180, "Phiếu mượn", "Tháng 6");
+        dataset.addValue(120, "Phiếu mượn", "Tháng 7");
+        dataset.addValue(60, "Phiếu mượn", "Tháng 8");
+        dataset.addValue(70, "Phiếu mượn", "Tháng 9");
+        dataset.addValue(65, "Phiếu mượn", "Tháng 10");
+        dataset.addValue(145, "Phiếu mượn", "Tháng 11");
+        return dataset;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,13 +119,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -49,6 +135,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        TBP_TKNM = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,79 +155,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jMenuItem14 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton6.setText("Xóa người thống kê");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Số lượng sách", jPanel5);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 842, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Số lượng người mượn", jPanel1);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 842, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Số lượng phiếu mượn", jPanel11);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Phan Huỳnh Ngọc Quý");
@@ -369,22 +383,21 @@ public class ThongkeFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addGap(486, 486, 486)
                         .addComponent(jLabel9)
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12)
-                            .addGap(18, 18, 18))))
-                .addGap(0, 0, 0))
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(TBP_TKNM)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,9 +409,9 @@ public class ThongkeFrame extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
                         .addComponent(jLabel21)))
+                .addGap(29, 29, 29)
+                .addComponent(TBP_TKNM)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
@@ -412,10 +425,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -485,6 +494,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane TBP_TKNM;
     private javax.swing.JButton btnSach;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
@@ -492,7 +502,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -517,13 +526,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
