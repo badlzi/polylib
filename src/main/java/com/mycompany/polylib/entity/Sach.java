@@ -16,6 +16,7 @@ public class Sach {
     private String NgayNhapKho;
     private String GhiChu;
     private String TrangThai;
+    private String Hinh;
     private LoaiSach LoaiSach;
     private TacGia TacGia;
     private ViTri ViTri;
@@ -80,6 +81,14 @@ public class Sach {
         this.TrangThai = TrangThai;
     }
 
+     public String getHinh() {
+        return Hinh;
+    }
+
+    public void setHinh(String Hinh) {
+        this.Hinh = Hinh;
+    }
+    
     public LoaiSach getLoaiSach() {
         return LoaiSach;
     }
