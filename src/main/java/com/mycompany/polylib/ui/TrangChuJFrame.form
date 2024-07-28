@@ -225,16 +225,18 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton1" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton5" alignment="0" pref="187" max="32767" attributes="0"/>
-                                  <Component id="jButton14" alignment="0" pref="187" max="32767" attributes="0"/>
-                                  <Component id="jButton15" alignment="0" pref="187" max="32767" attributes="0"/>
-                                  <Component id="jButton16" alignment="0" pref="187" max="32767" attributes="0"/>
-                                  <Component id="btnSach" alignment="0" pref="187" max="32767" attributes="0"/>
-                                  <Component id="jButton12" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnGioiThieu" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPhieuMuon" alignment="0" pref="187" max="32767" attributes="0"/>
+                                      <Component id="btnNhanVien" alignment="0" pref="187" max="32767" attributes="0"/>
+                                      <Component id="btnThongKe" alignment="0" pref="187" max="32767" attributes="0"/>
+                                      <Component id="btnSach" alignment="0" pref="187" max="32767" attributes="0"/>
+                                      <Component id="btnNguoiMuon" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                           </Group>
@@ -252,15 +254,15 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="btnSach" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton12" min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="btnNguoiMuon" min="-2" pref="45" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="btnPhieuMuon" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton14" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="btnNhanVien" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton15" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="btnGioiThieu" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton16" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="btnThongKe" min="-2" pref="39" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="59" max="-2" attributes="0"/>
                       <EmptySpace pref="85" max="32767" attributes="0"/>
@@ -333,7 +335,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="btnPhieuMuon">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -345,10 +347,10 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPhieuMuonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton14">
+            <Component class="javax.swing.JButton" name="btnNhanVien">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -360,10 +362,10 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNhanVienActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton15">
+            <Component class="javax.swing.JButton" name="btnGioiThieu">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -375,10 +377,10 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton15ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGioiThieuActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton16">
+            <Component class="javax.swing.JButton" name="btnThongKe">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -390,7 +392,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKeActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnSach">
@@ -411,7 +413,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSachActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton12">
+            <Component class="javax.swing.JButton" name="btnNguoiMuon">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="99" red="ff" type="rgb"/>
@@ -425,6 +427,9 @@
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1ecd;c gi&#x1ea3;"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNguoiMuonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
