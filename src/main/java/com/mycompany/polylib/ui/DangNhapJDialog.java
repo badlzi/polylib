@@ -7,6 +7,7 @@ package com.mycompany.polylib.ui;
 import com.mycompany.polylib.dao.NhanVienDao;
 import com.mycompany.polylib.entity.NhanVien;
 import com.mycompany.polylib.utils.Auth;
+import com.mycompany.polylib.utils.MsgBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,8 +47,8 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btn_HienThiMK = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/toi.jpg"))); // NOI18N
@@ -119,16 +120,22 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/dangnhap.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/locked-computer.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/eye.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 20, -1));
+        btn_HienThiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/eye.png"))); // NOI18N
+        btn_HienThiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_HienThiMKActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_HienThiMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 30, 30));
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/toi.jpg"))); // NOI18N
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 550));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/toi.jpg"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -144,14 +151,18 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         dangNhap();
-         TrangChuJFrame nv = new TrangChuJFrame();
-             nv.setVisible(true);
-             this.dispose();
+//        TrangChuJFrame nv = new TrangChuJFrame();
+//        nv.setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
     private void btn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thoatActionPerformed
-
+        ketThuc();
     }//GEN-LAST:event_btn_thoatActionPerformed
+
+    private void btn_HienThiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HienThiMKActionPerformed
+        hienThiMK();
+    }//GEN-LAST:event_btn_HienThiMKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,14 +199,14 @@ public class DangNhapJDialog extends javax.swing.JFrame {
             }
         });
     }
-    NhanVienDao NVD = new NhanVienDao();
 
     void dangNhap() {
-        String manv = txt_TaiKhoan.getText();
+        String maNV = txt_TaiKhoan.getText();
         String matKhau = new String(txt_MatKhau.getPassword());
-        NhanVien nhanVien = NVD.selectById(manv);
+        NhanVienDao NVD = new NhanVienDao();
+        NhanVien nhanVien = NVD.selectById(maNV);
         // kiểm tra gía trị rỗng
-        if (manv.isBlank()) {
+        if (maNV.isBlank()) {
             JOptionPane.showMessageDialog(this, "Tài khoản không được bỏ trống!", "THÔNG BÁO!", 0);
             return;
         } else if (matKhau.isBlank()) {
@@ -211,6 +222,9 @@ public class DangNhapJDialog extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
             } else {
                 Auth.user = nhanVien;
+                System.out.println(Auth.isManager());
+                TrangChuJFrame tc = new TrangChuJFrame();
+                tc.setVisible(true);
                 this.dispose();
             }
         } catch (Exception e) {
@@ -220,11 +234,30 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
     }
 
+    public void ketThuc() {
+        if (MsgBox.confirm(this, "Bạn muốn kết thúc ứng dụng?")) {
+            System.exit(0);
+        }
+    }
+    int count = 0;
+
+    public void hienThiMK() {
+        if (count == 0) {
+            txt_MatKhau.setEchoChar((char) 0);
+            System.out.println("Nút bấm đã được nhấp chuột");
+            count = 1;
+        } else if (count == 1) {
+            txt_MatKhau.setEchoChar('*');
+            System.out.println(count);
+            count = 0;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_DangNhap;
+    private javax.swing.JButton btn_HienThiMK;
     private javax.swing.JButton btn_thoat;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
