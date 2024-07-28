@@ -124,14 +124,15 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
         btnSach = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        btnPhieuMuon1 = new javax.swing.JButton();
+        btnNhanVien1 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
+        btnThongKe1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -167,6 +168,8 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ebook.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -175,13 +178,23 @@ public class ThongkeFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(81, 81, 81)
+                    .addComponent(jLabel3)
+                    .addContainerGap(82, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
@@ -194,46 +207,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(255, 153, 0));
-        jButton5.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton5.setText("Phiếu Mượn");
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton15.setBackground(new java.awt.Color(255, 153, 0));
-        jButton15.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton15.setText("Giới Thiệu");
-        jButton15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setBackground(new java.awt.Color(255, 153, 0));
-        jButton14.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton14.setText("Nhân Viên");
-        jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-
-        jButton16.setBackground(new java.awt.Color(255, 204, 204));
-        jButton16.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        jButton16.setText("Thống Kê");
-        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
             }
         });
 
@@ -253,6 +226,50 @@ public class ThongkeFrame extends javax.swing.JFrame {
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/graduated.png"))); // NOI18N
         jButton12.setText("Đọc giả");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        btnPhieuMuon1.setBackground(new java.awt.Color(255, 153, 0));
+        btnPhieuMuon1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnPhieuMuon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Lists.png"))); // NOI18N
+        btnPhieuMuon1.setText("Phiếu Mượn");
+        btnPhieuMuon1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPhieuMuon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhieuMuon1ActionPerformed(evt);
+            }
+        });
+
+        btnNhanVien1.setBackground(new java.awt.Color(255, 153, 0));
+        btnNhanVien1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnNhanVien1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User group.png"))); // NOI18N
+        btnNhanVien1.setText("Nhân Viên");
+        btnNhanVien1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhanVien1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVien1ActionPerformed(evt);
+            }
+        });
+
+        jButton17.setBackground(new java.awt.Color(255, 153, 0));
+        jButton17.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Brick house.png"))); // NOI18N
+        jButton17.setText("Giới Thiệu");
+        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+
+        btnThongKe1.setBackground(new java.awt.Color(255, 204, 204));
+        btnThongKe1.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnThongKe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Statistics.png"))); // NOI18N
+        btnThongKe1.setText("Thống Kê");
+        btnThongKe1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThongKe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKe1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -267,13 +284,13 @@ public class ThongkeFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(btnPhieuMuon1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNhanVien1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnThongKe1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 22, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -287,17 +304,17 @@ public class ThongkeFrame extends javax.swing.JFrame {
                 .addComponent(btnSach, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addComponent(btnPhieuMuon1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNhanVien1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton17)
+                .addGap(18, 18, 18)
+                .addComponent(btnThongKe1)
+                .addGap(55, 55, 55)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel12.setText("8:44");
@@ -401,20 +418,22 @@ public class ThongkeFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel21)))
-                .addGap(29, 29, 29)
-                .addComponent(TBP_TKNM)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel21)))
+                        .addGap(29, 29, 29)
+                        .addComponent(TBP_TKNM, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))))
                 .addContainerGap())
         );
 
@@ -425,22 +444,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
@@ -455,8 +458,24 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
-        // TODO add your handling code here:
+      openSach();
     }//GEN-LAST:event_btnSachActionPerformed
+
+    private void btnThongKe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKe1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThongKe1ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+      openNguoiMuon();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void btnPhieuMuon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuMuon1ActionPerformed
+      openPhieuMuon();
+    }//GEN-LAST:event_btnPhieuMuon1ActionPerformed
+
+    private void btnNhanVien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVien1ActionPerformed
+       openNhanVien();
+    }//GEN-LAST:event_btnNhanVien1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -493,20 +512,45 @@ public class ThongkeFrame extends javax.swing.JFrame {
         });
     }
 
+    void openSach() {
+        SachJFrame sach = new SachJFrame();
+        sach.setVisible(true);
+        ThongkeFrame.this.dispose();
+    }
+
+    void openNhanVien() {
+        NhanVienJFrame nv = new NhanVienJFrame();
+        nv.setVisible(true);
+        ThongkeFrame.this.dispose();
+    }
+
+    void openNguoiMuon() {
+        NguoiMuonJFrame nm = new NguoiMuonJFrame();
+        nm.setVisible(true);
+        ThongkeFrame.this.dispose();
+    }
+
+    void openPhieuMuon() {
+        PhieuMuonJFrame tk = new PhieuMuonJFrame();
+        tk.setVisible(true);
+        ThongkeFrame.this.dispose();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TBP_TKNM;
+    private javax.swing.JButton btnNhanVien1;
+    private javax.swing.JButton btnPhieuMuon1;
     private javax.swing.JButton btnSach;
+    private javax.swing.JButton btnThongKe1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton17;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;

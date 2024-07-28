@@ -69,7 +69,7 @@ public class Ximage {
 //     * @return ảnh đọc được
 //     */   
     public static ImageIcon read(String fileName){
-        File path = new File("logos", fileName);
+        File path = new File("src\\main\\resources\\img", fileName);
         return new ImageIcon(path.getAbsolutePath());
     }
 }
