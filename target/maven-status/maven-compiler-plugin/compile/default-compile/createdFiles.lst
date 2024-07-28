@@ -65,11 +65,7 @@ com\mycompany\polylib\ui\SachJFrame$16.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$20.class
 com\mycompany\polylib\ui\NhanVienJFrame$5.class
 com\mycompany\polylib\ui\NhanVienJFrame$20.class
-<<<<<<< Updated upstream
-=======
-com\mycompany\polylib\ui\SachJFrame$9.class
 com\mycompany\polylib\ui\DangNhapJDialog$6.class
->>>>>>> Stashed changes
 com\mycompany\polylib\ui\PhieuMuonJFrame$22.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$5.class
 com\mycompany\polylib\ui\SachJFrame$20.class
@@ -137,6 +133,7 @@ com\mycompany\polylib\ui\NhanVienJFrame$13.class
 com\mycompany\polylib\ui\TrangChuJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$21.class
 com\mycompany\polylib\ui\NhanVienJFrame$11.class
+com\mycompany\polylib\ui\TrangChuJFrame$11.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$15.class
 com\mycompany\polylib\ui\SachJFrame$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$17.class
