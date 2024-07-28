@@ -39,6 +39,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnPhieuMuon = new javax.swing.JButton();
@@ -97,6 +98,8 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/ebook.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -105,13 +108,23 @@ public class TrangChuJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(73, 73, 73)
+                    .addComponent(jLabel3)
+                    .addContainerGap(74, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jLabel2.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
@@ -129,6 +142,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         btnPhieuMuon.setBackground(new java.awt.Color(255, 153, 0));
         btnPhieuMuon.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnPhieuMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Lists.png"))); // NOI18N
         btnPhieuMuon.setText("Phiếu Mượn");
         btnPhieuMuon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPhieuMuon.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +153,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         btnNhanVien.setBackground(new java.awt.Color(255, 153, 0));
         btnNhanVien.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User group.png"))); // NOI18N
         btnNhanVien.setText("Nhân Viên");
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +164,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         btnGioiThieu.setBackground(new java.awt.Color(255, 153, 0));
         btnGioiThieu.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnGioiThieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Home.png"))); // NOI18N
         btnGioiThieu.setText("Giới Thiệu");
         btnGioiThieu.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnGioiThieu.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +175,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         btnThongKe.setBackground(new java.awt.Color(255, 153, 0));
         btnThongKe.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Bar chart.png"))); // NOI18N
         btnThongKe.setText("Thống Kê");
         btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +234,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSach, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,7 +250,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
@@ -453,6 +470,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;

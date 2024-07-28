@@ -67,7 +67,7 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\polylib\\src\\main\\resources\\icon\\load-31_256.gif")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/load-31_256.gif"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 250, 420));
 
         pgb_chotai.setBackground(new java.awt.Color(255, 255, 255));
@@ -77,7 +77,7 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
         pgb_chotai.setStringPainted(true);
         getContentPane().add(pgb_chotai, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 710, 26));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ngocquy\\Documents\\GitHub\\polylib\\src\\main\\resources\\icon\\nenchotai.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/nenchotai.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 450));
 
         pack();
