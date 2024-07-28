@@ -13,8 +13,10 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     /**
      * Creates new form home_page_JFrame
      */
-    public TrangChuJFrame() {
+    public TrangChuJFrame()
+    {
         initComponents();
+        
     }
 
     /**

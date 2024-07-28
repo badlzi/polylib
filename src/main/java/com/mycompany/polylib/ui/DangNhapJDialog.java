@@ -144,6 +144,9 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         dangNhap();
+         TrangChuJFrame nv = new TrangChuJFrame();
+             nv.setVisible(true);
+             this.dispose();
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
     private void btn_thoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_thoatActionPerformed

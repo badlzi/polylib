@@ -23,22 +23,32 @@ public class ChoTaiJFrame extends javax.swing.JFrame {
         init();
 
     }
+    boolean checkloang = true;
+    private Timer timer;
+
     void init() {
         setLocationRelativeTo(null);
-        new Timer(60, new ActionListener() {
+        timer = new Timer(60, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int value = pgb_chotai.getValue();
-                if(value < 100){
+                if (value < 100) {
                     pgb_chotai.setValue(value + 1);
 //                    SoundUtils.playSound(".\\src\\main\\resources\\mp3\\thymeloop16-71407.mp3");
-                }
-                else{
+                } else {
+
                     ChoTaiJFrame.this.dispose();
-                    
+                    checkloang = false;
+                    if (!checkloang) {
+                        DangNhapJDialog nv = new DangNhapJDialog();
+                        nv.setVisible(true);
+                        timer.stop();
+                    }
+
                 }
             }
-        }).start();
+        });
+        timer.start();
     }
 
     /**
