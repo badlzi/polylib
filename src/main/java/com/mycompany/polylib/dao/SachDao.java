@@ -62,10 +62,12 @@ public class SachDao extends PolyLibDao<Sach, String> {
                 Sach entity = new Sach();
                 entity.setMaSach(rs.getString("MASACH"));
                 entity.setTenSach(rs.getString("TENSACH"));
+                 entity.setHinh(rs.getString("HINH"));
                 entity.setSoTrang(rs.getInt("SOTRANG"));
-                entity.setSoLuong(rs.getInt("SOLUONG"));
+                entity.setSoLuong(rs.getInt("SOLUONGBANSAO"));
+                entity.setTrangThai(rs.getString("TRANGTHAI"));
                 entity.setGhiChu(rs.getString("GHICHU"));
-                entity.setHinh(rs.getString("HINH"));
+               
                 list.add(entity);
             }
         } catch (Exception e) {
