@@ -934,7 +934,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
             }
         });
     }
-  private File chonFileExcelImportNguoiHoc() {
+       private File chonFileExcelImportNguoiHoc() {
         File excelFile = null;
         JFileChooser fileChooser = new JFileChooser();
                 
@@ -964,19 +964,21 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                 nm.setMaNM(row.getCell(0).getStringCellValue());
                 nm.setTenNM(row.getCell(1).getStringCellValue());
                 if (row.getCell(2).getStringCellValue().equals("Nam")) {
-                    nm.setGioiTinh(true);
+                    nm.setGioiTinh(Boolean.TRUE);
                 } else {
-                    nm.setGioiTinh(false);
+                    nm.setGioiTinh(Boolean.TRUE);
                 }
 
                 nm.setNgaySinh(XDate.toDate(row.getCell(3).getStringCellValue(),
                         "MM/dd/yyyy"));
                 nm.setSoDienThoai("" + row.getCell(4).getNumericCellValue());
+                nm.setEmail("" + row.getCell(5).getNumericCellValue());
                 NMD.insert(nm);
                 System.out.println(nm);
 
             }
             file.close();
+            NML.clear();
             this.HienThiLenban();
         } catch (Exception e) {
             e.printStackTrace();
