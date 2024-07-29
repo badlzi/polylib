@@ -96,6 +96,7 @@ com\mycompany\polylib\entity\Sach.class
 com\mycompany\polylib\dao\NhanVienDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$6.class
 com\mycompany\polylib\ui\TrangChuJFrame$8.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$23.class
 com\mycompany\polylib\ui\SachJFrame$13.class
 com\mycompany\polylib\ui\NhanVienJFrame$23.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$9.class
@@ -136,7 +137,6 @@ com\mycompany\polylib\ui\NhanVienJFrame$11.class
 com\mycompany\polylib\ui\TrangChuJFrame$11.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$15.class
 com\mycompany\polylib\ui\SachJFrame$5.class
-com\mycompany\polylib\ui\NguoiMuonJFrame$17.class
 com\mycompany\polylib\ui\ThongkeFrame$5.class
 com\mycompany\polylib\ui\DangNhapJDialog.class
 com\mycompany\polylib\ui\SachJFrame$4.class

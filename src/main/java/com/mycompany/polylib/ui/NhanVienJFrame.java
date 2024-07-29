@@ -15,9 +15,11 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -39,7 +41,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         } else {
             HienThiLenban();
         }
-         txt_MatKhau.setEchoChar((char) 0);
+        txt_MatKhau.setEchoChar((char) 0);
     }
     int row = 0;
 
@@ -672,7 +674,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_LamMoiActionPerformed
 
     private void btn_LuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LuiActionPerformed
-       prev();
+        prev();
     }//GEN-LAST:event_btn_LuiActionPerformed
 
     private void btn_ToiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ToiActionPerformed
@@ -684,7 +686,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_DauActionPerformed
 
     private void btn_CuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CuoiActionPerformed
-       last();
+        last();
     }//GEN-LAST:event_btn_CuoiActionPerformed
 
     private void txt_TaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TaiKhoanActionPerformed
@@ -698,6 +700,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         } else {
             this.importNguoiHocFromExcel(file);
             MsgBox.alert(this, "Import danh sách người học thành công!");
+            this.QUANLYHienThi();
+            this.clear();
         }
     }//GEN-LAST:event_btn_xlsxActionPerformed
 
@@ -751,7 +755,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         if (!Auth.isManager()) {
             if (evt.getClickCount() == 2) {
                 this.row = tbl_NV.getSelectedRow();
-            this.edit();
+                this.edit();
                 TBP_NV.setSelectedIndex(0);
                 txt_MaNV.setEditable(false);
             }
@@ -763,19 +767,20 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     private File chonFileExcelImportNguoiHoc() {
         File excelFile = null;
         JFileChooser fileChooser = new JFileChooser();
-                
-        if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             excelFile = Ximage.saveExel(file); // lưu hình vào thư mục logos
-            
+
         }
         return excelFile;
     }
+
     private void importNguoiHocFromExcel(File excelFile) {
         NhanVien nv = new NhanVien();
         try {
             FileInputStream file = new FileInputStream(excelFile);
-
+            DataFormatter formatter = new DataFormatter(Locale.US);
             //Create Workbook instance holding reference to .xlsx file
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             //Get first/desired sheet from the workbook
@@ -785,33 +790,29 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             Iterator<Row> rowIterator = sheet.iterator();
             rowIterator.next();//Skip the header row
             while (rowIterator.hasNext()) {
+                
                 Row row = rowIterator.next();
-
+                
                 nv.setMaNhanVien(row.getCell(0).getStringCellValue());
                 nv.setTenNhanVien(row.getCell(1).getStringCellValue());
                 nv.setTaiKhoan(row.getCell(2).getStringCellValue());
                 nv.setMatKhau(row.getCell(3).getStringCellValue());
-                if (row.getCell(4).getStringCellValue().equals("Quản lí")) {
-                    nv.setChucVu(true);
-                } else {
-                    nv.setChucVu(false);
-                }
-
-                nv.setSDT("" + row.getCell(5).getNumericCellValue());
-                nv.setEmail("" + row.getCell(5).getNumericCellValue());
+                String role =formatter.formatCellValue(row.getCell(4));
+                nv.setChucVu(role.equalsIgnoreCase("Quản lí"));
+                nv.setSDT(formatter.formatCellValue(row.getCell(5)));
+                nv.setEmail(formatter.formatCellValue(row.getCell(6)));
                 NVD.insert(nv);
-                System.out.println(nv);
+                System.out.println("ten: Y nv.getTenNhanVien()");
 
             }
             file.close();
-            this.HienThiLenban();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
-      insert();
+        insert();
     }//GEN-LAST:event_btn_ThemActionPerformed
 
     private void btn_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SuaActionPerformed
@@ -819,7 +820,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_SuaActionPerformed
 
     private void btn_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XoaActionPerformed
-       delete();
+        delete();
     }//GEN-LAST:event_btn_XoaActionPerformed
 
     /**
@@ -922,8 +923,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         rdo_QuanLi.setSelected(!nv.isChucVu());
         rdo_NhanVien.setSelected(nv.isChucVu());
     }
-    
-        NhanVien getForm() {
+
+    NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setTenNhanVien(txt_Tennv.getText());
         nv.setTaiKhoan(txt_TaiKhoan.getText());
@@ -940,16 +941,16 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         nv.setMaNhanVien(txt_MaNV.getText());
         return nv;
     }
-    
-        void edit() {
+
+    void edit() {
         String manv = (String) tbl_NV.getValueAt(this.row, 0);
         NhanVien nv = NVD.selectById(manv);
         this.setForm(nv);
 
 //        this.updateStatus();
     }
-        
-        void first() {
+
+    void first() {
         this.row = 0;
         this.edit();
     }
@@ -958,7 +959,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         if (this.row > 0) {
             this.row--;
             this.edit();
-        }else{
+        } else {
             this.row = tbl_NV.getRowCount() - 1;
             this.edit();
         }
@@ -968,7 +969,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         if (this.row <= tbl_NV.getRowCount() - 1) {
             this.row++;
             this.edit();
-        }else{
+        } else {
             this.row = 0;
             this.edit();
         }
@@ -979,7 +980,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         this.edit();
     }
 
-     void insert() {
+    void insert() {
         NhanVien model = getForm();
         try {
             NVD.insert(model);
@@ -1002,7 +1003,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }
 
     void update() {
-          NhanVien model = getForm();
+        NhanVien model = getForm();
         try {
             NVD.update(model);
             this.QUANLYHienThi();
@@ -1025,7 +1026,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             }
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TBP_NV;
     private javax.swing.JButton btnNhanVien;

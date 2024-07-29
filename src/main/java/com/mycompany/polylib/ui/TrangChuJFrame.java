@@ -267,7 +267,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, -1, -1));
 
         jLabel12.setText("8:44");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 560, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, -1, -1));
 
         jMenu2.setText("Quản lí");
 
