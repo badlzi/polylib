@@ -10,7 +10,9 @@ com\mycompany\polylib\ui\NguoiMuonJFrame$22.class
 com\mycompany\polylib\ui\ThongkeFrame$1.class
 com\mycompany\polylib\ui\ThongkeFrame$8.class
 com\mycompany\polylib\ui\NguoiMuonJFrame.class
+com\mycompany\polylib\ui\DangNhapJDialog$7.class
 com\mycompany\polylib\ui\SachJFrame$22.class
+com\mycompany\polylib\ui\DoiMatKhau$1$1.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$3.class
 com\mycompany\polylib\dao\PolyLibDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$2.class
@@ -134,8 +136,10 @@ com\mycompany\polylib\ui\NhanVienJFrame$13.class
 com\mycompany\polylib\ui\TrangChuJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$21.class
 com\mycompany\polylib\ui\NhanVienJFrame$11.class
+com\mycompany\polylib\ui\DoiMatKhau.class
 com\mycompany\polylib\ui\TrangChuJFrame$11.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$15.class
+com\mycompany\polylib\ui\QuenMatKhauJFrame$8.class
 com\mycompany\polylib\ui\SachJFrame$5.class
 com\mycompany\polylib\ui\ThongkeFrame$5.class
 com\mycompany\polylib\ui\DangNhapJDialog.class
@@ -149,6 +153,7 @@ com\mycompany\polylib\ui\ThongkeFrame$3.class
 com\mycompany\polylib\entity\ViTri.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$19.class
 com\mycompany\polylib\ui\ThongkeFrame$6.class
+com\mycompany\polylib\ui\DoiMatKhau$1.class
 com\mycompany\polylib\utils\XJdbc.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$1.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$4.class
