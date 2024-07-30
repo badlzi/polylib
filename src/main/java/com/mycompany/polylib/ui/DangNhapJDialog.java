@@ -44,7 +44,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btn_DangNhap = new javax.swing.JButton();
         btn_thoat = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lblQuenMK = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btn_HienThiMK = new javax.swing.JButton();
@@ -114,10 +114,15 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         });
         getContentPane().add(btn_thoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 40, 40));
 
-        jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Quên Mật Khẩu ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, 30));
+        lblQuenMK.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
+        lblQuenMK.setForeground(new java.awt.Color(255, 255, 255));
+        lblQuenMK.setText("Quên Mật Khẩu ");
+        lblQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblQuenMKMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblQuenMK, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
@@ -163,6 +168,10 @@ public class DangNhapJDialog extends javax.swing.JFrame {
     private void btn_HienThiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HienThiMKActionPerformed
         hienThiMK();
     }//GEN-LAST:event_btn_HienThiMKActionPerformed
+
+    private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
+        opQuenMatKhau();
+    }//GEN-LAST:event_lblQuenMKMouseClicked
 
     /**
      * @param args the command line arguments
@@ -253,6 +262,12 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         }
     }
 
+    public void opQuenMatKhau() {
+        QuenMatKhauJFrame qmk = new QuenMatKhauJFrame();
+        qmk.setVisible(true);
+        DangNhapJDialog.this.dispose();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_DangNhap;
     private javax.swing.JButton btn_HienThiMK;
@@ -260,13 +275,13 @@ public class DangNhapJDialog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblQuenMK;
     private javax.swing.JPasswordField txt_MatKhau;
     private javax.swing.JTextField txt_TaiKhoan;
     // End of variables declaration//GEN-END:variables
