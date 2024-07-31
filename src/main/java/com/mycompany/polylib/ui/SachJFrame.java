@@ -6,6 +6,8 @@ package com.mycompany.polylib.ui;
 
 import com.mycompany.polylib.dao.SachDao;
 import com.mycompany.polylib.entity.Sach;
+import com.mycompany.polylib.utils.Auth;
+import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.Ximage;
 import java.awt.Image;
 import java.io.File;
@@ -28,6 +30,7 @@ public class SachJFrame extends javax.swing.JFrame {
      */
     public SachJFrame() {
         initComponents();
+        txt_usename.setText(Auth.getManagername());
         HienThiLenban();
     }
     int row = 0;
@@ -52,7 +55,7 @@ public class SachJFrame extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        txt_usename = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -255,8 +258,8 @@ public class SachJFrame extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Phan Huỳnh Ngọc Quý");
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setText("Phan Huỳnh Ngọc Quý");
 
         jLabel11.setText("Phần mền quản lý thư viện");
 
@@ -492,7 +495,7 @@ public class SachJFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
+                                .addComponent(txt_usename)
                                 .addGap(22, 22, 22))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 483, Short.MAX_VALUE)
@@ -520,7 +523,7 @@ public class SachJFrame extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel8)
+                    .addComponent(txt_usename)
                     .addComponent(jLabel21))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -577,7 +580,10 @@ public class SachJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       Auth.clear();
+        DangNhapJDialog pm = new DangNhapJDialog();
+        pm.setVisible(true);
+        SachJFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtSoTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoTrangActionPerformed
@@ -625,7 +631,13 @@ public class SachJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        new DoiMatKhau(this, true).setVisible(true);
+        if(Auth.isLogin()){
+        new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -809,7 +821,6 @@ public class SachJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -840,5 +851,6 @@ public class SachJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtSoTrang;
     private javax.swing.JTextField txtTen;
+    private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.utils.Auth;
+import com.mycompany.polylib.utils.MsgBox;
+
 /**
  *
  * @author ngocquy
@@ -15,6 +18,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
      */
     public TrangChuJFrame() {
         initComponents();
+        txt_usename.setText(Auth.getManagername());
 
     }
 
@@ -49,7 +53,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         btnSach = new javax.swing.JButton();
         btnNguoiMuon = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        txt_usename = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -67,7 +71,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        btn_DoiMatKhau = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -258,9 +262,9 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/CT.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 800, 510));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Phan Huỳnh Ngọc Quý");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setText("Phan Huỳnh Ngọc Quý");
+        jPanel1.add(txt_usename, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
         jLabel11.setText("Phần mền quản lý thư viện");
@@ -320,13 +324,13 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jMenu1.setText("Hệ thống");
 
-        jMenuItem1.setText("Đổi mật khẩu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        btn_DoiMatKhau.setText("Đổi mật khẩu");
+        btn_DoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                btn_DoiMatKhauActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(btn_DoiMatKhau);
 
         jMenuItem2.setText("Đăng xuất");
         jMenu1.add(jMenuItem2);
@@ -357,7 +361,10 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Auth.clear();
+        DangNhapJDialog pm = new DangNhapJDialog();
+        pm.setVisible(true);
+        TrangChuJFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnPhieuMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuMuonActionPerformed
@@ -376,9 +383,14 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         openThongKe();
     }//GEN-LAST:event_btnThongKeActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void btn_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DoiMatKhauActionPerformed
+        if(Auth.isLogin()){
+        new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
+    }//GEN-LAST:event_btn_DoiMatKhauActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
@@ -464,6 +476,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPhieuMuon;
     private javax.swing.JButton btnSach;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JMenuItem btn_DoiMatKhau;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -471,7 +484,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -484,7 +496,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
@@ -501,5 +512,6 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
 }
