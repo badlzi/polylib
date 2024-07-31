@@ -4,6 +4,8 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.utils.Auth;
+import com.mycompany.polylib.utils.MsgBox;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
@@ -26,6 +28,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
      */
     public ThongkeFrame() {
         initComponents();
+        txt_usename.setText(Auth.getManagername());
         JFreeChart pieChart = createChart(createDataset());
         ChartPanel chartPanel = new ChartPanel(pieChart);
         TBP_TKNM.addTab("Thống kê người mượn",chartPanel);
@@ -119,7 +122,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel8 = new javax.swing.JLabel();
+        txt_usename = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -157,8 +160,8 @@ public class ThongkeFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Phan Huỳnh Ngọc Quý");
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setText("Phan Huỳnh Ngọc Quý");
 
         jLabel11.setText("Phần mền quản lý thư viện");
 
@@ -412,7 +415,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
                         .addGap(486, 486, 486)
                         .addComponent(jLabel9)
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel8)
+                        .addComponent(txt_usename)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(TBP_TKNM)))
         );
@@ -426,10 +429,10 @@ public class ThongkeFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
+                                .addComponent(txt_usename)
                                 .addComponent(jLabel21)))
                         .addGap(29, 29, 29)
-                        .addComponent(TBP_TKNM, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                        .addComponent(TBP_TKNM)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
@@ -442,7 +445,10 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Auth.clear();
+        DangNhapJDialog pm = new DangNhapJDialog();
+        pm.setVisible(true);
+        ThongkeFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -454,7 +460,13 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+              new DoiMatKhau(this, true).setVisible(true);
+        if(Auth.isLogin()){
+        new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -551,7 +563,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -572,5 +583,6 @@ public class ThongkeFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
 }

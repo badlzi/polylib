@@ -117,6 +117,11 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Quên Mật Khẩu ");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 150, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
@@ -164,6 +169,12 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         hienThiMK();
     }//GEN-LAST:event_btn_HienThiMKActionPerformed
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+     QuenMatKhauJFrame nv = new QuenMatKhauJFrame();
+       nv.setVisible(true);
+       DangNhapJDialog.this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -199,9 +210,9 @@ public class DangNhapJDialog extends javax.swing.JFrame {
             }
         });
     }
-
+    public  String maNV;
     void dangNhap() {
-        String maNV = txt_TaiKhoan.getText();
+        maNV = txt_TaiKhoan.getText();
         String matKhau = new String(txt_MatKhau.getPassword());
         NhanVienDao NVD = new NhanVienDao();
         NhanVien nhanVien = NVD.selectById(maNV);
@@ -225,6 +236,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
                 System.out.println(Auth.isManager());
                 TrangChuJFrame tc = new TrangChuJFrame();
                 tc.setVisible(true);
+                System.out.println(Auth.getManagername());
                 this.dispose();
             }
         } catch (Exception e) {

@@ -12,6 +12,8 @@ import com.mycompany.polylib.dao.NguoiMuonDao;
 import com.mycompany.polylib.dao.PhieuMuonDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
 import com.mycompany.polylib.entity.phieuMuon;
+import com.mycompany.polylib.utils.Auth;
+import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
 import java.awt.Desktop;
 import java.awt.print.PrinterException;
@@ -51,6 +53,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
      */
     public PhieuMuonJFrame() {
         initComponents();
+        txt_usename.setText(Auth.getManagername());
         HienThiLenban();
     }
 //tfygyvyg
@@ -104,7 +107,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         bill = new javax.swing.JTextArea();
-        jLabel8 = new javax.swing.JLabel();
+        txt_usename = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -453,8 +456,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         TBP_PM.addTab("tab3", jPanel4);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Phan Huỳnh Ngọc Quý");
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setText("Phan Huỳnh Ngọc Quý");
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -704,7 +707,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                         .addGap(427, 427, 427)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(txt_usename)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -719,7 +722,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
+                        .addComponent(txt_usename)
                         .addComponent(jLabel21))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
@@ -781,7 +784,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       Auth.clear();
+        DangNhapJDialog pm = new DangNhapJDialog();
+        pm.setVisible(true);
+        PhieuMuonJFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -793,7 +799,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+               new DoiMatKhau(this, true).setVisible(true);
+        if(Auth.isLogin()){
+        new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -1138,7 +1150,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -1172,5 +1183,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tbl_PhieuMuon;
+    private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
 }

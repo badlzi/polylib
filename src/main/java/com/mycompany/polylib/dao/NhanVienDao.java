@@ -43,6 +43,27 @@ public class NhanVienDao extends PolyLibDao<NhanVien, String>{
                 model.getMaNhanVien()
         );
     }
+    
+    public void updatepassword(NhanVien model) {
+            String sql="UPDATE NHANVIEN SET MATKHAU=? WHERE MANV=?";
+        XJdbc.update(sql,
+                model.getMatKhau(), 
+                model.getMaNhanVien()
+        );
+    }
+        public void forgotpassword(NhanVien model) {
+            String sql="UPDATE NHANVIEN SET MATKHAU=? WHERE EMAIL=?";
+        XJdbc.update(sql,
+                model.getMatKhau(), 
+                model.getEmail()
+        );
+    }
+         public NhanVien selectByemail(String email) {
+        String sql="SELECT * FROM NhanVien WHERE EMAIL=?";
+        List<NhanVien> list = this.selectBySql(sql, email);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+
 
     @Override
     public void delete(String MaNV) {

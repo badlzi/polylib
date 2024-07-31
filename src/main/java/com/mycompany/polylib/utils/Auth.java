@@ -30,4 +30,24 @@ public class Auth {
     public static boolean isManager() {
         return Auth.isLogin() && user.isChucVu();
     }
+    public static String getManagername() {
+        if(Auth.isLogin()){
+        return user.getTenNhanVien();
+        }
+         return null;
+    }
+      public static String getManagercode() {
+        if(Auth.isLogin()){
+        return user.getMaNhanVien();
+        }
+         return null;
+    }
+          public static String getManagerpassword(){
+        if(Auth.isLogin()){
+        return user.getMatKhau();
+        }
+         return null;
+    }
+      
+    
 }

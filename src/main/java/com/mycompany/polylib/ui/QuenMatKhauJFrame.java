@@ -4,6 +4,9 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.dao.NhanVienDao;
+import com.mycompany.polylib.entity.NhanVien;
+import com.mycompany.polylib.utils.Auth;
 import com.mycompany.polylib.utils.MsgBox;
 import java.util.Properties;
 import java.util.Random;
@@ -131,9 +134,7 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_XacNhanActionPerformed
-        kiemtra();
-        System.out.println(txt_MatKhauMoi.getText());
-        System.out.println(txt_MatKhauMoi.getText().length());
+    QuenMatKhau();
     }//GEN-LAST:event_btn_XacNhanActionPerformed
 
     private void txt_MatKhauMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_MatKhauMoiActionPerformed
@@ -141,7 +142,9 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_MatKhauMoiActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       DangNhapJDialog nv = new DangNhapJDialog();
+       nv.setVisible(true);
+         QuenMatKhauJFrame.this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
@@ -149,8 +152,7 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_emailActionPerformed
 
     private void btn_GuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuiActionPerformed
-        password = generateRandomPassword(6);
-        Subiject();
+        layMK();
     }//GEN-LAST:event_btn_GuiActionPerformed
 
     /**
@@ -215,7 +217,7 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
             myMessage.setSubject("Cập nhật lại mật khẩu mới");
             myMessage.setContent(password, "text/html;charset=utf-8");
             Transport.send(myMessage);
-           JOptionPane.showMessageDialog(this, "Mã xác nhận đã được gửi thành công");
+            JOptionPane.showMessageDialog(this, "Mã xác nhận đã được gửi thành công");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -237,18 +239,59 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
         return randomString;
     }
 
-    void kiemtra() {
-        if (txt_MatKhauMoi.getText().equalsIgnoreCase(password)) {
-            MsgBox.alert(this, "đăng nhập thành công!");
-        } else {
-            MsgBox.alert(this, "đăng nhập thất bại!");
+//    void kiemtra() {
+//        if (txt_MatKhauMoi.getText().equalsIgnoreCase(password)) {
+//            MsgBox.alert(this, "đăng nhập thành công!");
+//        } else {
+//            MsgBox.alert(this, "đăng nhập thất bại!");
+//        }
+//    }
+   NhanVienDao NVD = new NhanVienDao();
+    void layMK() {
+        String email = txt_email.getText();
+        NhanVien nhanVien = NVD.selectByemail(email);
+        System.out.println(nhanVien.getEmail());
+        if (email.isBlank()) {
+            JOptionPane.showMessageDialog(this, "email không được bỏ trống!", "THÔNG BÁO!", 0);
+            return;
         }
+        try{
+        if (!email.equals(nhanVien.getEmail())) {
+            JOptionPane.showMessageDialog(this, "email không tồn tại", "THÔNG BÁO!", 0);
+        } else {
+            password = generateRandomPassword(6); // Tạo mã xác nhận và cập nhật biến password
+            txt_MatKhauMoi.setText(password); // Hiển thị mật khẩu mới trên giao diện (nếu cần)
+            Subiject(); // Gửi mã xác nhận qua email
+        }
+        }catch(Exception e){
+               JOptionPane.showMessageDialog(this, "email không tồn tại", "THÔNG BÁO!", 0);
+    }
     }
 
-        void layMK() {
-        password = generateRandomPassword(6); // Tạo mã xác nhận và cập nhật biến password
-        txt_MatKhauMoi.setText(password); // Hiển thị mật khẩu mới trên giao diện (nếu cần)
-        Subiject(); // Gửi mã xác nhận qua email
+    NhanVien getForm() {
+        NhanVien nv = new NhanVien();
+        nv.setMatKhau(txt_MatKhauMoi.getText());
+        nv.setEmail(txt_email.getText());
+        return nv;
+    }
+
+    public void QuenMatKhau() {
+        String email = txt_email.getText();
+        String MatKhauCapLai = txt_MatKhauMoi.getText();
+             NhanVien model = getForm();
+        if (MatKhauCapLai.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Mật Khẩu mới không được bỏ trống!", "THÔNG BÁO!", 0);
+            return;
+        }
+        try{
+        if (txt_MatKhauMoi.getText().equalsIgnoreCase(password)) {
+         NVD.forgotpassword(model);
+         MsgBox.alert(this, "đổi mật khẩu thành công!");
+        }
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(this, "đã cấp lại mật khẩu thành công", "THÔNG BÁO!", 0);
+        }
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Gui;

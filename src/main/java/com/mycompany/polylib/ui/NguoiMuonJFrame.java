@@ -39,6 +39,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     public NguoiMuonJFrame() {
         initComponents();
         HienThiLenban();
+        txt_usename.setText(Auth.getManagername());
     }
     int row = 0;
 
@@ -53,7 +54,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel8 = new javax.swing.JLabel();
+        txt_usename = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -116,9 +117,9 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Unknown person.png"))); // NOI18N
-        jLabel8.setText("Phan Huỳnh Ngọc Quý");
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Unknown person.png"))); // NOI18N
+        txt_usename.setText("Phan Huỳnh Ngọc Quý");
 
         jLabel21.setBackground(new java.awt.Color(255, 102, 51));
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -604,7 +605,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                         .addGap(353, 353, 353)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
+                        .addComponent(txt_usename)
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -627,7 +628,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel8))
+                            .addComponent(txt_usename))
                         .addGap(19, 19, 19)))
                 .addComponent(tabsNguoiMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -702,7 +703,10 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Auth.clear();
+        DangNhapJDialog pm = new DangNhapJDialog();
+        pm.setVisible(true);
+        NguoiMuonJFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -714,7 +718,13 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+         new DoiMatKhau(this, true).setVisible(true);
+        if(Auth.isLogin()){
+        new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void tbl_NguoiMuonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NguoiMuonMousePressed
@@ -1013,7 +1023,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -1047,6 +1056,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtNgay;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTen;
+    private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
 
 }
