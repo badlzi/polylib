@@ -235,7 +235,7 @@ public class DoiMatKhau extends javax.swing.JDialog {
      NhanVien getForm() {
         NhanVien nv = new NhanVien();
         nv.setMatKhau(txt_mkm.getText());
-        nv.setMaNhanVien(Auth.getManagerpassword());
+        nv.setMaNhanVien(Auth.getManagercode());
         return nv;
     }
   public void doimatkhau(){

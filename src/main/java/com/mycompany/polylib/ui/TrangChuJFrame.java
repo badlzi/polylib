@@ -57,6 +57,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -262,7 +263,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/CT.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 800, 510));
 
-        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txt_usename.setText("Phan Huỳnh Ngọc Quý");
         jPanel1.add(txt_usename, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, -1, -1));
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
@@ -272,6 +273,9 @@ public class TrangChuJFrame extends javax.swing.JFrame {
 
         jLabel12.setText("8:44");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 560, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/User.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, -1, -1));
 
         jMenu2.setText("Quản lí");
 
@@ -484,6 +488,7 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
