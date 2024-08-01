@@ -10,10 +10,12 @@ C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\entity\ViTri.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\ThongkeFrame.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\NguoiMuonJFrame.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\NXSJDialog.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\NhaXuatBanDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\utils\XDate.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\ViTriDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\TacGiaDao.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\TacGiaJDialog.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\PhieuMuonChiTietDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\DoiMatKhau.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\TrangChuJFrame.java
@@ -34,3 +36,4 @@ C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\en
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\LoaiSachDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\NhanVienDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\ChoTaiJFrame.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\LoaiSachJDialog.java
