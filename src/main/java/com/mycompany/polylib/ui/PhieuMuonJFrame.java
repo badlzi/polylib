@@ -9,8 +9,10 @@ package com.mycompany.polylib.ui;
  * @author ngocquy
  */
 import com.mycompany.polylib.dao.NguoiMuonDao;
+import com.mycompany.polylib.dao.PhieuMuonChiTietDao;
 import com.mycompany.polylib.dao.PhieuMuonDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
+import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.phieuMuon;
 import com.mycompany.polylib.utils.Auth;
 import com.mycompany.polylib.utils.MsgBox;
@@ -128,9 +130,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -156,7 +160,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jLabel21.setBackground(new java.awt.Color(255, 102, 51));
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 102, 102));
-        jLabel21.setText("Quản lý phiếu mượn");
+        jLabel21.setText("Quản lý phiếu mượn chi tiết");
 
         tbl_PhieuMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,7 +201,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,7 +214,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
-        TBP_PM.addTab("Danh sách phiếu mượn", jPanel5);
+        TBP_PM.addTab("Danh sách phiếu mượn chi tiết", jPanel5);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(764, 500));
 
@@ -232,7 +236,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jLabel15.setText("Tên sách");
 
-        jLabel16.setText("Mã nhân viên");
+        jLabel16.setText("Mã phiếu mượn");
 
         jButton7.setText("Thêm");
 
@@ -345,7 +349,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                                         .addComponent(jButton7)
                                         .addGap(36, 36, 36)
                                         .addComponent(jButton8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                                         .addComponent(jButton9))
                                     .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -432,7 +436,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 .addGap(58, 58, 58))
         );
 
-        TBP_PM.addTab("phiếu mượn", jPanel1);
+        TBP_PM.addTab("phiếu mượn chi tiết ", jPanel1);
 
         bill.setColumns(20);
         bill.setRows(5);
@@ -443,18 +447,19 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGap(235, 235, 235)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        TBP_PM.addTab("tab3", jPanel4);
+        TBP_PM.addTab("In phiếu mượn chi tiết", jPanel4);
 
         txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_usename.setText("Phan Huỳnh Ngọc Quý");
@@ -638,14 +643,26 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jMenu2.add(jMenu6);
 
+        jMenu3.setText("Phiếu mượn");
+
+        jMenuItem7.setText("Phiếu mượn");
+        jMenu3.add(jMenuItem7);
+
+        jMenuItem8.setText("phiếu trả");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem8);
+
+        jMenu2.add(jMenu3);
+
         jMenuItem4.setText("Thống kê");
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Đọc giả");
         jMenu2.add(jMenuItem5);
-
-        jMenuItem6.setText("Phiếu mượn");
-        jMenu2.add(jMenuItem6);
 
         jMenuItem9.setText("Nhân viên");
         jMenu2.add(jMenuItem9);
@@ -862,8 +879,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         xuatphieumuon();
     }//GEN-LAST:event_jButton2ActionPerformed
-    PhieuMuonDao PMD = new PhieuMuonDao();
-    List<phieuMuon> PML = new ArrayList<>();
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    PhieuMuonChiTietDao PMCTD = new PhieuMuonChiTietDao();
+    List<PhieuMuonChiTiet> PMCTL = new ArrayList<>();
     DefaultTableModel model;
     DefaultComboBoxModel Bcmodel;
 
@@ -927,12 +948,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }
 
     public void HienThiLenban() {
-        PML = PMD.selectAll();
-        String[] headers = {"Mã Phiếu Mượn", "Ngày Mượn", "Ngày trả", " Mã Người mượn"};
+        PMCTL = PMCTD.selectAll();
+        String[] headers = {"Mã Sách", "Ghi chú", "Số lượng", " Mã Phiếu mượn"};
         model = new DefaultTableModel(headers, 0);
-        for (phieuMuon pml : PML) {
+        for (PhieuMuonChiTiet pml : PMCTL) {
             Object[] row = new Object[]{
-            pml.getSoPhieuMuon(), pml.getNgayMuon(), pml.getNgayTra(), pml.getNguoiMuon().getMaNM()};
+            pml.getSach().getMaSach(), pml.getGhiChu(), pml.getSoLuong(),pml.getPhieuMuon().getSoPhieuMuon()};
             model.addRow(row);
         }
         tbl_PhieuMuon.setModel(model);
@@ -1153,6 +1174,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1166,7 +1188,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
