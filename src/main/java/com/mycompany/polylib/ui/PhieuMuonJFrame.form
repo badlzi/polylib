@@ -46,6 +46,26 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="jMenu3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="phi&#x1ebf;u tr&#x1ea3;"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
@@ -54,11 +74,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x1ecd;c gi&#x1ea3;"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
@@ -210,7 +225,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
+        <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="TBP_PM">
@@ -220,8 +235,8 @@
         <Container class="javax.swing.JPanel" name="jPanel5">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Danh s&#xe1;ch phi&#x1ebf;u m&#x1b0;&#x1ee3;n">
-                <Property name="tabTitle" type="java.lang.String" value="Danh s&#xe1;ch phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
+              <JTabbedPaneConstraints tabName="Danh s&#xe1;ch phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t">
+                <Property name="tabTitle" type="java.lang.String" value="Danh s&#xe1;ch phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -238,7 +253,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="750" max="-2" attributes="0"/>
-                      <EmptySpace pref="8" max="32767" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -331,8 +346,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="phi&#x1ebf;u m&#x1b0;&#x1ee3;n">
-                <Property name="tabTitle" type="java.lang.String" value="phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
+              <JTabbedPaneConstraints tabName="phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t ">
+                <Property name="tabTitle" type="java.lang.String" value="phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t "/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -378,7 +393,7 @@
                                               <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                                               <Component id="jButton8" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="33" max="32767" attributes="0"/>
+                                              <EmptySpace pref="98" max="32767" attributes="0"/>
                                               <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jDateChooser1" alignment="0" max="32767" attributes="0"/>
@@ -521,7 +536,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
-                <Property name="text" type="java.lang.String" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
+                <Property name="text" type="java.lang.String" value="M&#xe3; phi&#x1ebf;u m&#x1b0;&#x1ee3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton7">
@@ -652,8 +667,8 @@
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab3">
-                <Property name="tabTitle" type="java.lang.String" value="tab3"/>
+              <JTabbedPaneConstraints tabName="In phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t">
+                <Property name="tabTitle" type="java.lang.String" value="In phi&#x1ebf;u m&#x1b0;&#x1ee3;n chi ti&#x1ebf;t"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -662,17 +677,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="356" max="-2" attributes="0"/>
-                      <EmptySpace pref="402" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="353" max="-2" attributes="0"/>
+                      <EmptySpace pref="241" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane3" min="-2" pref="403" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

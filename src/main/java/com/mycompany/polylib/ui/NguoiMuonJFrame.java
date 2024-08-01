@@ -709,24 +709,6 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
         NguoiMuonJFrame.this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-         new DoiMatKhau(this, true).setVisible(true);
-        if(Auth.isLogin()){
-        new DoiMatKhau(this, true).setVisible(true);
-        }
-        else{
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void tbl_NguoiMuonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NguoiMuonMousePressed
         if (evt.getClickCount() == 2) {
             this.row = tbl_NguoiMuon.getSelectedRow();
@@ -757,6 +739,24 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
             MsgBox.alert(this, "Import danh sách người học thành công!");
         }
     }//GEN-LAST:event_btn_XLSXActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new DoiMatKhau(this, true).setVisible(true);
+        if(Auth.isLogin()){
+            new DoiMatKhau(this, true).setVisible(true);
+        }
+        else{
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     void edit() {
         String manm = (String) tbl_NguoiMuon.getValueAt(this.row, 0);
         NguoiMuoi nm = NMD.selectById(manm);
