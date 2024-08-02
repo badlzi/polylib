@@ -96,6 +96,7 @@ com\mycompany\polylib\entity\NhaXuatBan.class
 com\mycompany\polylib\ui\TrangChuJFrame$9.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$5.class
 com\mycompany\polylib\ui\NhanVienJFrame$2.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$25.class
 com\mycompany\polylib\ui\DangNhapJDialog$4.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$7.class
 com\mycompany\polylib\ui\NhanVienJFrame$22.class
@@ -178,6 +179,7 @@ com\mycompany\polylib\ui\SachJFrame$4.class
 com\mycompany\polylib\ui\TacGiaJDialog$7.class
 com\mycompany\polylib\entity\LoaiSach.class
 com\mycompany\polylib\entity\TacGia.class
+com\mycompany\polylib\entity\PhieuMuon.class
 com\mycompany\polylib\ui\TacGiaJDialog$6.class
 com\mycompany\polylib\entity\PhieuMuonChiTiet.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$18.class
@@ -199,6 +201,5 @@ com\mycompany\polylib\ui\ThongkeFrame$4.class
 com\mycompany\polylib\ui\LoaiSachJDialog.class
 com\mycompany\polylib\dao\LoaiSachDao.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$2.class
-com\mycompany\polylib\entity\phieuMuon.class
 com\mycompany\polylib\ui\SachJFrame$6.class
 com\mycompany\polylib\ui\TacGiaJDialog$7$1.class

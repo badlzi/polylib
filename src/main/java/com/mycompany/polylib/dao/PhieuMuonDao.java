@@ -6,7 +6,7 @@ package com.mycompany.polylib.dao;
 
 import com.mycompany.polylib.entity.NguoiMuoi;
 import com.mycompany.polylib.entity.NhanVien;
-import com.mycompany.polylib.entity.phieuMuon;
+import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author ngocquy
  */
-public class PhieuMuonDao extends PolyLibDao<phieuMuon, String> {
+public class PhieuMuonDao extends PolyLibDao<PhieuMuon, String> {
 
     final String INSERT_SQL = "INSERT INTO PHIEUMUON( SOPHIEUMUON,NGAYMUON,NGAYTRA,MANV,MANM) VALUES(?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE PHIEUMUON SET NGAYMUON=?, NGAYTRA=?, MANV=?, MANM=? WHERE SOPHIEUMUON=?";
@@ -25,12 +25,12 @@ public class PhieuMuonDao extends PolyLibDao<phieuMuon, String> {
     final String SELECT_BY_ID_SQL = "SELECT * FROM PHIEUMUON WHERE SOPHIEUMUON = ?";
 
     @Override
-    public void insert(phieuMuon entity) {
+    public void insert(PhieuMuon entity) {
         XJdbc.update(INSERT_SQL, entity.getSoPhieuMuon(), entity.getNgayMuon(), entity.getNgayTra(), entity.getNhanVien().getMaNhanVien(), entity.getNguoiMuon().getMaNM());
     }
 
     @Override
-    public void update(phieuMuon entity) {
+    public void update(PhieuMuon entity) {
         XJdbc.update(UPDATE_SQL, entity.getNgayMuon(), entity.getNgayTra(), entity.getNhanVien().getMaNhanVien(), entity.getNguoiMuon().getMaNM(), entity.getSoPhieuMuon());
     }
 
@@ -40,8 +40,8 @@ public class PhieuMuonDao extends PolyLibDao<phieuMuon, String> {
     }
 
     @Override
-    public phieuMuon selectById(String id) {
-        List<phieuMuon> list = selectBySql(SELECT_BY_ID_SQL, id);
+    public PhieuMuon selectById(String id) {
+        List<PhieuMuon> list = selectBySql(SELECT_BY_ID_SQL, id);
         if (list.isEmpty()) {
             return null;
         }
@@ -49,20 +49,20 @@ public class PhieuMuonDao extends PolyLibDao<phieuMuon, String> {
     }
 
     @Override
-    public List<phieuMuon> selectAll() {
+    public List<PhieuMuon> selectAll() {
          return selectBySql(SELECT_ALL_SQL);
     }
 
     @Override
-    protected List<phieuMuon> selectBySql(String sql, Object... args) {
-         List<phieuMuon> list = new ArrayList<>();
+    protected List<PhieuMuon> selectBySql(String sql, Object... args) {
+         List<PhieuMuon> list = new ArrayList<>();
         try {
             ResultSet rs = XJdbc.query(sql, args);
             while(rs.next()){
-                phieuMuon entity = new phieuMuon();
+                PhieuMuon entity = new PhieuMuon();
                 entity.setSoPhieuMuon(rs.getString("SOPHIEUMUON"));
-                entity.setNgayMuon(rs.getString("NGAYMUON"));
-                entity.setNgayTra(rs.getString("NGAYTRA"));
+                entity.setNgayMuon(rs.getDate("NgayMuon"));
+                entity.setNgayTra(rs.getDate("NgayTra"));
                 NhanVien childentity = new NhanVien();
                 childentity.setMaNhanVien(rs.getString("MaNV"));
                 NguoiMuoi childentitytow = new NguoiMuoi();

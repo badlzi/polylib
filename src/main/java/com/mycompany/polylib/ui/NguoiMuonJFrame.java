@@ -7,7 +7,7 @@ package com.mycompany.polylib.ui;
 import com.mycompany.polylib.dao.NguoiMuonDao;
 import com.mycompany.polylib.dao.PhieuMuonDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
-import com.mycompany.polylib.entity.phieuMuon;
+import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.utils.Auth;
 import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
@@ -786,7 +786,7 @@ public class NguoiMuonJFrame extends javax.swing.JFrame {
         txtMa.setText(nm.getMaNM());
         txtTen.setText(nm.getTenNM());
         txtNgay.setDate(nm.getNgaySinh());
-        txtSdt.setText(XDate.toString(nm.getNgaySinh(), "MM/dd/yyyy"));
+        txtSdt.setText(nm.getSoDienThoai());
         txtEmail.setText(nm.getEmail());
         rdo_Nam.setSelected(nm.isGioiTinh());
         rdo_Nu.setSelected(!nm.isGioiTinh());
