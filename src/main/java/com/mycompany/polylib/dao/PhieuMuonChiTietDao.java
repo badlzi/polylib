@@ -4,9 +4,11 @@
  */
 package com.mycompany.polylib.dao;
 
+import com.mycompany.polylib.entity.NguoiMuoi;
+import com.mycompany.polylib.entity.NhanVien;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.Sach;
-import com.mycompany.polylib.entity.phieuMuon;
+import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -21,7 +23,8 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
     final String UPDATE_SQL = "UPDATE PHIEUMUONCHITIET SET GHICHU=?, SOLUONG=? WHERE SOPHIEUMUON=? and MASACH=?";
     final String DELETE_SQL = "DELETE FROM PHIEUMUONCHITIET WHERE SOPHIEUMUON=? and MASACH=?";
     final String SELECT_ALL_SQL = "SELECT * FROM PHIEUMUONCHITIET";
-    final String SELECT_BY_ID_SQL = "SELECT * FROM PHIEUMUONCHITIET WHERE SOPHIEUMUON=? and MASACH=?";
+    final String SELECT_BY_ID_SQL = "SELECT * FROM PHIEUMUONCHITIET  a INNER JOIN PHIEUMUON b ON a.SoPhieuMuon = b.SoPhieuMuon WHERE a.SOPHIEUMUON=? and MASACH=?";
+    final String SELECT_ALL_PM_PMCT = "SELECT * FROM PHIEUMUONCHITIET a INNER JOIN PHIEUMUON b ON a.SoPhieuMuon = b.SoPhieuMuon";
     
     @Override
     public void insert(PhieuMuonChiTiet entity) {
@@ -38,9 +41,9 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public PhieuMuonChiTiet selectById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PhieuMuonChiTiet selectByMS_MPM(String id, String idtwo) {
+        List<PhieuMuonChiTiet> list = this.selectBySql(SELECT_BY_ID_SQL, id, idtwo);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     @Override
@@ -57,8 +60,20 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
                 PhieuMuonChiTiet entity = new PhieuMuonChiTiet();
                 Sach childentity = new Sach();
                 childentity.setMaSach(rs.getString("MASACH"));
-                phieuMuon entitytow = new phieuMuon();
+                PhieuMuon entitytow = new PhieuMuon();
                 entitytow.setSoPhieuMuon(rs.getString("SOPHIEUMUON"));
+                entitytow.setNgayMuon(rs.getDate("NgayMuon"));
+                entitytow.setNgayTra(rs.getDate("NgayTra"));
+                
+                NhanVien nv = new NhanVien();
+                nv.setMaNhanVien(rs.getString("MaNV"));
+                entitytow.setNhanVien(nv);
+                
+                NguoiMuoi nm = new NguoiMuoi();
+                nm.setMaNM(rs.getString("MaNM"));
+                entitytow.setNguoiMuon(nm);
+                
+                entitytow.setNhanVien(nv);
                 entity.setSach(childentity);
                 entity.setPhieuMuon(entitytow);
                 entity.setGhiChu(rs.getString("GHICHU"));
@@ -70,5 +85,20 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
         }
         return list;
     }
+    
+   
+    public List<PhieuMuonChiTiet> selectPM_PMCT() {
+      return selectBySql(SELECT_ALL_PM_PMCT);
+    }
+
+    @Override
+    public PhieuMuonChiTiet selectById(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
+   
+    
+
     
 }

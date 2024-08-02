@@ -116,7 +116,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Quên Mật Khẩu ");
+        jLabel4.setText("Quên Mật Khẩu ?");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -170,9 +170,9 @@ public class DangNhapJDialog extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_HienThiMKActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-     QuenMatKhauJFrame nv = new QuenMatKhauJFrame();
-       nv.setVisible(true);
-       DangNhapJDialog.this.dispose();
+        QuenMatKhauJFrame nv = new QuenMatKhauJFrame();
+        nv.setVisible(true);
+        DangNhapJDialog.this.dispose();
     }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
@@ -210,7 +210,8 @@ public class DangNhapJDialog extends javax.swing.JFrame {
             }
         });
     }
-    public  String maNV;
+    public String maNV;
+
     void dangNhap() {
         maNV = txt_TaiKhoan.getText();
         String matKhau = new String(txt_MatKhau.getPassword());

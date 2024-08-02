@@ -9,36 +9,43 @@ package com.mycompany.polylib.entity;
  * @author ngocquy
  */
 public class PhieuMuonChiTiet {
-    private Sach Sach;
-    private phieuMuon PhieuMuon;
-    private String GhiChu;
+    private Sach sach;
+    private PhieuMuon phieuMuon;
+    private String ghiChu;
     private int SoLuong;
 
     public PhieuMuonChiTiet() {
     }
 
+    public PhieuMuonChiTiet(Sach sach, PhieuMuon phieuMuon, String ghiChu, int SoLuong) {
+        this.sach = sach;
+        this.phieuMuon = phieuMuon;
+        this.ghiChu = ghiChu;
+        this.SoLuong = SoLuong;
+    }
+
     public Sach getSach() {
-        return Sach;
+        return sach;
     }
 
-    public void setSach(Sach Sach) {
-        this.Sach = Sach;
+    public void setSach(Sach sach) {
+        this.sach = sach;
     }
 
-    public phieuMuon getPhieuMuon() {
-        return PhieuMuon;
+    public PhieuMuon getPhieuMuon() {
+        return phieuMuon;
     }
 
-    public void setPhieuMuon(phieuMuon PhieuMuon) {
-        this.PhieuMuon = PhieuMuon;
+    public void setPhieuMuon(PhieuMuon phieuMuon) {
+        this.phieuMuon = phieuMuon;
     }
 
     public String getGhiChu() {
-        return GhiChu;
+        return ghiChu;
     }
 
-    public void setGhiChu(String GhiChu) {
-        this.GhiChu = GhiChu;
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
     }
 
     public int getSoLuong() {
@@ -48,5 +55,9 @@ public class PhieuMuonChiTiet {
     public void setSoLuong(int SoLuong) {
         this.SoLuong = SoLuong;
     }
+
+
+
+ 
     
 }
