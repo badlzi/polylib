@@ -173,6 +173,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         opQuenMatKhau();
     }//GEN-LAST:event_lblQuenMKMouseClicked
 
+
     /**
      * @param args the command line arguments
      */
@@ -208,6 +209,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
             }
         });
     }
+    public String maNV;
 
     void dangNhap() {
         String maNV = txt_TaiKhoan.getText();

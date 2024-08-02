@@ -4,16 +4,29 @@
  */
 package com.mycompany.polylib.entity;
 
+import java.util.Date;
+
 /**
  *
  * @author ngocquy
  */
-public class phieuMuon {
+public class PhieuMuon {
     private String SoPhieuMuon;
-    private String NgayMuon;
-    private String NgayTra;
+    private Date NgayMuon;
+    private Date NgayTra;
     private NguoiMuoi NguoiMuon;
     private NhanVien NhanVien;
+
+    public PhieuMuon() {
+    }
+
+    public PhieuMuon(String SoPhieuMuon, Date NgayMuon, Date NgayTra, NguoiMuoi NguoiMuon, NhanVien NhanVien) {
+        this.SoPhieuMuon = SoPhieuMuon;
+        this.NgayMuon = NgayMuon;
+        this.NgayTra = NgayTra;
+        this.NguoiMuon = NguoiMuon;
+        this.NhanVien = NhanVien;
+    }
 
     public String getSoPhieuMuon() {
         return SoPhieuMuon;
@@ -23,19 +36,19 @@ public class phieuMuon {
         this.SoPhieuMuon = SoPhieuMuon;
     }
 
-    public String getNgayMuon() {
+    public Date getNgayMuon() {
         return NgayMuon;
     }
 
-    public void setNgayMuon(String NgayMuon) {
+    public void setNgayMuon(Date NgayMuon) {
         this.NgayMuon = NgayMuon;
     }
 
-    public String getNgayTra() {
+    public Date getNgayTra() {
         return NgayTra;
     }
 
-    public void setNgayTra(String NgayTra) {
+    public void setNgayTra(Date NgayTra) {
         this.NgayTra = NgayTra;
     }
 
@@ -55,6 +68,5 @@ public class phieuMuon {
         this.NhanVien = NhanVien;
     }
 
-    public phieuMuon() {
-    }
+    
 }
