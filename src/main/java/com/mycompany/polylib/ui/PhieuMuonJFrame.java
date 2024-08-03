@@ -11,6 +11,7 @@ package com.mycompany.polylib.ui;
 import com.mycompany.polylib.dao.NguoiMuonDao;
 import com.mycompany.polylib.dao.PhieuMuonChiTietDao;
 import com.mycompany.polylib.dao.PhieuMuonDao;
+import com.mycompany.polylib.dao.SachDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.PhieuMuon;
@@ -967,7 +968,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         model = new DefaultTableModel(headers, 0);
         for (PhieuMuonChiTiet pml : PMCTL) {
             Object[] row = new Object[]{
-                pml.getSach().getMaSach(), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
+          getGiaByTenS(pml.getSach().getMaSach()), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
             model.addRow(row);
         }
         tbl_PhieuMuon.setModel(model);
@@ -1012,7 +1013,18 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         panel1.add(new JScrollPane(table));
         return panel1;
     }
-
+       SachDao SD = new SachDao();
+       List<Sach> SL = new ArrayList<>();
+       public String getGiaByTenS(String ten) {
+        SL = SD.selectAll();
+        String gia = "";
+        for (Sach s : SL) {
+            if (s.getMaSach().equals(ten)) {
+                gia = s.getTenSach();
+            }
+        }
+        return gia;
+}
     private JPanel createPanel2() {
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); // Sắp xếp theo cột

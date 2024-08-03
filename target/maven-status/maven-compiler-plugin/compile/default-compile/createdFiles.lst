@@ -17,7 +17,6 @@ com\mycompany\polylib\ui\NguoiMuonJFrame.class
 com\mycompany\polylib\ui\DangNhapJDialog$7.class
 com\mycompany\polylib\ui\SachJFrame$22.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$3.class
-com\mycompany\polylib\ui\DoiMatKhau$3.class
 com\mycompany\polylib\dao\PolyLibDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$16.class
@@ -64,7 +63,6 @@ com\mycompany\polylib\ui\NhanVienJFrame$15.class
 com\mycompany\polylib\ui\NhanVienJFrame$7.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$14.class
 com\mycompany\polylib\ui\TrangChuJFrame.class
-com\mycompany\polylib\ui\DoiMatKhau$5$1.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$11.class
 com\mycompany\polylib\ui\TrangChuJFrame$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$3.class
@@ -130,7 +128,6 @@ com\mycompany\polylib\ui\TrangChuJFrame$7.class
 com\mycompany\polylib\ui\NhanVienJFrame$24.class
 com\mycompany\polylib\utils\Ximage.class
 com\mycompany\polylib\ui\NhanVienJFrame$9.class
-com\mycompany\polylib\ui\DoiMatKhau$2.class
 com\mycompany\polylib\ui\ThongkeFrame$2.class
 com\mycompany\polylib\ui\SachJFrame$8.class
 com\mycompany\polylib\ui\NXSJDialog$3.class
@@ -158,7 +155,6 @@ com\mycompany\polylib\ui\NXSJDialog$1.class
 com\mycompany\polylib\ui\ChoTaiJFrame$1.class
 com\mycompany\polylib\ui\SachJFrame$1.class
 com\mycompany\polylib\ui\ChoTaiJFrame.class
-com\mycompany\polylib\ui\DoiMatKhau$4.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$13.class
 com\mycompany\polylib\ui\PhieumuonJDialog.class
 com\mycompany\polylib\ui\SachJFrame$23.class
@@ -175,7 +171,7 @@ com\mycompany\polylib\ui\TrangChuJFrame$11.class
 com\mycompany\polylib\ui\PhieumuonJDialog$1$1.class
 com\mycompany\polylib\ui\TacGiaJDialog$3.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$15.class
-com\mycompany\polylib\ui\DoiMatKhau$5.class
+com\mycompany\polylib\ui\QuenMatKhauJFrame$8.class
 com\mycompany\polylib\ui\SachJFrame$5.class
 com\mycompany\polylib\ui\LoaiSachJDialog$7$1.class
 com\mycompany\polylib\ui\ThongkeFrame$5.class
