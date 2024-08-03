@@ -41,6 +41,7 @@ com\mycompany\polylib\ui\SachJFrame$19.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$20.class
 com\mycompany\polylib\entity\NguoiMuoi.class
 com\mycompany\polylib\ui\TrangChuJFrame$1.class
+com\mycompany\polylib\ui\SachJFrame$24.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$9.class
 com\mycompany\polylib\dao\NguoiMuonDao.class
 com\mycompany\polylib\ui\SachJFrame$17.class
@@ -69,6 +70,7 @@ com\mycompany\polylib\ui\TrangChuJFrame$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$3.class
 com\mycompany\polylib\ui\ChoTaiJFrame$2.class
 com\mycompany\polylib\ui\PhieutraJDialog$1$1.class
+com\mycompany\polylib\ui\TacGiaJDialog$10.class
 com\mycompany\polylib\ui\NhanVienJFrame$6.class
 com\mycompany\polylib\ui\NXSJDialog.class
 com\mycompany\polylib\entity\NhanVien.class
@@ -82,6 +84,7 @@ com\mycompany\polylib\ui\NhanVienJFrame$20.class
 com\mycompany\polylib\ui\PhieumuonJDialog$1.class
 com\mycompany\polylib\ui\DangNhapJDialog$6.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$22.class
+com\mycompany\polylib\ui\TacGiaJDialog$11.class
 com\mycompany\polylib\ui\NXSJDialog$4.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$5.class
 com\mycompany\polylib\ui\SachJFrame$20.class
@@ -158,9 +161,11 @@ com\mycompany\polylib\ui\ChoTaiJFrame.class
 com\mycompany\polylib\ui\DoiMatKhau$4.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$13.class
 com\mycompany\polylib\ui\PhieumuonJDialog.class
+com\mycompany\polylib\ui\SachJFrame$23.class
 com\mycompany\polylib\dao\ViTriDao.class
 com\mycompany\polylib\ui\NhanVienJFrame$13.class
 com\mycompany\polylib\ui\LoaiSachJDialog$7.class
+com\mycompany\polylib\ui\TacGiaJDialog$11$1.class
 com\mycompany\polylib\ui\TrangChuJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$21.class
 com\mycompany\polylib\ui\NhanVienJFrame$11.class
@@ -191,6 +196,7 @@ com\mycompany\polylib\ui\ThongkeFrame$6.class
 com\mycompany\polylib\ui\PhieutraJDialog$1.class
 com\mycompany\polylib\ui\DoiMatKhau$1.class
 com\mycompany\polylib\utils\XJdbc.class
+com\mycompany\polylib\ui\TacGiaJDialog$8.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$1.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$4.class
 com\mycompany\polylib\ui\SachJFrame$7.class
@@ -200,6 +206,6 @@ com\mycompany\polylib\ui\TacGiaJDialog.class
 com\mycompany\polylib\ui\ThongkeFrame$4.class
 com\mycompany\polylib\ui\LoaiSachJDialog.class
 com\mycompany\polylib\dao\LoaiSachDao.class
+com\mycompany\polylib\ui\TacGiaJDialog$9.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$2.class
 com\mycompany\polylib\ui\SachJFrame$6.class
-com\mycompany\polylib\ui\TacGiaJDialog$7$1.class
