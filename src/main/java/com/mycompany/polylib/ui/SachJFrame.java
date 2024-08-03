@@ -34,6 +34,7 @@ public class SachJFrame extends javax.swing.JFrame {
         HienThiLenban();
     }
     int row = 0;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,10 +76,10 @@ public class SachJFrame extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
@@ -266,7 +267,7 @@ public class SachJFrame extends javax.swing.JFrame {
         jLabel12.setText("8:44");
 
         lblHinh.setBackground(new java.awt.Color(255, 255, 255));
-        lblHinh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblHinh.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHinhMouseClicked(evt);
@@ -290,7 +291,7 @@ public class SachJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setText("Số lương");
+        jLabel18.setText("Số lượng");
 
         txtSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -326,21 +327,31 @@ public class SachJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Thêm");
-
-        jButton5.setText("Sửa");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Xóa");
-
-        jButton7.setText("Làm mới");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
+            }
+        });
+
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
+
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
             }
         });
 
@@ -458,13 +469,13 @@ public class SachJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
+                        .addComponent(btnThem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)
+                        .addComponent(btnSua)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)
+                        .addComponent(btnXoa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7)
+                        .addComponent(btnLamMoi)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -552,10 +563,10 @@ public class SachJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
+                    .addComponent(btnLamMoi))
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -580,7 +591,7 @@ public class SachJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Auth.clear();
+        Auth.clear();
         DangNhapJDialog pm = new DangNhapJDialog();
         pm.setVisible(true);
         SachJFrame.this.dispose();
@@ -610,13 +621,15 @@ public class SachJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -632,10 +645,9 @@ public class SachJFrame extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new DoiMatKhau(this, true).setVisible(true);
-        if(Auth.isLogin()){
-        new DoiMatKhau(this, true).setVisible(true);
-        }
-        else{
+        if (Auth.isLogin()) {
+            new DoiMatKhau(this, true).setVisible(true);
+        } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -669,7 +681,7 @@ public class SachJFrame extends javax.swing.JFrame {
 
     private void tbl_SachMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_SachMousePressed
         // TODO add your handling code here:
-         if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             this.row = tbl_Sach.getSelectedRow();
             this.edit();
             txtMa.setEditable(false);
@@ -677,8 +689,18 @@ public class SachJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_SachMousePressed
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
-       ChonAnh();
+        ChonAnh();
     }//GEN-LAST:event_lblHinhMouseClicked
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
     void edit() {
         String maSach = (String) tbl_Sach.getValueAt(this.row, 0);
         Sach s = SD.selectById(maSach);
@@ -686,20 +708,21 @@ public class SachJFrame extends javax.swing.JFrame {
 
 //        this.updateStatus();
     }
+
     void setForm(Sach s) {
         txtMa.setText(s.getMaSach());
         txtTen.setText(s.getTenSach());
         txtSoTrang.setText(String.valueOf(s.getSoTrang()));
         txtSoLuong.setText(String.valueOf(s.getSoLuong()));
         txtGhiChu.setText(s.getGhiChu());
-        if(s.getHinh() != null){
-             ImageIcon icon = Ximage.read(s.getHinh());
+        if (s.getHinh() != null) {
+            ImageIcon icon = Ximage.read(s.getHinh());
             Image image = icon.getImage();
             Image resizeImage = image.getScaledInstance(176, 246, Image.SCALE_DEFAULT);
             icon.setImage(resizeImage);
             lblHinh.setIcon(icon);
             lblHinh.setToolTipText(s.getHinh());
-            
+
         }
     }
     SachDao SD = new SachDao();
@@ -707,6 +730,7 @@ public class SachJFrame extends javax.swing.JFrame {
 
     DefaultTableModel model;
     DefaultComboBoxModel Bcmodel;
+
     public void HienThiLenban() {
         SL = SD.selectAll();
         String[] headers = {"Mã Sách", "Tên Sách", "Hình", "Số Trang", "Số Lượng Bản Sao", "Trạng Thái", "Ghi Chú"};
@@ -718,7 +742,8 @@ public class SachJFrame extends javax.swing.JFrame {
         }
         tbl_Sach.setModel(model);
     }
-     void openNguoiMuon() {
+
+    void openNguoiMuon() {
         NguoiMuonJFrame nm = new NguoiMuonJFrame();
         nm.setVisible(true);
         SachJFrame.this.dispose();
@@ -742,9 +767,10 @@ public class SachJFrame extends javax.swing.JFrame {
         SachJFrame.this.dispose();
     }
     JFileChooser j = new JFileChooser();
-    void ChonAnh(){
-        j.setFileFilter(new FileNameExtensionFilter("image file","png","jpg"));
-        if(j.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+
+    void ChonAnh() {
+        j.setFileFilter(new FileNameExtensionFilter("image file", "png", "jpg"));
+        if (j.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = j.getSelectedFile();
             Ximage.save(file); // lưu hình vào thư mục logos
             ImageIcon icon = Ximage.read(file.getName()); // đọc hình từ logos
@@ -755,7 +781,64 @@ public class SachJFrame extends javax.swing.JFrame {
             lblHinh.setToolTipText(file.getName()); // giữ tên hình trong tooltipp
         }
     }
-    
+
+    Sach getForm() {
+        Sach s = new Sach();
+        s.setMaSach(txtMa.getText());
+        s.setTenSach(txtTen.getText());
+        s.setHinh(lblHinh.getToolTipText());
+        s.setSoTrang(Integer.parseInt(txtSoTrang.getText()));
+        s.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
+        s.setGhiChu(txtGhiChu.getText());
+        return s;
+    }
+
+    void insert() {
+        Sach model = getForm();
+        try {
+            SD.insert(model);
+            this.HienThiLenban();
+            this.clear();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void clear() {
+        txtMa.setText("");
+        txtTen.setText("");
+        txtSoTrang.setText(null);
+        txtSoLuong.setText("");
+        txtGhiChu.setText("");
+        txtMa.setEditable(true);
+    }
+
+    void update() {
+        Sach model = getForm();
+        try {
+            SD.update(model);
+            this.HienThiLenban();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa sách này?")) {
+            String maS = txtMa.getText();
+            try {
+                SD.delete(maS);
+                this.HienThiLenban();
+                this.clear();
+                MsgBox.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -792,10 +875,14 @@ public class SachJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnPhieuMuon;
     private javax.swing.JButton btnSach;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JButton btn_NguoiMuon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -803,10 +890,6 @@ public class SachJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
