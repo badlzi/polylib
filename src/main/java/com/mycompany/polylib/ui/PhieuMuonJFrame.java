@@ -968,7 +968,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         model = new DefaultTableModel(headers, 0);
         for (PhieuMuonChiTiet pml : PMCTL) {
             Object[] row = new Object[]{
-          getGiaByTenS(pml.getSach().getMaSach()), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
+          pml.getSach().getMaSach(), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
             model.addRow(row);
         }
         tbl_PhieuMuon.setModel(model);
@@ -1021,6 +1021,17 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         for (Sach s : SL) {
             if (s.getMaSach().equals(ten)) {
                 gia = s.getTenSach();
+            }
+        }
+        return gia;
+}
+       
+        public String getGiaByMaSach(String ten) {
+        SL = SD.selectAll();
+        String gia = "";
+        for (Sach s : SL) {
+            if (s.getTenSach().equals(ten)) {
+                gia = s.getMaSach();
             }
         }
         return gia;
@@ -1181,7 +1192,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }
 
     private void setForm(PhieuMuonChiTiet pm) {
-        txtTenSach.setText(pm.getSach().getMaSach());
+        txtTenSach.setText(getGiaByTenS(pm.getSach().getMaSach()));
         txtMaPhieuMuon.setText(pm.getPhieuMuon().getSoPhieuMuon());
         jdcNgayMuon.setDate(pm.getPhieuMuon().getNgayMuon());
         jdcNgayTra.setDate(pm.getPhieuMuon().getNgayTra());
@@ -1196,7 +1207,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         PhieuMuon pm = new PhieuMuon();
         Sach sach = new Sach(); // Bạn có thể cần tạo đối tượng Sach dựa trên yêu cầu của bạn
 
-        sach.setTenSach(txtTenSach.getText());
+        sach.setTenSach(getGiaByMaSach(txtTenSach.getText()));
         pmct.setSach(sach);
 
         pm.setSoPhieuMuon(txtMaPhieuMuon.getText());

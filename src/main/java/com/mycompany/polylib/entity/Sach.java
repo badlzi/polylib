@@ -9,13 +9,12 @@ package com.mycompany.polylib.entity;
  * @author ngocquy
  */
 public class Sach {
+
     private String MaSach;
     private String TenSach;
     private int SoTrang;
     private int SoLuong;
-    private String NgayNhapKho;
     private String GhiChu;
-    private String TrangThai;
     private String Hinh;
     private LoaiSach LoaiSach;
     private TacGia TacGia;
@@ -57,14 +56,6 @@ public class Sach {
         this.SoLuong = SoLuong;
     }
 
-    public String getNgayNhapKho() {
-        return NgayNhapKho;
-    }
-
-    public void setNgayNhapKho(String NgayNhapKho) {
-        this.NgayNhapKho = NgayNhapKho;
-    }
-
     public String getGhiChu() {
         return GhiChu;
     }
@@ -73,22 +64,14 @@ public class Sach {
         this.GhiChu = GhiChu;
     }
 
-    public String getTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(String TrangThai) {
-        this.TrangThai = TrangThai;
-    }
-
-     public String getHinh() {
+    public String getHinh() {
         return Hinh;
     }
 
     public void setHinh(String Hinh) {
         this.Hinh = Hinh;
     }
-    
+
     public LoaiSach getLoaiSach() {
         return LoaiSach;
     }
@@ -120,5 +103,5 @@ public class Sach {
     public void setNhaXuatBan(NhaXuatBan NhaXuatBan) {
         this.NhaXuatBan = NhaXuatBan;
     }
-    
+
 }
