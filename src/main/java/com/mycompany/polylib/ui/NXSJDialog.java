@@ -6,6 +6,7 @@ package com.mycompany.polylib.ui;
 
 import com.mycompany.polylib.dao.NhaXuatBanDao;
 import com.mycompany.polylib.entity.NhaXuatBan;
+import com.mycompany.polylib.utils.MsgBox;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -25,7 +26,111 @@ public class NXSJDialog extends javax.swing.JDialog {
         initComponents();
         HienThiLenban();
     }
+    int row =0;
+    void edit() {
+        String manxb = (String) tbl_NhaSanXuat.getValueAt(this.row, 0);
+        NhaXuatBan nxb = NXBD.selectById(manxb);
+        this.setForm(nxb);
 
+//        this.updateStatus();
+    }
+    void setForm(NhaXuatBan nxb) {
+        txtMa.setText(nxb.getMaNhaXuatBan());
+        txtTen.setText(nxb.getTenNhaXuatBan());
+    }
+    NhaXuatBanDao NXBD = new NhaXuatBanDao();
+    List<NhaXuatBan> NXBL = new ArrayList<>();
+
+    DefaultTableModel model;
+    DefaultComboBoxModel Bcmodel;
+
+    public void HienThiLenban() {
+        NXBL = NXBD.selectAll();
+        String[] headers = {"Mã Nhà Xuất Bản", "Tên Nhà Xuất Bản"};
+        model = new DefaultTableModel(headers, 0);
+        for (NhaXuatBan nxbl : NXBL) {
+            Object[] row = new Object[]{
+                nxbl.getMaNhaXuatBan(), nxbl.getTenNhaXuatBan()};
+            model.addRow(row);
+        }
+        tbl_NhaSanXuat.setModel(model);
+    }
+     NhaXuatBan getForm() {
+        NhaXuatBan nxb = new NhaXuatBan();
+        nxb.setMaNhaXuatBan(txtMa.getText());
+        nxb.setTenNhaXuatBan(txtTen.getText());
+        return nxb;
+    }
+    void insert() {
+        NhaXuatBan model = getForm();
+        try {
+            NXBD.insert(model);
+            this.HienThiLenban();
+            this.clear();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void clear() {
+        txtMa.setText("");
+        txtTen.setText("");
+    }
+
+    void update() {
+        NhaXuatBan model = getForm();
+        try {
+            NXBD.update(model);
+            this.HienThiLenban();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa người học này?")) {
+            String maNXB = txtMa.getText();
+            try {
+                NXBD.delete(maNXB);
+                this.HienThiLenban();
+                this.clear();
+                MsgBox.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
+        }
+    }
+    void first() {
+        this.row = 0;
+        this.edit();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }else{
+            this.row = tbl_NhaSanXuat.getRowCount() - 1;
+            this.edit();
+        }
+    }
+
+    void next() {
+        if (this.row <= tbl_NhaSanXuat.getRowCount() - 1) {
+            this.row++;
+            this.edit();
+        }else{
+            this.row = 0;
+            this.edit();
+        }
+    }
+
+    void last() {
+        this.row = tbl_NhaSanXuat.getRowCount() - 1;
+        this.edit();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,28 +140,28 @@ public class NXSJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabsNhaXuatBan = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_NhaSanXuat = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        txtMa = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
+        btnDau = new javax.swing.JButton();
+        btnTruoc = new javax.swing.JButton();
+        btnSau = new javax.swing.JButton();
+        btnCuoi = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 153, 0));
+        tabsNhaXuatBan.setBackground(new java.awt.Color(255, 153, 0));
 
         tbl_NhaSanXuat.setAutoCreateRowSorter(true);
         tbl_NhaSanXuat.setModel(new javax.swing.table.DefaultTableModel(
@@ -74,6 +179,11 @@ public class NXSJDialog extends javax.swing.JDialog {
         tbl_NhaSanXuat.setGridColor(new java.awt.Color(255, 153, 0));
         tbl_NhaSanXuat.setSelectionBackground(new java.awt.Color(255, 204, 204));
         tbl_NhaSanXuat.setSelectionForeground(new java.awt.Color(255, 153, 0));
+        tbl_NhaSanXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_NhaSanXuatMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_NhaSanXuat);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -89,54 +199,69 @@ public class NXSJDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Danh sách Nhà sản xuất", jPanel6);
+        tabsNhaXuatBan.addTab("Danh sách Nhà sản xuất", jPanel6);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtTenActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Thêm");
-
-        jButton3.setText("Sửa");
-
-        jButton4.setText("xóa");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnThem.setText("Thêm");
+        btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnThemActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Làm mới");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnSuaActionPerformed(evt);
             }
         });
 
-        jButton6.setText("<<");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnXoaActionPerformed(evt);
             }
         });
 
-        jButton7.setText("<");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnLamMoiActionPerformed(evt);
             }
         });
 
-        jButton8.setText(">");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnDau.setText("<<");
+        btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnDauActionPerformed(evt);
             }
         });
 
-        jButton9.setText(">>");
+        btnTruoc.setText("<");
+        btnTruoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTruocActionPerformed(evt);
+            }
+        });
+
+        btnSau.setText(">");
+        btnSau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSauActionPerformed(evt);
+            }
+        });
+
+        btnCuoi.setText(">>");
+        btnCuoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuoiActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Mã nhà sản xuất");
 
@@ -157,27 +282,27 @@ public class NXSJDialog extends javax.swing.JDialog {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jButton2)
+                                        .addComponent(btnThem)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton3))
+                                        .addComponent(btnSua))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jButton6)
+                                        .addComponent(btnDau)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(btnTruoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton4)
+                                        .addComponent(btnXoa)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5))
+                                        .addComponent(btnLamMoi))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(14, 14, 14)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnSau, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton9))))
+                                        .addComponent(btnCuoi))))
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(txtMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                                .addComponent(txtTen, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jLabel1)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -193,67 +318,96 @@ public class NXSJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnThem)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
+                    .addComponent(btnLamMoi))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9))
+                    .addComponent(btnDau)
+                    .addComponent(btnTruoc)
+                    .addComponent(btnSau)
+                    .addComponent(btnCuoi))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Nhà sản xuất", jPanel5);
+        tabsNhaXuatBan.addTab("Nhà sản xuất", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabsNhaXuatBan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabsNhaXuatBan, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtTenActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        delete();
+    }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        clear();
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        first();
+    }//GEN-LAST:event_btnDauActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTruocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        prev();
+    }//GEN-LAST:event_btnTruocActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnSauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        next();
+    }//GEN-LAST:event_btnSauActionPerformed
+
+    private void tbl_NhaSanXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NhaSanXuatMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            this.row = tbl_NhaSanXuat.getSelectedRow();
+            this.edit();
+            tabsNhaXuatBan.setSelectedIndex(1);
+        }
+    }//GEN-LAST:event_tbl_NhaSanXuatMousePressed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_btnThemActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnCuoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuoiActionPerformed
+        // TODO add your handling code here:
+        last();
+    }//GEN-LAST:event_btnCuoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,40 +450,25 @@ public class NXSJDialog extends javax.swing.JDialog {
             }
         });
     }
-NhaXuatBanDao NXBD = new NhaXuatBanDao();
-    List<NhaXuatBan> NXBL = new ArrayList<>();
 
-    DefaultTableModel model;
-    DefaultComboBoxModel Bcmodel;
-  public void HienThiLenban() {
-        NXBL = NXBD.selectAll();
-        String[] headers = {"Mã Loại sách", "tên loại sách"};
-        model = new DefaultTableModel(headers, 0);
-        for (NhaXuatBan nxbl : NXBL) {
-            Object[] row = new Object[]{
-               nxbl.getMaNhaXuatBan(),nxbl.getTenNhaXuatBan()};
-            model.addRow(row);
-        }
-        tbl_NhaSanXuat.setModel(model);
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton btnCuoi;
+    private javax.swing.JButton btnDau;
+    private javax.swing.JButton btnLamMoi;
+    private javax.swing.JButton btnSau;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTruoc;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTabbedPane tabsNhaXuatBan;
     private javax.swing.JTable tbl_NhaSanXuat;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }
