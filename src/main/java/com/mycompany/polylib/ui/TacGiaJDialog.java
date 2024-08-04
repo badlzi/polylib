@@ -311,9 +311,9 @@ public class TacGiaJDialog extends javax.swing.JDialog {
 
 //        this.updateStatus();
     }
-    void setForm(TacGia nm) {
-        txtMa.setText(nm.getMaTacGia());
-        txtTen.setText(nm.getTenTacGia());
+    void setForm(TacGia tg) {
+        txtMa.setText(tg.getMaTacGia());
+        txtTen.setText(tg.getTenTacGia());
     }
     TacGiaDao TGD = new TacGiaDao();
     List<TacGia> TGL = new ArrayList<>();
