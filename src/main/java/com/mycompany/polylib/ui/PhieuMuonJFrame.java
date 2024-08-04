@@ -21,6 +21,8 @@ import com.mycompany.polylib.utils.XDate;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.Sach;
 import java.awt.Desktop;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +47,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -62,6 +66,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         initComponents();
         txt_usename.setText(Auth.getManagername());
         HienThiLenban();
+        startDongHo();
     }
 //tfygyvyg
 
@@ -126,7 +131,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblDongHo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -206,7 +211,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 609, Short.MAX_VALUE)
+                .addGap(0, 650, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6))
@@ -250,6 +255,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         btnThem.setText("Thêm");
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
@@ -309,14 +319,14 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         jdcNgayTra.setDateFormatString("dd/MM/yyy");
 
-        jButton3.setText("show sách");
+        jButton3.setText("Xem sách");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Show người");
+        jButton4.setText("Xem người");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -329,44 +339,40 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtMaPhieuMuon)
+                                    .addComponent(txtTenSach)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel16)
-                                            .addComponent(jLabel15)
-                                            .addComponent(txtMaPhieuMuon, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                            .addComponent(txtTenSach)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jLabel18)))
-                                .addGap(0, 18, Short.MAX_VALUE))
+                                            .addComponent(jLabel15))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnThem)
-                                        .addGap(36, 36, 36)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnSua)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                                        .addGap(80, 80, 80)
                                         .addComponent(btnLamMoi))
                                     .addComponent(jdcNgayMuon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(77, Short.MAX_VALUE)
-                                .addComponent(btn_INPM, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)))
-                        .addGap(101, 101, 101)))
+                                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(101, 101, 101))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_INPM, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -409,15 +415,15 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                     .addComponent(txtMaPhieuMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jspSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jButton4))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jdcNgayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jdcNgayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -427,9 +433,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                             .addComponent(btnThem)
                             .addComponent(btnSua)
                             .addComponent(btnLamMoi)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFirst)
@@ -453,7 +457,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(227, 227, 227)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,6 +470,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         TBP_PM.addTab("In phiếu mượn chi tiết", jPanel4);
 
         txt_usename.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_usename.setForeground(new java.awt.Color(255, 102, 51));
+        txt_usename.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Unknown person.png"))); // NOI18N
         txt_usename.setText("Phan Huỳnh Ngọc Quý");
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
@@ -626,11 +632,14 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 0));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/chamthan.png"))); // NOI18N
         jLabel3.setText("Phần mềm quản lí thư viện");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("8:00");
+        lblDongHo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDongHo.setForeground(new java.awt.Color(255, 102, 0));
+        lblDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/gio.png"))); // NOI18N
+        lblDongHo.setText("8:00");
 
         jMenu2.setText("Quản lí");
 
@@ -728,13 +737,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                         .addGap(427, 427, 427)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_usename)
+                        .addComponent(txt_usename, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(11, 11, 11)))
+                        .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -742,9 +750,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_usename)
-                        .addComponent(jLabel21))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel21)
+                        .addComponent(txt_usename))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(5, 5, 5)))
@@ -752,7 +760,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDongHo))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -898,6 +906,21 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tbl_PhieuMuonMousePressed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        this.update();
+    }//GEN-LAST:event_btnSuaActionPerformed
+    private void startDongHo() {
+        new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date now = new Date();
+                SimpleDateFormat formater = new SimpleDateFormat("hh:mm:ss a");
+                String text = formater.format(now);
+                lblDongHo.setText(text);
+            }
+        }).start();
+    }
     PhieuMuonChiTietDao PMCTD = new PhieuMuonChiTietDao();
     List<PhieuMuonChiTiet> PMCTL = new ArrayList<>();
     DefaultTableModel model;
@@ -968,7 +991,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         model = new DefaultTableModel(headers, 0);
         for (PhieuMuonChiTiet pml : PMCTL) {
             Object[] row = new Object[]{
-          pml.getSach().getMaSach(), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
+                pml.getSach().getMaSach(), pml.getPhieuMuon().getSoPhieuMuon(), pml.getGhiChu(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy"), pml.getPhieuMuon().getNhanVien().getMaNhanVien(), pml.getPhieuMuon().getNguoiMuon().getMaNM()};
             model.addRow(row);
         }
         tbl_PhieuMuon.setModel(model);
@@ -1013,9 +1036,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         panel1.add(new JScrollPane(table));
         return panel1;
     }
-       SachDao SD = new SachDao();
-       List<Sach> SL = new ArrayList<>();
-       public String getGiaByTenS(String ten) {
+    SachDao SD = new SachDao();
+    List<Sach> SL = new ArrayList<>();
+
+    public String getGiaByTenS(String ten) {
         SL = SD.selectAll();
         String gia = "";
         for (Sach s : SL) {
@@ -1024,9 +1048,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             }
         }
         return gia;
-}
-       
-        public String getGiaByMaSach(String ten) {
+    }
+
+    public String getGiaByMaSach(String ten) {
         SL = SD.selectAll();
         String gia = "";
         for (Sach s : SL) {
@@ -1035,7 +1059,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             }
         }
         return gia;
-}
+    }
+
     private JPanel createPanel2() {
         JPanel panel2 = new JPanel();
         panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); // Sắp xếp theo cột
@@ -1191,6 +1216,23 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
     }
 
+    public void update() {
+//        if (!Auth.isManager()) {
+//            MsgBox.alert(this, "Bạn không có quyền sửa phiếu mượn chi tiết!");
+//        } else {
+       
+            try {
+                PhieuMuonChiTiet model = getForm();
+                dao.update(model);
+                this.HienThiLenban();
+                MsgBox.alert(this, "Cập nhật thành công!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//        }
+
+    }
+
     private void setForm(PhieuMuonChiTiet pm) {
         txtTenSach.setText(getGiaByTenS(pm.getSach().getMaSach()));
         txtMaPhieuMuon.setText(pm.getPhieuMuon().getSoPhieuMuon());
@@ -1202,24 +1244,31 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
     }
 
-    private PhieuMuonChiTiet getForm() {
+    PhieuMuonChiTiet getForm() {
         PhieuMuonChiTiet pmct = new PhieuMuonChiTiet();
         PhieuMuon pm = new PhieuMuon();
         Sach sach = new Sach(); // Bạn có thể cần tạo đối tượng Sach dựa trên yêu cầu của bạn
 
         sach.setTenSach(getGiaByMaSach(txtTenSach.getText()));
+        System.out.println(getGiaByMaSach(txtTenSach.getText()));
         pmct.setSach(sach);
 
         pm.setSoPhieuMuon(txtMaPhieuMuon.getText());
-        pm.setNgayMuon(jdcNgayMuon.getDate());
-        pm.setNgayTra(jdcNgayTra.getDate());
+//        pm.setNgayMuon(jdcNgayMuon.getDate());
+//        pm.setNgayTra(jdcNgayTra.getDate());
         pmct.setPhieuMuon(pm);
 
-        NguoiMuoi nguoiMuon = new NguoiMuoi();
-        nguoiMuon.setMaNM(txtMaNM.getText());
-        pm.setNguoiMuon(nguoiMuon);
-
-        pmct.setSoLuong((Integer) jspSoLuong.getValue());
+//        NguoiMuoi nguoiMuon = new NguoiMuoi();
+//        nguoiMuon.setMaNM(txtMaNM.getText());
+//        pm.setNguoiMuon(nguoiMuon);
+                if (jspSoLuong.getValue() instanceof Number) {
+                    int intValue = ((Number)jspSoLuong.getValue()).intValue();
+                    // Sử dụng giá trị int
+                    System.out.println("Giá trị int: " + intValue);
+                } else {
+                    System.out.println("Giá trị không phải là số.");
+                }
+        pmct.setSoLuong((int) jspSoLuong.getValue());
         pmct.setGhiChu(txtGhiChu.getText());
 
         return pmct;
@@ -1268,7 +1317,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -1301,6 +1349,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdcNgayMuon;
     private com.toedter.calendar.JDateChooser jdcNgayTra;
     private javax.swing.JSpinner jspSoLuong;
+    private javax.swing.JLabel lblDongHo;
     private javax.swing.JTable tbl_PhieuMuon;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtMaNM;
@@ -1308,5 +1357,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtTenSach;
     private javax.swing.JLabel txt_usename;
     // End of variables declaration//GEN-END:variables
+
 
 }
