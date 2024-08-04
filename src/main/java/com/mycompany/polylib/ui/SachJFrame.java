@@ -733,11 +733,11 @@ public class SachJFrame extends javax.swing.JFrame {
 
     public void HienThiLenban() {
         SL = SD.selectAll();
-        String[] headers = {"Mã Sách", "Tên Sách", "Hình", "Số Trang", "Số Lượng Bản Sao", "Trạng Thái", "Ghi Chú"};
+        String[] headers = {"Mã Sách", "Tên Sách", "Hình", "Số Trang", "Số Lượng Bản Sao", "Ghi Chú"};
         model = new DefaultTableModel(headers, 0);
         for (Sach sl : SL) {
             Object[] row = new Object[]{
-                sl.getMaSach(), sl.getTenSach(), sl.getHinh(), sl.getSoTrang(), sl.getSoLuong(), sl.getTrangThai(), sl.getGhiChu()};
+                sl.getMaSach(), sl.getTenSach(), sl.getHinh(), sl.getSoTrang(), sl.getSoLuong(), sl.getGhiChu()};
             model.addRow(row);
         }
         tbl_Sach.setModel(model);
