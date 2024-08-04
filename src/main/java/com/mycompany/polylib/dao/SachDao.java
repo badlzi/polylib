@@ -24,14 +24,14 @@ public class SachDao extends PolyLibDao<Sach, String> {
 
     @Override
     public void insert(Sach entity) {
-        XJdbc.update(INSERT_SQL, entity.getMaSach(), entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getNgayNhapKho(),
-                entity.getGhiChu(), entity.getTrangThai(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri());
+        XJdbc.update(INSERT_SQL, entity.getMaSach(), entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(),
+                entity.getGhiChu(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri());
     }
 
     @Override
     public void update(Sach entity) {
-        XJdbc.update(UPDATE_SQL, entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getNgayNhapKho(), entity.getGhiChu(),
-                entity.getTrangThai(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri(), entity.getMaSach());
+        XJdbc.update(UPDATE_SQL, entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getGhiChu(),
+                 entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri(), entity.getMaSach());
     }
 
     @Override
@@ -65,7 +65,6 @@ public class SachDao extends PolyLibDao<Sach, String> {
                  entity.setHinh(rs.getString("HINH"));
                 entity.setSoTrang(rs.getInt("SOTRANG"));
                 entity.setSoLuong(rs.getInt("SOLUONGBANSAO"));
-                entity.setTrangThai(rs.getString("TRANGTHAI"));
                 entity.setGhiChu(rs.getString("GHICHU"));
                
                 list.add(entity);
