@@ -2,7 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package com.mycompany.polylib.dao;
+
+/**
+ *
+ * @author ngocquy
+ */
 import com.mycompany.polylib.dao.PolyLibDao;
+import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.entity.PhieuTra;
 import com.mycompany.polylib.utils.XJdbc;
 import java.sql.ResultSet;
@@ -22,12 +29,12 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
 
     @Override
     public void insert(PhieuTra entity) {
-        XJdbc.update(INSERT_SQL, entity.getSoPhieuTra(), entity.getNgayTra(), entity.getSophieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat());
+        XJdbc.update(INSERT_SQL, entity.getSoPhieuTra(), entity.getNgayTra(), entity.getPhieuMuon().getSoPhieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat());
     }
 
     @Override
     public void update(PhieuTra entity) {
-     XJdbc.update(INSERT_SQL, entity.getSoPhieuTra(), entity.getNgayTra(), entity.getSophieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat());    }
+     XJdbc.update(INSERT_SQL, entity.getSoPhieuTra(), entity.getNgayTra(), entity.getPhieuMuon().getSoPhieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat());    }
 
     @Override
     public void delete(String id) {
@@ -57,9 +64,11 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
                 PhieuTra entity = new PhieuTra();
                 entity.setSoPhieuTra(rs.getString("SOPHIEUTRA"));
                 entity.setNgayTra(rs.getDate("NgayTra"));
-                entity.setSophieuMuon("SoPhieuMuon");
+                PhieuMuon entitytow = new PhieuMuon();
+                entitytow.setSoPhieuMuon(rs.getString("SoPhieuMuon"));
+                entity.setPhieuMuon(entitytow);
                 entity.setTinhTrangSach("TinhtrangSach");
-                entity.setTienPhat(Double.NaN);
+                entity.setTienPhat(rs.getDouble("TIENPHAT"));
                 
                 list.add(entity);
             }

@@ -11,22 +11,24 @@ import java.util.Date;
  * @author huynh
  */
 public class PhieuTra {
-   private String SoPhieuTra;
-   private Date NgayTra;
-   private String SophieuMuon ;
-   private String TinhTrangSach ;
-   private Double  TienPhat;
+
+    private String SoPhieuTra;
+    private Date NgayTra;
+    private PhieuMuon phieuMuon;
+    private String TinhTrangSach;
+    private Double TienPhat;
 
     public PhieuTra() {
     }
 
-    public PhieuTra(String SoPhieuTra, Date NgayTra, String SophieuMuon, String TinhTrangSach, Double TienPhat) {
-        this.SoPhieuTra = SoPhieuTra;
-        this.NgayTra = NgayTra;
-        this.SophieuMuon = SophieuMuon;
-        this.TinhTrangSach = TinhTrangSach;
-        this.TienPhat = TienPhat;
+    public PhieuMuon getPhieuMuon() {
+        return phieuMuon;
     }
+
+    public void setPhieuMuon(PhieuMuon phieuMuon) {
+        this.phieuMuon = phieuMuon;
+    }
+
 
     public String getSoPhieuTra() {
         return SoPhieuTra;
@@ -44,14 +46,6 @@ public class PhieuTra {
         this.NgayTra = NgayTra;
     }
 
-    public String getSophieuMuon() {
-        return SophieuMuon;
-    }
-
-    public void setSophieuMuon(String SophieuMuon) {
-        this.SophieuMuon = SophieuMuon;
-    }
-
     public String getTinhTrangSach() {
         return TinhTrangSach;
     }
@@ -67,8 +61,4 @@ public class PhieuTra {
     public void setTienPhat(Double TienPhat) {
         this.TienPhat = TienPhat;
     }
-
-   
-    
 }
-

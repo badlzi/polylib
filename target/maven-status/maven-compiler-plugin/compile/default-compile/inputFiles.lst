@@ -20,6 +20,7 @@ C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\da
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\PhieutraJDialog.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\TacGiaJDialog.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\PhieuMuonChiTietDao.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\PhieuTraDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\DoiMatKhau.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\TrangChuJFrame.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\PhieuMuonDao.java
@@ -35,8 +36,10 @@ C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\en
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\utils\SoundUtils.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\entity\LoaiSach.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\utils\MsgBox.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\entity\PhieuTra.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\entity\NhaXuatBan.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\LoaiSachDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\dao\NhanVienDao.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\ChoTaiJFrame.java
+C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\PhieuTraDialog.java
 C:\Users\ngocquy\Documents\GitHub\polylib\src\main\java\com\mycompany\polylib\ui\LoaiSachJDialog.java

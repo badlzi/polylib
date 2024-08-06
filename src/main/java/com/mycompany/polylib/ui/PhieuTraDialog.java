@@ -4,6 +4,14 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.dao.PhieuTraDao;
+import com.mycompany.polylib.entity.PhieuTra;
+import com.mycompany.polylib.utils.XDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author huynh
@@ -16,8 +24,25 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     public PhieuTraDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        HienThiLenban();
     }
 
+    PhieuTraDao PTD = new PhieuTraDao();
+    List<PhieuTra> PMCTL = new ArrayList<>();
+    DefaultTableModel model;
+    DefaultComboBoxModel Bcmodel;
+    
+     public void HienThiLenban() {
+        PMCTL = PTD.selectAll();
+        String[] headers = {"Mã phiếu trả", "Số phiếu mượn", "Ngaỳ trả", "Tình trạng", "tiền phạt"};
+        model = new DefaultTableModel(headers, 0);
+        for (PhieuTra pml : PMCTL) {
+            Object[] row = new Object[]{
+            pml.getSoPhieuTra(),pml.getPhieuMuon().getSoPhieuMuon(), pml.getNgayTra(),pml.getTienPhat(), pml.getTienPhat()};
+            model.addRow(row);
+        }
+        tbl_PhieuTra.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +63,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbl_PhieuTra = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -82,7 +107,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách phiếu trả:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Text", 1, 14))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_PhieuTra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,7 +118,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tbl_PhieuTra);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -243,7 +268,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
@@ -253,9 +278,9 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                     .addComponent(jButton8)
                     .addComponent(jButton7)
                     .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(113, 113, 113))
         );
 
         pack();
@@ -339,9 +364,9 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tbl_PhieuTra;
     // End of variables declaration//GEN-END:variables
 }
