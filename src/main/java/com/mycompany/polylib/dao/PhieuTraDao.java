@@ -67,7 +67,7 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
                 PhieuMuon entitytow = new PhieuMuon();
                 entitytow.setSoPhieuMuon(rs.getString("SoPhieuMuon"));
                 entity.setPhieuMuon(entitytow);
-                entity.setTinhTrangSach("TinhtrangSach");
+                entity.setTinhTrangSach(rs.getString("TinhtrangSach"));
                 entity.setTienPhat(rs.getDouble("TIENPHAT"));
                 
                 list.add(entity);
