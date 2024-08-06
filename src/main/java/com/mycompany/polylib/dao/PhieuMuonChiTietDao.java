@@ -34,6 +34,7 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
 
     @Override
     public void update(PhieuMuonChiTiet entity) {
+        System.out.println(entity.toString());
         XJdbc.update(UPDATE_SQL, entity.getGhiChu(), entity.getSoLuong(), entity.getPhieuMuon().getSoPhieuMuon(), entity.getSach().getMaSach());
     }
 

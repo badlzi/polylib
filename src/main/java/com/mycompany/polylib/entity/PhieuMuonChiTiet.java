@@ -13,6 +13,10 @@ public class PhieuMuonChiTiet {
     private PhieuMuon phieuMuon;
     private String ghiChu;
     private int SoLuong;
+    
+    public String toString(){
+        return sach.getMaSach() + "\n" + phieuMuon.getSoPhieuMuon() + "\n" + ghiChu + "\n" + SoLuong;
+    }
 
     public PhieuMuonChiTiet() {
     }
