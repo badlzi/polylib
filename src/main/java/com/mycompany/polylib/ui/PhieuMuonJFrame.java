@@ -1249,7 +1249,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         PhieuMuon pm = new PhieuMuon();
         Sach sach = new Sach(); // Bạn có thể cần tạo đối tượng Sach dựa trên yêu cầu của bạn
 
-        sach.setTenSach(getGiaByMaSach(txtTenSach.getText()));
+        sach.setMaSach(getGiaByMaSach(txtTenSach.getText()));
         System.out.println(getGiaByMaSach(txtTenSach.getText()));
         pmct.setSach(sach);
 
