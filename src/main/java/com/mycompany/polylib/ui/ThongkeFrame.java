@@ -4,9 +4,11 @@
  */
 package com.mycompany.polylib.ui;
 
+import com.mycompany.polylib.dao.ThongKeDao;
 import com.mycompany.polylib.utils.Auth;
 import com.mycompany.polylib.utils.MsgBox;
 import java.awt.Dimension;
+import java.util.List;
 import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -31,14 +33,14 @@ public class ThongkeFrame extends javax.swing.JFrame {
         txt_usename.setText(Auth.getManagername());
         JFreeChart pieChart = createChart(createDataset());
         ChartPanel chartPanel = new ChartPanel(pieChart);
-        TBP_TKNM.addTab("Thống kê người mượn",chartPanel);
+        TBP_TKNM.addTab("Thống kê người mượn", chartPanel);
         ChartPanel chartPanel2 = new ChartPanel(createCharts());
-        TBP_TKNM.addTab("Thống kê phiếu mượn",chartPanel2);
+        TBP_TKNM.addTab("Thống kê phiếu mượn", chartPanel2);
         ChartPanel chartPane4 = new ChartPanel(createLineChart());
-        TBP_TKNM.addTab("Thống kê người mượn",chartPane4);
+        TBP_TKNM.addTab("Thống kê người mượn", chartPane4);
     }
 
-       private static JFreeChart createChart(PieDataset datasets) {
+    private static JFreeChart createChart(PieDataset datasets) {
         JFreeChart chart = ChartFactory.createPieChart(
                 "Thống kê số lượng người mượn sách trong 1 năm", datasets, true, true, true);
         return chart;
@@ -49,70 +51,61 @@ public class ThongkeFrame extends javax.swing.JFrame {
         datasets.setValue("Nhóm 0 - 14", new Double(25.0));
         datasets.setValue("Nhóm 15 - 59", new Double(67.0));
         datasets.setValue("Nhóm trên 60", new Double(9.0));
-         datasets.setValue("Nhóm trên 70", new Double(9.0));
+        datasets.setValue("Nhóm trên 70", new Double(9.0));
         return datasets;
     }
-   //------------------------------------//
-    public static JFreeChart createCharts() {
+    //------------------------------------//
+    ThongKeDao dao = new ThongKeDao();
+
+    public JFreeChart createCharts() {
         JFreeChart barChart = ChartFactory.createBarChart(
                 "BIỂU ĐỒ phiếu mượn",
                 "Tháng", "Số người",
                 createDatasets(), PlotOrientation.VERTICAL, false, false, false);
         return barChart;
     }
-     private static CategoryDataset createDatasets() {
+
+    private CategoryDataset createDatasets() {
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(0, "Số người", "Tháng 4");
-        dataset.addValue(25, "Số người", "Tháng 5");
-        dataset.addValue(75, "Số người", "Tháng 6");
-        dataset.addValue(200, "Số người", "Tháng 7");
+        for (int i = 1; i <= 12; i++) {
+            List<Object[]> listNM = dao.getSoLuongNguoiMuon(i);
+            Object valuetow = listNM.get(0)[0];
+            Number valueToAdd = valuetow != null ? (Number) valuetow : 0;
+                 dataset.addValue(valueToAdd, "Số Lượng người mượn", "Tháng " + i);
+                System.out.println(valueToAdd);
+        }
+            return dataset;
+        }
+        //------------------------------------------------------
+    public JFreeChart createLineChart() {
+        // Thay đổi hàm tạo để tạo biểu đồ đường
+        JFreeChart lineChart = ChartFactory.createLineChart(
+                "BIỂU ĐỒ Thống kê", // Tiêu đề
+                "Tháng", // Trục hoành
+                "Số người", // Trục tung
+                createDatasetss(), // Dữ liệu
+                PlotOrientation.VERTICAL, // Phương hướng biểu đồ
+                true, // Hiển thị legend
+                true, // Tooltips
+                false // URL
+        );
+        return lineChart;
+    }
+
+    private CategoryDataset createDatasetss() {
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        for (int i = 1; i <= 12; i++) {
+            List<Object[]> listPM = dao.getSoLuongPhieuMuon(i);
+            Object valueone = listPM.get(0)[0];
+            List<Object[]> listNM = dao.getSoLuongNguoiMuon(i);
+            Object valuetow = listNM.get(0)[0];
+                dataset.addValue((Number) valueone, "Số Lượng phiếu mượn", "Tháng " + i);
+                dataset.addValue((Number) valuetow, "Số Lượng người mượn", "Tháng " + i);
+                System.out.println((Number) valuetow);
+        }
         return dataset;
     }
-    //------------------------------------------------------
-     public static JFreeChart createLineChart() {
-    // Thay đổi hàm tạo để tạo biểu đồ đường
-    JFreeChart lineChart = ChartFactory.createLineChart(
-        "BIỂU ĐỒ Thống kê", // Tiêu đề
-        "Tháng", // Trục hoành
-        "Số người", // Trục tung
-        createDatasetss(), // Dữ liệu
-        PlotOrientation.VERTICAL, // Phương hướng biểu đồ
-        true, // Hiển thị legend
-        true, // Tooltips
-        false // URL
-    );
-    return lineChart;
-}
-        private static CategoryDataset createDatasetss() {
-        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(0, "Số người", "Tháng 4");
-        dataset.addValue(25, "Số người", "Tháng 5");
-        dataset.addValue(75, "Số người", "Tháng 6");
-        dataset.addValue(200, "Số người", "Tháng 7");
-        dataset.addValue(0, "Số người", "Tháng 8");
-        dataset.addValue(25, "Số người", "Tháng 9");
-        dataset.addValue(75, "Số người", "Tháng 10");
-        dataset.addValue(200, "Số người", "Tháng 11");
-        //-------------------
-        dataset.addValue(200, "Số sách", "Tháng 4");
-        dataset.addValue(75, "Số sách", "Tháng 5");
-        dataset.addValue(25, "Số sách", "Tháng 6");
-        dataset.addValue(100, "Số sách", "Tháng 7");
-        dataset.addValue(50, "Số sách", "Tháng 8");
-        dataset.addValue(85, "Số sách", "Tháng 9");
-        dataset.addValue(175, "Số sách", "Tháng 10");
-        dataset.addValue(45, " Số sách", "Tháng 11");
-        //---------------------
-        dataset.addValue(125, "Phiếu mượn", "Tháng 4");
-        dataset.addValue(3, "Phiếu mượn", "Tháng 5");
-        dataset.addValue(180, "Phiếu mượn", "Tháng 6");
-        dataset.addValue(120, "Phiếu mượn", "Tháng 7");
-        dataset.addValue(60, "Phiếu mượn", "Tháng 8");
-        dataset.addValue(70, "Phiếu mượn", "Tháng 9");
-        dataset.addValue(65, "Phiếu mượn", "Tháng 10");
-        dataset.addValue(145, "Phiếu mượn", "Tháng 11");
-        return dataset;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -460,17 +453,16 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-              new DoiMatKhau(this, true).setVisible(true);
-        if(Auth.isLogin()){
         new DoiMatKhau(this, true).setVisible(true);
-        }
-        else{
+        if (Auth.isLogin()) {
+            new DoiMatKhau(this, true).setVisible(true);
+        } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
-      openSach();
+        openSach();
     }//GEN-LAST:event_btnSachActionPerformed
 
     private void btnThongKe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKe1ActionPerformed
@@ -478,15 +470,15 @@ public class ThongkeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKe1ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-      openNguoiMuon();
+        openNguoiMuon();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void btnPhieuMuon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuMuon1ActionPerformed
-      openPhieuMuon();
+        openPhieuMuon();
     }//GEN-LAST:event_btnPhieuMuon1ActionPerformed
 
     private void btnNhanVien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVien1ActionPerformed
-       openNhanVien();
+        openNhanVien();
     }//GEN-LAST:event_btnNhanVien1ActionPerformed
 
     /**
@@ -547,7 +539,7 @@ public class ThongkeFrame extends javax.swing.JFrame {
         tk.setVisible(true);
         ThongkeFrame.this.dispose();
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TBP_TKNM;
     private javax.swing.JButton btnNhanVien1;

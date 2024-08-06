@@ -168,6 +168,7 @@ com\mycompany\polylib\ui\SachJFrame$23.class
 com\mycompany\polylib\ui\SachJFrame$26.class
 com\mycompany\polylib\dao\ViTriDao.class
 com\mycompany\polylib\ui\NhanVienJFrame$13.class
+com\mycompany\polylib\dao\ThongKeDao.class
 com\mycompany\polylib\ui\LoaiSachJDialog$7.class
 com\mycompany\polylib\ui\TacGiaJDialog$11$1.class
 com\mycompany\polylib\ui\TrangChuJFrame$2.class
