@@ -2,6 +2,7 @@ com\mycompany\polylib\ui\NhanVienJFrame$17.class
 com\mycompany\polylib\ui\SachJFrame$14.class
 com\mycompany\polylib\ui\PhieuTraDialog$13.class
 com\mycompany\polylib\ui\DangNhapJDialog$2.class
+com\mycompany\polylib\ui\SachJFrame$27.class
 com\mycompany\polylib\dao\NhaXuatBanDao.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$29.class
 com\mycompany\polylib\ui\QuenMatKhauJFrame$5.class
@@ -26,6 +27,7 @@ com\mycompany\polylib\dao\PolyLibDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$16.class
 com\mycompany\polylib\ui\NhanVienJFrame$10.class
+com\mycompany\polylib\ui\SachJFrame$30.class
 com\mycompany\polylib\ui\TacGiaJDialog$2.class
 com\mycompany\polylib\ui\LoaiSachJDialog$5.class
 com\mycompany\polylib\utils\Auth.class
@@ -165,6 +167,7 @@ com\mycompany\polylib\ui\DangNhapJDialog$1.class
 com\mycompany\polylib\dao\TacGiaDao.class
 com\mycompany\polylib\ui\SachJFrame$15.class
 com\mycompany\polylib\ui\LoaiSachJDialog$4.class
+com\mycompany\polylib\ui\SachJFrame$28.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$23.class
 com\mycompany\polylib\ui\NXSJDialog$8.class
 com\mycompany\polylib\ui\ThongkeFrame$7.class
@@ -213,6 +216,7 @@ com\mycompany\polylib\ui\LoaiSachJDialog$7$1.class
 com\mycompany\polylib\ui\ThongkeFrame$5.class
 com\mycompany\polylib\ui\PhieuTraDialog$16.class
 com\mycompany\polylib\ui\DangNhapJDialog.class
+com\mycompany\polylib\ui\SachJFrame$29.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$25.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$24.class
 com\mycompany\polylib\ui\SachJFrame$4.class
