@@ -38,7 +38,7 @@
                   <Component id="lblTrangThai" max="32767" attributes="0"/>
                   <Component id="txtNgayTra" pref="128" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
           </Group>
