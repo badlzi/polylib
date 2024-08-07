@@ -13,7 +13,6 @@ com\mycompany\polylib\ui\NguoiMuonJFrame$22.class
 com\mycompany\polylib\ui\NXSJDialog$2.class
 com\mycompany\polylib\ui\ThongkeFrame$1.class
 com\mycompany\polylib\ui\ThongkeFrame$8.class
-com\mycompany\polylib\ui\PhieutraJDialog.class
 com\mycompany\polylib\ui\LoaiSachJDialog$3.class
 com\mycompany\polylib\ui\NhanVienJFrame$25.class
 com\mycompany\polylib\ui\NguoiMuonJFrame.class
@@ -79,7 +78,6 @@ com\mycompany\polylib\ui\PhieuTraDialog$6.class
 com\mycompany\polylib\ui\TrangChuJFrame$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$3.class
 com\mycompany\polylib\ui\ChoTaiJFrame$2.class
-com\mycompany\polylib\ui\PhieutraJDialog$1$1.class
 com\mycompany\polylib\ui\TacGiaJDialog$10.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$26.class
 com\mycompany\polylib\ui\NhanVienJFrame$6.class
@@ -218,7 +216,6 @@ com\mycompany\polylib\ui\ThongkeFrame$3.class
 com\mycompany\polylib\entity\ViTri.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$19.class
 com\mycompany\polylib\ui\ThongkeFrame$6.class
-com\mycompany\polylib\ui\PhieutraJDialog$1.class
 com\mycompany\polylib\ui\PhieuTraDialog$12.class
 com\mycompany\polylib\ui\DoiMatKhau$1.class
 com\mycompany\polylib\utils\XJdbc.class

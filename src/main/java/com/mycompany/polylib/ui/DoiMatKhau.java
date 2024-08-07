@@ -253,7 +253,10 @@ public class DoiMatKhau extends javax.swing.JDialog {
         }else if (xacnhan.isBlank()) {
             JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không được bỏ trống!", "THÔNG BÁO!", 0);
             return;
-        }
+        }else if(matkhaucu.length() < 4 || matkhaucu.length() > 12 ||matKhaumoi.length() < 4 || matKhaumoi.length() > 12 || xacnhan.length() < 4 || xacnhan.length() > 12  ){
+             JOptionPane.showMessageDialog(this, "Mật khẩu không được nhớ hơn 4 kí tự hoặc lớn hơn 12 kí tự", "THÔNG BÁO!", 0);
+            return;
+        } 
      if(!matkhaucu.equals(Auth.getManagerpassword())){
           JOptionPane.showMessageDialog(this, "Mật khẩu cũ không đúng !", "THÔNG BÁO!", 0);
             return;

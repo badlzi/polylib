@@ -24,6 +24,7 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         HienThiLenban();
+        
     }
 
     /**
