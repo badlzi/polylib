@@ -223,7 +223,10 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         } else if (matKhau.isBlank()) {
             JOptionPane.showMessageDialog(this, "Mật khẩu không được bỏ trống!", "THÔNG BÁO!", 0);
             return;
-        }
+        } else if (matKhau.length()<4 || matKhau.length()>12 ) {
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được nhỏ hơn 4 kí tự và lớn hơn 12 kí tự", "THÔNG BÁO!", 0);
+            return;
+        }else{
         try {
             if (nhanVien == null) {
 //            MsgBox.alert(this, "Sai tên đăng nhập!");
@@ -241,6 +244,7 @@ public class DangNhapJDialog extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Có lỗi xảy ra trong quá trình đăng nhập!", "THÔNG BÁO", JOptionPane.ERROR_MESSAGE);
+        }
         }
 
     }

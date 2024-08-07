@@ -17,6 +17,10 @@ public class NhanVien {
       private String Email;
       private boolean ChucVu;
 
+       public String toString(){
+        return MatKhau + "\n" + Email;
+    }
+      
     public String getSDT() {
         return SDT;
     }

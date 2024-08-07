@@ -52,7 +52,7 @@ public class NhanVienDao extends PolyLibDao<NhanVien, String>{
         );
     }
         public void forgotpassword(NhanVien model) {
-            String sql="UPDATE NHANVIEN SET MATKHAU=? WHERE EMAIL=?";
+        String sql="UPDATE NHANVIEN SET MATKHAU=? WHERE EMAIL=?";
         XJdbc.update(sql,
                 model.getMatKhau(), 
                 model.getEmail()
