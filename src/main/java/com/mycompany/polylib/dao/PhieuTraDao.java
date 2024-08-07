@@ -34,7 +34,7 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
 
     @Override
     public void update(PhieuTra entity) {
-     XJdbc.update(INSERT_SQL, entity.getSoPhieuTra(), entity.getNgayTra(), entity.getPhieuMuon().getSoPhieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat());    }
+     XJdbc.update(UPDATE_SQL, entity.getNgayTra(), entity.getPhieuMuon().getSoPhieuMuon(),entity.getTinhTrangSach(),entity.getTienPhat(),entity.getSoPhieuTra());    }
 
     @Override
     public void delete(String id) {
@@ -67,7 +67,7 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
                 PhieuMuon entitytow = new PhieuMuon();
                 entitytow.setSoPhieuMuon(rs.getString("SoPhieuMuon"));
                 entity.setPhieuMuon(entitytow);
-                entity.setTinhTrangSach("TinhtrangSach");
+                entity.setTinhTrangSach(rs.getString("TinhtrangSach"));
                 entity.setTienPhat(rs.getDouble("TIENPHAT"));
                 
                 list.add(entity);
