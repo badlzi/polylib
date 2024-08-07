@@ -38,6 +38,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -344,6 +345,14 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             }
         });
 
+        jspSoLuong.setModel(new javax.swing.SpinnerNumberModel(1, 0, null, 1));
+        jspSoLuong.setAutoscrolls(true);
+        jspSoLuong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jspSoLuongKeyReleased(evt);
+            }
+        });
+
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("Xem người");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -379,21 +388,21 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jButton3))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jdcNgayMuon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jdcNgayMuon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(btnThem)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(btnSua)
+                                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnLamMoi)))
+                                        .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(101, 101, 101))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
@@ -429,18 +438,19 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtMaNM)
                     .addComponent(txtTenSach)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtMaNM)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaPhieuMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jspSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMaPhieuMuon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jspSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -465,7 +475,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                     .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_INPM, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         TBP_PM.addTab("Phiếu mượn chi tiết ", jPanel1);
@@ -938,6 +948,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         this.insert();
     }//GEN-LAST:event_btnThemActionPerformed
+
+    private void jspSoLuongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jspSoLuongKeyReleased
+
+    }//GEN-LAST:event_jspSoLuongKeyReleased
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override
@@ -1266,6 +1280,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         this.setForm(pmct);
         this.row = -1;
         this.updateStatus();
+
+        boolean edit = (this.row >= 0);
+
+        jdcNgayMuon.setEnabled(edit);
+        jdcNgayTra.setEnabled(edit);
+        txtMaNM.setEnabled(edit);
+
     }
 
     public void first() {
@@ -1312,16 +1333,20 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
     public void insert() {
         PhieuMuonChiTiet nh = getForm();
-        try {
-            dao.insert(nh);
-            this.HienThiLenban();// đưa dữ liệu lên bảng lại
-            this.clearForm();
-            MsgBox.alert(this, "Thêm mới thành công!");
-        } catch (Exception e) {
-            e.printStackTrace(); // In ra lỗi cụ thể để xác định nguyên nhân
-            MsgBox.alert(this, "Thêm mới thất bại!");
+        if (!isValidated()) {
+            System.out.println("code thành công");
+            return;
+        } else {
+            try {
+                dao.insert(nh);
+                this.HienThiLenban();// đưa dữ liệu lên bảng lại
+                this.clearForm();
+                MsgBox.alert(this, "Thêm mới thành công!");
+            } catch (Exception e) {
+                e.printStackTrace(); // In ra lỗi cụ thể để xác định nguyên nhân
+                MsgBox.alert(this, "Thêm mới thất bại!");
+            }
         }
-
     }
 
     private void setForm(PhieuMuonChiTiet pm) {
@@ -1356,7 +1381,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         pm.setSoPhieuMuon(txtMaPhieuMuon.getText());
         pm.setNgayMuon(jdcNgayMuon.getDate());
         pm.setNgayTra(jdcNgayTra.getDate());
-        
+
         pmct.setPhieuMuon(pm);
         sach.setMaSach(getGiaByMaSach(txtTenSach.getText()));
         System.out.println(getGiaByMaSach(txtTenSach.getText()));
@@ -1385,6 +1410,30 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         TBP_PM.setSelectedIndex(1);
         this.updateStatus();
     }
+
+    public boolean isValidated() {
+
+        if (txtTenSach.getText().isBlank()) {
+            MsgBox.alert(this, "Không để trống tên sách!");
+            return false;
+        } else if ((int) jspSoLuong.getValue() < 0) {
+            MsgBox.alert(this, "Số lượng không dưới 0!");
+            return false;
+        } else if (txtMaPhieuMuon.getText().isBlank()) {
+            MsgBox.alert(this, "Không để trống mã phiếu mượn!");
+            return false;
+        } else if (txtGhiChu.getText().isBlank()) {
+            MsgBox.alert(this, "Không để trống ghi chú!");
+            return false;
+        }
+
+        return true;
+        // Trả về false nếu có bất kỳ lỗi nào.
+        //Phương thức insert sẽ kiểm tra kết quả của isValidated(). Nếu isValidated() trả về true, nghĩa là form hợp lệ và có thể tiếp tục quá trình thêm mới nhân viên. Nếu isValidated() trả về false, nghĩa là có lỗi và sẽ dừng lại.
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane TBP_PM;
     private javax.swing.JTextArea bill;
