@@ -20,6 +20,7 @@ import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.Sach;
+import com.mycompany.polylib.utils.Book;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,6 +67,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public PhieuMuonJFrame() {
         initComponents();
         txt_usename.setText(Auth.getManagername());
+        txtTenSach.setText(Book.getBookname());
         HienThiLenban();
         startDongHo();
     }

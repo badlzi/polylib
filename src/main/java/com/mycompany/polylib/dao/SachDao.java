@@ -74,5 +74,55 @@ public class SachDao extends PolyLibDao<Sach, String> {
         }
         return list;
     }
+    
+   public List<Sach> selectByMaSach(String maSach) {
+    String sql = "SELECT * FROM SACH WHERE MASACH LIKE ?";
+    return this.selectBySql(sql, "%" + maSach + "%");
+}
+
+public List<Sach> selectByTenSach(String tenSach) {
+    String sql = "SELECT * FROM SACH WHERE TENSACH LIKE ?";
+    return this.selectBySql(sql, "%" + tenSach + "%");
+}
+
+public List<Sach> selectBySoTrang(int soTrang) {
+    String sql = "SELECT * FROM SACH WHERE SOTRANG = ?";
+    return this.selectBySql(sql, soTrang);
+}
+
+public List<Sach> selectBySoLuotBanSao(int soLuotBanSao) {
+    String sql = "SELECT * FROM SACH WHERE SOLUONGBANSAO = ?";
+    return this.selectBySql(sql, soLuotBanSao);
+}
+
+public List<Sach> selectByGhiChu(String ghiChu) {
+    String sql = "SELECT * FROM SACH WHERE GHICHU LIKE ?";
+    return this.selectBySql(sql, "%" + ghiChu + "%");
+}
+
+public List<Sach> selectByHinh(String hinh) {
+    String sql = "SELECT * FROM SACH WHERE HINH LIKE ?";
+    return this.selectBySql(sql, "%" + hinh + "%");
+}
+
+public List<Sach> selectByMatg(String matg) {
+    String sql = "SELECT * FROM SACH WHERE MATG LIKE ?";
+    return this.selectBySql(sql, "%" + matg + "%");
+}
+
+public List<Sach> selectByMaLoaiSach(String maLoaiSach) {
+    String sql = "SELECT * FROM SACH WHERE MALOAISACH LIKE ?";
+    return this.selectBySql(sql, "%" + maLoaiSach + "%");
+}
+
+public List<Sach> selectByMaNXB(String maNXB) {
+    String sql = "SELECT * FROM SACH WHERE MANXB LIKE ?";
+    return this.selectBySql(sql, "%" + maNXB + "%");
+}
+
+public List<Sach> selectByMAVT(String mavt) {
+    String sql = "SELECT * FROM SACH WHERE MAVT LIKE ?";
+    return this.selectBySql(sql, "%" + mavt + "%");
+}
 
 }
