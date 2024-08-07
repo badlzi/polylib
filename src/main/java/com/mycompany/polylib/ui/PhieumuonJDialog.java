@@ -8,8 +8,11 @@ import com.mycompany.polylib.dao.PhieuMuonDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
 import com.mycompany.polylib.entity.NhanVien;
 import com.mycompany.polylib.entity.PhieuMuon;
+import com.mycompany.polylib.utils.Auth;
 import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -27,6 +30,11 @@ public class PhieumuonJDialog extends javax.swing.JDialog {
     public PhieumuonJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        lblMaNV.setText(Auth.getManagername());
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDateTime = now.format(formatter);
+        txtNgayTra.setText(formattedDateTime);
         HienThiLenban();
     }
     int row = 0;
@@ -410,6 +418,12 @@ public class PhieumuonJDialog extends javax.swing.JDialog {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
         clear();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDateTime = now.format(formatter);
+        txtNgayTra.setText(formattedDateTime);
+        lblMaNV.setText(Auth.getManagername());
+        
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void txtNgayTraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgayTraKeyPressed

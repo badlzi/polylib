@@ -10,6 +10,10 @@ import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.entity.PhieuTra;
 import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
+import static java.time.Instant.now;
+import static java.time.LocalDate.now;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +33,10 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         HienThiLenban();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDateTime = now.format(formatter);
+        txtNgayTra.setText(formattedDateTime);
         lblTienPhat.setText("0");
     }
     int row = 0;
@@ -36,18 +44,19 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     List<PhieuTra> PTL = new ArrayList<>();
     DefaultTableModel model;
     DefaultComboBoxModel Bcmodel;
-    
-     public void HienThiLenban() {
+
+    public void HienThiLenban() {
         PTL = PTD.selectAll();
         String[] headers = {"Mã phiếu trả", "Số phiếu mượn", "Ngày trả", "Tình trạng", "Tiền phạt"};
         model = new DefaultTableModel(headers, 0);
         for (PhieuTra pml : PTL) {
             Object[] row = new Object[]{
-            pml.getSoPhieuTra(),pml.getPhieuMuon().getSoPhieuMuon(), pml.getNgayTra(),pml.getTinhTrangSach(), pml.getTienPhat()};
+                pml.getSoPhieuTra(), pml.getPhieuMuon().getSoPhieuMuon(), pml.getNgayTra(), pml.getTinhTrangSach(), pml.getTienPhat()};
             model.addRow(row);
         }
         tbl_PhieuTra.setModel(model);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +80,9 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         lblTienPhat = new javax.swing.JLabel();
+        txt_stt = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         btnSua = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -81,6 +93,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         btnTruoc = new javax.swing.JButton();
         txtTinhTrang = new javax.swing.JTextField();
         lblTrangThai = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,9 +158,10 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tiền phạt", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Sitka Text", 1, 14))); // NOI18N
@@ -156,12 +170,21 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         lblTienPhat.setForeground(new java.awt.Color(153, 51, 0));
         lblTienPhat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jButton2.setText("Thanh toán");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Trả tiền ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -169,15 +192,28 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(lblTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txt_stt, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(lblTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_stt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         btnSua.setText("Sửa ");
@@ -250,6 +286,13 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         lblTrangThai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTrangThai.setForeground(new java.awt.Color(153, 51, 0));
 
+        jButton1.setText("Kiểm tra");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,12 +305,15 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTrangThai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTrangThai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(43, 43, 43))
                     .addComponent(txtNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addGroup(layout.createSequentialGroup()
@@ -313,24 +359,28 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(txtPhieuTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNgayTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtPhieuMuon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5)
                                 .addComponent(txtTinhTrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua)
@@ -340,9 +390,9 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                     .addComponent(btnTruoc)
                     .addComponent(btnSau)
                     .addComponent(btnCuoi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -383,6 +433,10 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
         clear();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDateTime = now.format(formatter);
+        txtNgayTra.setText(formattedDateTime);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDauActionPerformed
@@ -402,41 +456,77 @@ public class PhieuTraDialog extends javax.swing.JDialog {
 
     private void txtTinhTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTinhTrangActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtTinhTrangActionPerformed
 
     private void txtNgayTraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgayTraKeyReleased
-        Date toDate = XDate.toDate(txtNgayTra.getText(),"yyyy-MM-dd");
-        Date toDateold = getGiaByTenS(txtPhieuMuon.getText());
-        System.out.println(toDate +"\n"+ toDateold);
+
     }//GEN-LAST:event_txtNgayTraKeyReleased
 
     private void txtNgayTraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNgayTraKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayTraKeyPressed
 
+    }//GEN-LAST:event_txtNgayTraKeyPressed
+    double tien = 0;
     private void txtTinhTrangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTinhTrangKeyReleased
         // TODO add your handling code here:
-        double tien = 0;
-        if(txtTinhTrang.getText().contains("mất")){
-            tien = 100000;
+        if (txtTinhTrang.getText().contains("mất")) {
+            tien += 100000;
             lblTienPhat.setText(String.valueOf(tien));
-        }else if(txtTinhTrang.getText().contains("tốt")){
-            tien = 0;
+        } else if (txtTinhTrang.getText().contains("tốt")) {
+            tien += 0;
             lblTienPhat.setText(String.valueOf(tien));
-        }else if(txtTinhTrang.getText().contains("nhẹ")){
-            tien = 20000;
+        } else if (txtTinhTrang.getText().contains("nhẹ")) {
+            tien += 20000;
             lblTienPhat.setText(String.valueOf(tien));
-        }else if(txtTinhTrang.getText().contains("hư hỏng")){
-            tien = 75000;
+        } else if (txtTinhTrang.getText().contains("hư hỏng")) {
+            tien += 75000;
             lblTienPhat.setText(String.valueOf(tien));
         }
     }//GEN-LAST:event_txtTinhTrangKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Date toDate = XDate.toDate(txtNgayTra.getText(), "yyyy-MM-dd");
+        Date toDateold = getGiaByTenS(txtPhieuMuon.getText());
+
+        if (toDate.after(toDateold)) {
+            System.out.println("toDate lớn hơn toDateold");
+            lblTrangThai.setText("Đã trả quá hạn");
+            tien += 10000;
+            lblTienPhat.setText(String.valueOf(tien));
+        } else if (toDate.before(toDateold)) {
+            System.out.println("toDate nhỏ hơn toDateold");
+            lblTrangThai.setText("Đã trả đúng hạn");
+        } else {
+            System.out.println("toDate bằng toDateold");
+            lblTrangThai.setText("Đã trả đúng hạn");
+        }
+        System.out.println("kiểm tra" + toDate + "\n" + "SỐ" + toDateold);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (Double.valueOf(lblTienPhat.getText()) > 0) {
+            double tienphat = Double.valueOf(txt_stt.getText());
+            double tien = Double.valueOf(lblTienPhat.getText()) - tienphat;
+            lblTienPhat.setText(String.valueOf(tien));
+        } else if (Double.valueOf(lblTienPhat.getText()) == 0) {
+//        delete();
+            MsgBox.alert(this, "Bạn đã trả sách thành công!");
+        } else if (Double.valueOf(lblTienPhat.getText()) < 0) {
+            double tienphat = Double.valueOf(txt_stt.getText());
+            double tien = Double.valueOf(lblTienPhat.getText()) + tienphat;
+            lblTienPhat.setText(String.valueOf(tien));
+            MsgBox.alert(this, "hãy trả lại số tiền dư cho khác !");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     PhieuMuonDao PMD = new PhieuMuonDao();
     List<PhieuMuon> PML = new ArrayList<>();
-        public Date getGiaByTenS(String ten) {
+
+    public Date getGiaByTenS(String ten) {
         PML = PMD.selectAll();
-        Date gia = null ;
+        Date gia = null;
         for (PhieuMuon pm : PML) {
             if (pm.getSoPhieuMuon().equals(ten)) {
                 gia = pm.getNgayTra();
@@ -444,19 +534,21 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         }
         return gia;
     }
-    
+
     void edit() {
         String spt = (String) tbl_PhieuTra.getValueAt(this.row, 0);
         PhieuTra pt = PTD.selectById(spt);
         this.setForm(pt);
     }
+
     void setForm(PhieuTra pt) {
         txtPhieuTra.setText(pt.getSoPhieuTra());
         txtPhieuMuon.setText(pt.getPhieuMuon().getSoPhieuMuon());
         txtTinhTrang.setText(pt.getTinhTrangSach());
-        txtNgayTra.setText(XDate.toString(pt.getNgayTra(),"yyyy-MM-dd"));
+        txtNgayTra.setText(XDate.toString(pt.getNgayTra(), "yyyy-MM-dd"));
         lblTienPhat.setText(Double.toString(pt.getTienPhat()));
     }
+
     PhieuTra getForm() {
         PhieuTra pt = new PhieuTra();
         pt.setSoPhieuTra(txtPhieuTra.getText());
@@ -464,10 +556,11 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         pm.setSoPhieuMuon(txtPhieuMuon.getText());
         pt.setPhieuMuon(pm);
         pt.setTinhTrangSach(txtTinhTrang.getText());
-        pt.setNgayTra(XDate.toDate(txtNgayTra.getText(),"yyyy-MM-dd"));
+        pt.setNgayTra(XDate.toDate(txtNgayTra.getText(), "yyyy-MM-dd"));
         pt.setTienPhat(Double.parseDouble(lblTienPhat.getText()));
         return pt;
     }
+
     void insert() {
         PhieuTra model = getForm();
         try {
@@ -490,11 +583,11 @@ public class PhieuTraDialog extends javax.swing.JDialog {
 
     void update() {
         PhieuTra model = getForm();
-       try {
+        try {
             PTD.update(model);
             this.HienThiLenban();
             MsgBox.alert(this, "Cập nhật thành công!");
-       } catch (Exception e) {
+        } catch (Exception e) {
             MsgBox.alert(this, "Cập nhật thất bại!");
         }
     }
@@ -512,6 +605,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
             }
         }
     }
+
     void first() {
         this.row = 0;
         this.edit();
@@ -521,7 +615,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         if (this.row > 0) {
             this.row--;
             this.edit();
-        }else{
+        } else {
             this.row = tbl_PhieuTra.getRowCount() - 1;
             this.edit();
         }
@@ -531,7 +625,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         if (this.row <= tbl_PhieuTra.getRowCount() - 1) {
             this.row++;
             this.edit();
-        }else{
+        } else {
             this.row = 0;
             this.edit();
         }
@@ -541,6 +635,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
         this.row = tbl_PhieuTra.getRowCount() - 1;
         this.edit();
     }
+
     /**
      * @param args the command line arguments
      */
@@ -592,11 +687,14 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnTruoc;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -608,5 +706,6 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtPhieuMuon;
     private javax.swing.JTextField txtPhieuTra;
     private javax.swing.JTextField txtTinhTrang;
+    private javax.swing.JTextField txt_stt;
     // End of variables declaration//GEN-END:variables
 }
