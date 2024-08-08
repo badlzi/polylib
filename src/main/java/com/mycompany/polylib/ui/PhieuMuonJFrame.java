@@ -67,7 +67,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public PhieuMuonJFrame() {
         initComponents();
         txt_usename.setText(Auth.getManagername());
-        txtTenSach.setText(Book.getBookname());
+//        txtTenSach.setText(Book.getBookname());
         HienThiLenban();
         startDongHo();
     }
@@ -682,12 +682,27 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jMenu6.setText("Sách");
 
         jMenuItem11.setText("Tác giả");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem11);
 
         jMenuItem12.setText("Nhà xuất bản");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem12);
 
         jMenuItem13.setText("Loại sách");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem13);
 
         jMenu2.add(jMenu6);
@@ -695,6 +710,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jMenu3.setText("Phiếu mượn");
 
         jMenuItem7.setText("Phiếu mượn");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuItem8.setText("phiếu trả");
@@ -873,7 +893,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
-        // TODO add your handling code here:
+       openSach();
     }//GEN-LAST:event_btnSachActionPerformed
 
     private void btn_NguoiMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NguoiMuonActionPerformed
@@ -928,7 +948,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
+        new PhieuTraDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void tbl_PhieuMuonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PhieuMuonMouseClicked
@@ -954,6 +974,22 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void jspSoLuongKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jspSoLuongKeyReleased
 
     }//GEN-LAST:event_jspSoLuongKeyReleased
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        new TacGiaJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+      new NXSJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+       new LoaiSachJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+      new PhieumuonJDialog(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override

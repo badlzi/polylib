@@ -256,7 +256,7 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
             myMessage.setFrom(new InternetAddress(Email));
             myMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(txt_email.getText()));
             myMessage.setSubject("Cập nhật lại mật khẩu mới");
-            myMessage.setContent(password, "text/html;charset=utf-8");
+            myMessage.setContent("Mật khẩu mới: "+password, "text/html;charset=utf-8");
             Transport.send(myMessage);
             JOptionPane.showMessageDialog(this, "Mã xác nhận đã được gửi thành công");
         } catch (Exception e) {
@@ -291,6 +291,9 @@ public class QuenMatKhauJFrame extends javax.swing.JFrame {
          try{
          NVD.forgotpassword(model);
          MsgBox.alert(this, "đổi lại mật khẩu thành công!");
+         DangNhapJDialog nv = new DangNhapJDialog();
+         nv.setVisible(true);
+         QuenMatKhauJFrame.this.dispose();
          }catch(Exception e){
                 MsgBox.alert(this, "đổi lại mật khẩu thành công!");
          }

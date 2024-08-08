@@ -22,11 +22,13 @@ com\mycompany\polylib\ui\DangNhapJDialog$7.class
 com\mycompany\polylib\ui\NXSJDialog$9.class
 com\mycompany\polylib\ui\SachJFrame$22.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$3.class
+com\mycompany\polylib\ui\SachJFrame$33.class
 com\mycompany\polylib\ui\PhieumuonJDialog$4.class
 com\mycompany\polylib\dao\PolyLibDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$2.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$16.class
 com\mycompany\polylib\ui\NhanVienJFrame$10.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$32.class
 com\mycompany\polylib\ui\SachJFrame$30.class
 com\mycompany\polylib\ui\TacGiaJDialog$2.class
 com\mycompany\polylib\ui\LoaiSachJDialog$5.class
@@ -71,6 +73,7 @@ com\mycompany\polylib\ui\ThongkeFrame.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$13.class
 com\mycompany\polylib\ui\PhieumuonJDialog$2.class
 com\mycompany\polylib\ui\TacGiaJDialog$1.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$33.class
 com\mycompany\polylib\ui\NXSJDialog$11$1.class
 com\mycompany\polylib\ui\DangNhapJDialog$5.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$4.class
@@ -124,6 +127,7 @@ com\mycompany\polylib\ui\PhieuMuonJFrame$5.class
 com\mycompany\polylib\ui\NhanVienJFrame$2.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$25.class
 com\mycompany\polylib\ui\DangNhapJDialog$4.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$30.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$7.class
 com\mycompany\polylib\ui\PhieuTraDialog$2.class
 com\mycompany\polylib\ui\NhanVienJFrame$22.class
@@ -166,6 +170,7 @@ com\mycompany\polylib\ui\PhieuMuonJFrame$4.class
 com\mycompany\polylib\ui\DangNhapJDialog$1.class
 com\mycompany\polylib\dao\TacGiaDao.class
 com\mycompany\polylib\ui\SachJFrame$15.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$31.class
 com\mycompany\polylib\ui\LoaiSachJDialog$4.class
 com\mycompany\polylib\ui\SachJFrame$28.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$23.class
@@ -217,8 +222,10 @@ com\mycompany\polylib\ui\ThongkeFrame$5.class
 com\mycompany\polylib\ui\PhieuTraDialog$16.class
 com\mycompany\polylib\ui\DangNhapJDialog.class
 com\mycompany\polylib\ui\SachJFrame$29.class
+com\mycompany\polylib\ui\SachJFrame$31.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$25.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$24.class
+com\mycompany\polylib\ui\SachJFrame$32.class
 com\mycompany\polylib\ui\SachJFrame$4.class
 com\mycompany\polylib\ui\TacGiaJDialog$7.class
 com\mycompany\polylib\ui\NXSJDialog$10.class

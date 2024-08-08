@@ -10,6 +10,7 @@ import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.entity.PhieuTra;
 import com.mycompany.polylib.utils.MsgBox;
 import com.mycompany.polylib.utils.XDate;
+import java.text.NumberFormat;
 import static java.time.Instant.now;
 import static java.time.LocalDate.now;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -47,6 +49,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
 
     public void HienThiLenban() {
         PTL = PTD.selectAll();
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         String[] headers = {"Mã phiếu trả", "Số phiếu mượn", "Ngày trả", "Tình trạng", "Tiền phạt"};
         model = new DefaultTableModel(headers, 0);
         for (PhieuTra pml : PTL) {
@@ -469,6 +472,7 @@ public class PhieuTraDialog extends javax.swing.JDialog {
     double tien = 0;
     private void txtTinhTrangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTinhTrangKeyReleased
         // TODO add your handling code here:
+//        String formattedPrice = currencyFormatter.format(price); 
         if (txtTinhTrang.getText().contains("mất")) {
             tien += 100000;
             lblTienPhat.setText(String.valueOf(tien));
