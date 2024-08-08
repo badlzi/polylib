@@ -376,7 +376,11 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPhieuMuonActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        openNhanVien();
+       if (Auth.isManager()) {
+            openNhanVien();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnGioiThieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGioiThieuActionPerformed
@@ -384,16 +388,16 @@ public class TrangChuJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGioiThieuActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        openThongKe();
+
+                                    if (Auth.isManager()) {
+             openThongKe();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void btn_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DoiMatKhauActionPerformed
-        if(Auth.isLogin()){
         new DoiMatKhau(this, true).setVisible(true);
-        }
-        else{
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
     }//GEN-LAST:event_btn_DoiMatKhauActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed

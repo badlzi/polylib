@@ -750,12 +750,8 @@ public class SachJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new DoiMatKhau(this, true).setVisible(true);
-        if (Auth.isLogin()) {
+
             new DoiMatKhau(this, true).setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -772,8 +768,11 @@ public class SachJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPhieuMuonActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        // TODO add your handling code here:
-        openNhanVien();
+                            if (Auth.isManager()) {
+            openNhanVien();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -781,8 +780,11 @@ public class SachJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-        openThongKe();
+        if (Auth.isManager()) {
+            openThongKe();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void tbl_SachMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_SachMousePressed

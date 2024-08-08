@@ -42,11 +42,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         initComponents();
         TBP_NV.setSelectedIndex(1);
         txt_usename.setText(Auth.getManagername());
-        if (Auth.isManager()) {
-            QUANLYHienThi();
-        } else {
-            HienThiLenban();
-        }
+        QUANLYHienThi();
         txt_MatKhau.setEchoChar((char) 0);
         startDongHo();
     }
@@ -720,7 +716,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_xlsxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     Auth.clear();
+        Auth.clear();
         DangNhapJDialog pm = new DangNhapJDialog();
         pm.setVisible(true);
         NhanVienJFrame.this.dispose();
@@ -735,13 +731,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-               new DoiMatKhau(this, true).setVisible(true);
-        if(Auth.isLogin()){
         new DoiMatKhau(this, true).setVisible(true);
-        }
-        else{
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -775,18 +765,13 @@ public class NhanVienJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_NVMouseClicked
 
     private void tbl_NVMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NVMousePressed
-        if (Auth.isManager()) {
-            if (evt.getClickCount() == 2) {
-                this.row = tbl_NV.getSelectedRow();
-                this.edit();
-                TBP_NV.setSelectedIndex(0);
-                txt_MaNV.setEditable(false);
-            }
-        } else {
-            MsgBox.alert(this, "Bạn không có quyền thực hiện");
-        }
+
+        this.row = tbl_NV.getSelectedRow();
+        this.edit();
+        TBP_NV.setSelectedIndex(0);
+        txt_MaNV.setEditable(false);
     }//GEN-LAST:event_tbl_NVMousePressed
-     private void startDongHo() {
+    private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -797,6 +782,7 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             }
         }).start();
     }
+
     private File chonFileExcelImportNguoiHoc() {
         File excelFile = null;
         JFileChooser fileChooser = new JFileChooser();
@@ -823,14 +809,14 @@ public class NhanVienJFrame extends javax.swing.JFrame {
             Iterator<Row> rowIterator = sheet.iterator();
             rowIterator.next();//Skip the header row
             while (rowIterator.hasNext()) {
-                
+
                 Row row = rowIterator.next();
-                
+
                 nv.setMaNhanVien(row.getCell(0).getStringCellValue());
                 nv.setTenNhanVien(row.getCell(1).getStringCellValue());
                 nv.setTaiKhoan(row.getCell(2).getStringCellValue());
                 nv.setMatKhau(row.getCell(3).getStringCellValue());
-                String role =formatter.formatCellValue(row.getCell(4));
+                String role = formatter.formatCellValue(row.getCell(4));
                 nv.setChucVu(role.equalsIgnoreCase("Quản lí"));
                 nv.setSDT(formatter.formatCellValue(row.getCell(5)));
                 nv.setEmail(formatter.formatCellValue(row.getCell(6)));
@@ -953,8 +939,8 @@ public class NhanVienJFrame extends javax.swing.JFrame {
         txt_MatKhau.setText(nv.getMatKhau());
         txt_sdt.setText(nv.getSDT());
         txt_email.setText(nv.getEmail());
-        rdo_QuanLi.setSelected(!nv.isChucVu());
-        rdo_NhanVien.setSelected(nv.isChucVu());
+        rdo_QuanLi.setSelected(nv.isChucVu());
+        rdo_NhanVien.setSelected(!nv.isChucVu());
     }
 
     NhanVien getForm() {

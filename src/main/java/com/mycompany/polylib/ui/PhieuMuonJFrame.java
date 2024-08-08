@@ -202,7 +202,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Xuất file xlsx");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -214,7 +214,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 650, Short.MAX_VALUE)
+                .addGap(0, 633, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6))
@@ -884,16 +884,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new DoiMatKhau(this, true).setVisible(true);
-        if (Auth.isLogin()) {
-            new DoiMatKhau(this, true).setVisible(true);
-        } else {
-            MsgBox.alert(this, "Vui lòng đăng nhập!");
-        }
+    new DoiMatKhau(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
-       openSach();
+        openSach();
     }//GEN-LAST:event_btnSachActionPerformed
 
     private void btn_NguoiMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NguoiMuonActionPerformed
@@ -906,8 +901,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPhieuMuonActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        // TODO add your handling code here:
-        openNhanVien();
+        if (Auth.isManager()) {
+            openNhanVien();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -915,8 +913,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
-        // TODO add your handling code here:
-        openThongKe();
+        if (Auth.isManager()) {
+            openThongKe();
+        } else {
+            MsgBox.alert(this, "Bạn không có quyền thực hiện");
+        }
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -980,15 +981,15 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-      new NXSJDialog(this, true).setVisible(true);
+        new NXSJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-       new LoaiSachJDialog(this, true).setVisible(true);
+        new LoaiSachJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-      new PhieumuonJDialog(this, true).setVisible(true);
+        new PhieumuonJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
     private void startDongHo() {
         new Timer(1000, new ActionListener() {

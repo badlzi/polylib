@@ -267,6 +267,9 @@ public class DoiMatKhau extends javax.swing.JDialog {
          try{
          NVD.updatepassword(model);
          MsgBox.alert(this, "đổi mật khẩu thành công!");
+         txt_mkc.setText("");
+         txt_mkm.setText("");
+         txt_XacNhanMatkhau.setText("");
          }catch(Exception e){
                 MsgBox.alert(this, "đổi mật khẩu thất baỊ");
          }
