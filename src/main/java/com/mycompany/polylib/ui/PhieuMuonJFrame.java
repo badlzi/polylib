@@ -21,9 +21,12 @@ import com.mycompany.polylib.utils.XDate;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.Sach;
 import com.mycompany.polylib.utils.Book;
+import com.mycompany.polylib.utils.book_loan;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -72,6 +75,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         startDongHo();
     }
 //tfygyvyg
+    PhieuMuonDao PMD = new PhieuMuonDao();
+    List<PhieuMuonDao> PML = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -246,6 +251,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         txtMaPhieuMuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaPhieuMuonActionPerformed(evt);
+            }
+        });
+        txtMaPhieuMuon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMaPhieuMuonKeyReleased(evt);
             }
         });
 
@@ -884,7 +894,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    new DoiMatKhau(this, true).setVisible(true);
+        new DoiMatKhau(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSachActionPerformed
@@ -991,6 +1001,21 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         new PhieumuonJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void txtMaPhieuMuonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaPhieuMuonKeyReleased
+        PhieuMuon pn = PMD.selectById(txtMaPhieuMuon.getText());
+        book_loan.user = pn;
+        if(book_loan.isbook_loan()){
+           txtMaNM.setText(book_loan.getBookNM());
+           jdcNgayMuon.setDate(book_loan.getBookNgayM());
+           jdcNgayTra.setDate(book_loan.getBookNgayt());
+        }else if(txtMaPhieuMuon.getText() == " "){
+             clearForm();
+        }else{
+              JOptionPane.showMessageDialog(this, "Mã phiếu mượn không tồn tại", "THÔNG BÁO!", 1);
+        }
+            
+    }//GEN-LAST:event_txtMaPhieuMuonKeyReleased
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override
@@ -1085,7 +1110,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     JLabel labelEmail = new JLabel("Email người mượn:");
     JTextField tfEmail = new JTextField(20);
     JButton btnAdd = new JButton("Thêm");
-
+    
     public void shownguoimuon() {
         // Tạo các thành phần chính
         JTable table = createTable();
@@ -1107,8 +1132,20 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                 nml.getMaNM(), nml.getTenNM(), nml.getEmail()};
             model.addRow(row);
         }
-        tbl_PhieuMuon.setModel(model);
         JTable table = new JTable(model);
+        table.addMouseListener(new MouseAdapter(){
+           @Override
+           public void  mouseClicked(MouseEvent e){
+              if(e.getClickCount() == 2){
+                  int row = table.getSelectedRow();
+                  if(row >= 0){
+                      String MaNM = (String) model.getValueAt(row,0);
+//                      txtMaNM.setText(MaNM);                      
+                  }
+              } 
+           }
+        });
+        tbl_PhieuMuon.setModel(model);
         return table;
     }
 
