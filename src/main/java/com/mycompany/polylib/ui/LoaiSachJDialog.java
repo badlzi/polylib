@@ -6,6 +6,7 @@ package com.mycompany.polylib.ui;
 
 import com.mycompany.polylib.dao.LoaiSachDao;
 import com.mycompany.polylib.entity.LoaiSach;
+import com.mycompany.polylib.utils.MsgBox;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -37,13 +38,13 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabsLoaiSach = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_LoaiSach = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtMa = new javax.swing.JTextField();
+        txtTen = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -61,7 +62,7 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 153, 0));
+        tabsLoaiSach.setBackground(new java.awt.Color(255, 153, 0));
 
         tbl_LoaiSach.setAutoCreateRowSorter(true);
         tbl_LoaiSach.setModel(new javax.swing.table.DefaultTableModel(
@@ -78,6 +79,11 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
         tbl_LoaiSach.setGridColor(new java.awt.Color(255, 153, 0));
         tbl_LoaiSach.setSelectionBackground(new java.awt.Color(255, 204, 204));
         tbl_LoaiSach.setSelectionForeground(new java.awt.Color(255, 153, 0));
+        tbl_LoaiSach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbl_LoaiSachMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_LoaiSach);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -93,17 +99,27 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Danh sách loại sách", jPanel6);
+        tabsLoaiSach.addTab("Danh sách loại sách", jPanel6);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtTenActionPerformed(evt);
             }
         });
 
         jButton2.setText("Thêm");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Sửa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("xóa");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +157,11 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
         });
 
         jButton9.setText(">>");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Mã loại sách");
 
@@ -182,8 +203,8 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(txtMa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                                .addComponent(txtTen, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jLabel3)))
@@ -197,11 +218,11 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -217,7 +238,7 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Loại sách", jPanel5);
+        tabsLoaiSach.addTab("Loại sách", jPanel5);
 
         jButton1.setText("Thoát");
 
@@ -225,7 +246,7 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(tabsLoaiSach, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
@@ -234,7 +255,7 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabsLoaiSach, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(0, 10, Short.MAX_VALUE))
@@ -246,27 +267,143 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        delete();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        clear();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        first();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        prev();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        next();
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtTenActionPerformed
+    int row = 0;
+    void edit() {
+        String mals = (String) tbl_LoaiSach.getValueAt(this.row, 0);
+        LoaiSach ls = LSD.selectById(mals);
+        this.setForm(ls);
+
+//        this.updateStatus();
+    }
+    void setForm(LoaiSach ls) {
+        txtMa.setText(ls.getMaloaiSach());
+        txtTen.setText(ls.getTenloaiSach());
+    }
+    LoaiSach getForm() {
+        LoaiSach ls = new LoaiSach();
+        ls.setMaloaiSach(txtMa.getText());
+        ls.setTenloaiSach(txtTen.getText());
+        return ls;
+    }
+    void insert() {
+        LoaiSach model = getForm();
+        try {
+            LSD.insert(model);
+            this.HienThiLenban();
+            this.clear();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
+    }
+
+    void clear() {
+        txtMa.setText("");
+        txtTen.setText("");
+    }
+
+    void update() {
+        LoaiSach model = getForm();
+        try {
+            LSD.update(model);
+            this.HienThiLenban();
+            MsgBox.alert(this, "Cập nhật thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật thất bại!");
+        }
+    }
+
+    void delete() {
+        if (MsgBox.confirm(this, "Bạn thực sự muốn xóa người học này?")) {
+            String mals = txtMa.getText();
+            try {
+                LSD.delete(mals);
+                this.HienThiLenban();
+                this.clear();
+                MsgBox.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                MsgBox.alert(this, "Xóa thất bại!");
+            }
+        }
+    }
+    void first() {
+        this.row = 0;
+        this.edit();
+    }
+
+    void prev() {
+        if (this.row > 0) {
+            this.row--;
+            this.edit();
+        }else{
+            this.row = tbl_LoaiSach.getRowCount() - 1;
+            this.edit();
+        }
+    }
+
+    void next() {
+        if (this.row <= tbl_LoaiSach.getRowCount() - 1) {
+            this.row++;
+            this.edit();
+        }else{
+            this.row = 0;
+            this.edit();
+        }
+    }
+
+    void last() {
+        this.row = tbl_LoaiSach.getRowCount() - 1;
+        this.edit();
+    }
+    private void tbl_LoaiSachMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_LoaiSachMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            this.row = tbl_LoaiSach.getSelectedRow();
+            this.edit();
+            tabsLoaiSach.setSelectedIndex(1);
+        }
+    }//GEN-LAST:event_tbl_LoaiSachMousePressed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        last();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,9 +479,9 @@ public class LoaiSachJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTabbedPane tabsLoaiSach;
     private javax.swing.JTable tbl_LoaiSach;
+    private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

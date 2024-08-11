@@ -21,7 +21,7 @@ import java.util.List;
  * @author huynh
  */
 public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
-    final String INSERT_SQL = "INSERT INTO PHIEUTRA (SOPHIEUTRA, NGAYTRA, SOPHIEUMUON, TINHTRANGSACH, TIENPHAT)(?,?,?,?,?)";
+    final String INSERT_SQL = "INSERT INTO PHIEUTRA (SOPHIEUTRA, NGAYTRA, SOPHIEUMUON, TINHTRANGSACH, TIENPHAT) VALUES(?,?,?,?,?)";
     final String UPDATE_SQL = "UPDATE PHIEUTRA SET NGAYTRA=?,SOPHIEUMUON=?, TINHTRANGSACH=?, TIENPHAT=? WHERE SOPHIEUTRA=?";
     final String DELETE_SQL = "DELETE FROM PHIEUTRA WHERE SOPHIEUTRA=? ";
     final String SELECT_ALL_SQL = "SELECT * FROM PHIEUTRA";
@@ -63,7 +63,7 @@ public class PhieuTraDao extends PolyLibDao<PhieuTra, String>{
             while(rs.next()){
                 PhieuTra entity = new PhieuTra();
                 entity.setSoPhieuTra(rs.getString("SOPHIEUTRA"));
-                entity.setNgayTra(rs.getDate("NgayTra"));
+                entity.setNgayTra(rs.getDate("NGAYTRA"));
                 PhieuMuon entitytow = new PhieuMuon();
                 entitytow.setSoPhieuMuon(rs.getString("SoPhieuMuon"));
                 entity.setPhieuMuon(entitytow);
