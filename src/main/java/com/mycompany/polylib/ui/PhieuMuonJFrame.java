@@ -13,6 +13,7 @@ import com.mycompany.polylib.dao.PhieuMuonChiTietDao;
 import com.mycompany.polylib.dao.PhieuMuonDao;
 import com.mycompany.polylib.dao.SachDao;
 import com.mycompany.polylib.entity.NguoiMuoi;
+import com.mycompany.polylib.entity.NhanVien;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.PhieuMuon;
 import com.mycompany.polylib.utils.Auth;
@@ -23,7 +24,9 @@ import com.mycompany.polylib.entity.Sach;
 import com.mycompany.polylib.utils.Book;
 import com.mycompany.polylib.utils.Book_borrower;
 import com.mycompany.polylib.utils.book_loan;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Desktop;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,12 +49,18 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -71,10 +80,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public PhieuMuonJFrame() {
         initComponents();
         txt_usename.setText(Auth.getManagername());
-        if(Book.isBook()){
-        txtTenSach.setText(Book.getBookname());
-        }else{
-              txtTenSach.setText("");
+        if (Book.isBook()) {
+            txtTenSach.setText(Book.getBookname());
+        } else {
+            txtTenSach.setText("");
         }
         HienThiLenban();
         startDongHo();
@@ -956,7 +965,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-          new nguoimuonnhanh(this, true).setVisible(true); 
+        new nguoimuonnhanh(this, true).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1010,16 +1019,14 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private void txtMaPhieuMuonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaPhieuMuonKeyReleased
         PhieuMuon pn = PMD.selectById(txtMaPhieuMuon.getText());
         book_loan.user = pn;
-        if(book_loan.isbook_loan()){
-           txtMaNM.setText(book_loan.getBookNM());
-           jdcNgayMuon.setDate(book_loan.getBookNgayM());
-           jdcNgayTra.setDate(book_loan.getBookNgayt());
-        }else if(txtMaPhieuMuon.getText() == " "){
-             clearForm();
-        }else{
-              JOptionPane.showMessageDialog(this, "Mã phiếu mượn không tồn tại", "THÔNG BÁO!", 1);
+        if (book_loan.isbook_loan()) {
+            txtMaNM.setText(book_loan.getBookNM());
+            jdcNgayMuon.setDate(book_loan.getBookNgayM());
+            jdcNgayTra.setDate(book_loan.getBookNgayt());
+        } else if (txtMaPhieuMuon.getText() == " ") {
+            clearForm();
         }
-            
+
     }//GEN-LAST:event_txtMaPhieuMuonKeyReleased
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
@@ -1110,6 +1117,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     SachDao SD = new SachDao();
     List<Sach> SL = new ArrayList<>();
 
+    public void laySoLuongSach() {
+    }
+
     public String getGiaByTenS(String ten) {
         SL = SD.selectAll();
         String gia = "";
@@ -1131,12 +1141,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
         return gia;
     }
+
     //--------------------------//
-        public void updatMANM(String name) {
+    public void updatMANM(String name) {
         txtMaNM.setText(name);
-        System.out.println("code  vui "+name);
+        System.out.println("code  vui " + name);
     }
-        
+
     //------------------------------//
     public void bill_PM() throws PrinterException {
 
@@ -1248,6 +1259,26 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
     }
 
+    PhieuMuon getForm2() {
+
+        PhieuMuon pm = new PhieuMuon();
+
+        pm.setSoPhieuMuon(txtMaPhieuMuon.getText());
+        pm.setNgayMuon(jdcNgayMuon.getDate());
+        pm.setNgayTra(jdcNgayTra.getDate());
+
+        NguoiMuoi nm = new NguoiMuoi();
+        nm.setMaNM(txtMaNM.getText());
+        pm.setNguoiMuon(nm);
+
+        NhanVien nv = new NhanVien();
+        nv.setMaNhanVien(Auth.getManagercode());
+        pm.setNhanVien(nv);
+
+        return pm;
+
+    }
+
     public void update() {
 //        if (!Auth.isManager()) {
 //            MsgBox.alert(this, "Bạn không có quyền sửa phiếu mượn chi tiết!");
@@ -1271,12 +1302,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         this.row = -1;
         this.updateStatus();
 
-        boolean edit = (this.row >= 0);
-
-        jdcNgayMuon.setEnabled(edit);
-        jdcNgayTra.setEnabled(edit);
-        txtMaNM.setEnabled(edit);
-
+//        boolean edit = (this.row >= 0);
+//
+//        jdcNgayMuon.setEnabled(edit);
+//        jdcNgayTra.setEnabled(edit);
+//        txtMaNM.setEnabled(edit);
     }
 
     public void first() {
@@ -1321,17 +1351,108 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         btnLast.setEnabled(edit && !last);
     }
 
+    public PhieuMuonJFrame(DefaultTableModel model, DefaultComboBoxModel Bcmodel, JTabbedPane TBP_PM, JTextArea bill, JButton btnFirst, JButton btnLamMoi, JButton btnLast, JButton btnNext, JButton btnNhanVien, JButton btnPhieuMuon, JButton btnPrev, JButton btnSach, JButton btnSua, JButton btnThem, JButton btnThongKe, JButton btn_INPM, JButton btn_NguoiMuon, JButton jButton1, JButton jButton15, JButton jButton2, JButton jButton3, JButton jButton4, JButton jButton6, JFrame jFrame1, JLabel jLabel1, JLabel jLabel10, JLabel jLabel15, JLabel jLabel16, JLabel jLabel17, JLabel jLabel18, JLabel jLabel19, JLabel jLabel2, JLabel jLabel20, JLabel jLabel21, JLabel jLabel3, JLabel jLabel5, JLabel jLabel9, JMenu jMenu1, JMenu jMenu2, JMenu jMenu3, JMenu jMenu6, JMenu jMenu8, JMenuBar jMenuBar1, JMenuItem jMenuItem1, JMenuItem jMenuItem10, JMenuItem jMenuItem11, JMenuItem jMenuItem12, JMenuItem jMenuItem13, JMenuItem jMenuItem14, JMenuItem jMenuItem2, JMenuItem jMenuItem3, JMenuItem jMenuItem4, JMenuItem jMenuItem5, JMenuItem jMenuItem7, JMenuItem jMenuItem8, JMenuItem jMenuItem9, JPanel jPanel1, JPanel jPanel2, JPanel jPanel3, JPanel jPanel4, JPanel jPanel5, JScrollPane jScrollPane1, JScrollPane jScrollPane2, JScrollPane jScrollPane3, JDateChooser jdcNgayMuon, JDateChooser jdcNgayTra, JSpinner jspSoLuong, JLabel lblDongHo, JTable tbl_PhieuMuon, JTextArea txtGhiChu, JTextField txtMaNM, JTextField txtMaPhieuMuon, JTextField txtTenSach, JLabel txt_usename) throws HeadlessException {
+        this.model = model;
+        this.Bcmodel = Bcmodel;
+        this.TBP_PM = TBP_PM;
+        this.bill = bill;
+        this.btnFirst = btnFirst;
+        this.btnLamMoi = btnLamMoi;
+        this.btnLast = btnLast;
+        this.btnNext = btnNext;
+        this.btnNhanVien = btnNhanVien;
+        this.btnPhieuMuon = btnPhieuMuon;
+        this.btnPrev = btnPrev;
+        this.btnSach = btnSach;
+        this.btnSua = btnSua;
+        this.btnThem = btnThem;
+        this.btnThongKe = btnThongKe;
+        this.btn_INPM = btn_INPM;
+        this.btn_NguoiMuon = btn_NguoiMuon;
+        this.jButton1 = jButton1;
+        this.jButton15 = jButton15;
+        this.jButton2 = jButton2;
+        this.jButton3 = jButton3;
+        this.jButton4 = jButton4;
+        this.jButton6 = jButton6;
+        this.jFrame1 = jFrame1;
+        this.jLabel1 = jLabel1;
+        this.jLabel10 = jLabel10;
+        this.jLabel15 = jLabel15;
+        this.jLabel16 = jLabel16;
+        this.jLabel17 = jLabel17;
+        this.jLabel18 = jLabel18;
+        this.jLabel19 = jLabel19;
+        this.jLabel2 = jLabel2;
+        this.jLabel20 = jLabel20;
+        this.jLabel21 = jLabel21;
+        this.jLabel3 = jLabel3;
+        this.jLabel5 = jLabel5;
+        this.jLabel9 = jLabel9;
+        this.jMenu1 = jMenu1;
+        this.jMenu2 = jMenu2;
+        this.jMenu3 = jMenu3;
+        this.jMenu6 = jMenu6;
+        this.jMenu8 = jMenu8;
+        this.jMenuBar1 = jMenuBar1;
+        this.jMenuItem1 = jMenuItem1;
+        this.jMenuItem10 = jMenuItem10;
+        this.jMenuItem11 = jMenuItem11;
+        this.jMenuItem12 = jMenuItem12;
+        this.jMenuItem13 = jMenuItem13;
+        this.jMenuItem14 = jMenuItem14;
+        this.jMenuItem2 = jMenuItem2;
+        this.jMenuItem3 = jMenuItem3;
+        this.jMenuItem4 = jMenuItem4;
+        this.jMenuItem5 = jMenuItem5;
+        this.jMenuItem7 = jMenuItem7;
+        this.jMenuItem8 = jMenuItem8;
+        this.jMenuItem9 = jMenuItem9;
+        this.jPanel1 = jPanel1;
+        this.jPanel2 = jPanel2;
+        this.jPanel3 = jPanel3;
+        this.jPanel4 = jPanel4;
+        this.jPanel5 = jPanel5;
+        this.jScrollPane1 = jScrollPane1;
+        this.jScrollPane2 = jScrollPane2;
+        this.jScrollPane3 = jScrollPane3;
+        this.jdcNgayMuon = jdcNgayMuon;
+        this.jdcNgayTra = jdcNgayTra;
+        this.jspSoLuong = jspSoLuong;
+        this.lblDongHo = lblDongHo;
+        this.tbl_PhieuMuon = tbl_PhieuMuon;
+        this.txtGhiChu = txtGhiChu;
+        this.txtMaNM = txtMaNM;
+        this.txtMaPhieuMuon = txtMaPhieuMuon;
+        this.txtTenSach = txtTenSach;
+        this.txt_usename = txt_usename;
+    }
+    PhieuMuonDao daopm = new PhieuMuonDao();
+
     public void insert() {
         PhieuMuonChiTiet nh = getForm();
+        PhieuMuon pm = getForm2();
         if (!isValidated()) {
             System.out.println("code thành công");
             return;
         } else {
             try {
-                dao.insert(nh);
-                this.HienThiLenban();// đưa dữ liệu lên bảng lại
-                this.clearForm();
-                MsgBox.alert(this, "Thêm mới thành công!");
+                PhieuMuon pn = PMD.selectById(txtMaPhieuMuon.getText());
+                book_loan.user = pn;
+                if (book_loan.isbook_loan()) {
+                    dao.insert(nh);
+                    this.HienThiLenban();// đưa dữ liệu lên bảng lại
+                    this.clearForm();
+                    MsgBox.alert(this, "Thêm mới thành công!");
+                } else {
+                    int result = JOptionPane.showConfirmDialog(this, "Phiếu mượn không tồn tại bạn có muốn thêm tiếp không?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+                    if (result == 0) {
+                        daopm.insert(pm);
+                        dao.insert(nh);
+                        this.HienThiLenban();
+                        this.clearForm();
+                    }
+                }
             } catch (Exception e) {
                 e.printStackTrace(); // In ra lỗi cụ thể để xác định nguyên nhân
                 MsgBox.alert(this, "Thêm mới thất bại!");
@@ -1402,7 +1523,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }
 
     public boolean isValidated() {
-
+        SachDao daos = new SachDao();
+        Sach s =  daos.selectById(getGiaByMaSach(txtTenSach.getText()));
+        Book.user = s;
+        int soLuongMuon = (int) jspSoLuong.getValue();
         if (txtTenSach.getText().isBlank()) {
             MsgBox.alert(this, "Không để trống tên sách!");
             return false;
@@ -1415,6 +1539,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         } else if (txtGhiChu.getText().isBlank()) {
             MsgBox.alert(this, "Không để trống ghi chú!");
             return false;
+        } else if(Book.getSoLuong() < soLuongMuon){
+            MsgBox.alert(this, "Số lượng mượn không được lớn hơn số lượng sách hiện có!");
+            return false;
         }
 
         return true;
@@ -1422,6 +1549,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         //Phương thức insert sẽ kiểm tra kết quả của isValidated(). Nếu isValidated() trả về true, nghĩa là form hợp lệ và có thể tiếp tục quá trình thêm mới nhân viên. Nếu isValidated() trả về false, nghĩa là có lỗi và sẽ dừng lại.
 
     }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
