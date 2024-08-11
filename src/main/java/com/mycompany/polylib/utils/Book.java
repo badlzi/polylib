@@ -32,4 +32,7 @@ public class Book {
         return user.getTenSach();
     }
     
+     public static int getSoLuong() {
+        return user.getSoLuong();
+    }
 }
