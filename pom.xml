@@ -91,5 +91,11 @@
             <artifactId>jcommon</artifactId>
             <version>1.0.24</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.greenrobot/eventbus -->
+        <dependency>
+            <groupId>org.greenrobot</groupId>
+            <artifactId>eventbus</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
 </project>

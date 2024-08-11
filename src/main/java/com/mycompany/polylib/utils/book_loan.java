@@ -19,7 +19,7 @@ public class book_loan {
 //     */
 
     public static void clear() {
-        Book.user = null;
+       book_loan.user = null;
     }
 //    /**
 //     * Kiểm tra xem đăng nhập hay chưa

@@ -22,7 +22,7 @@ public class Book {
 //     * Kiểm tra xem đăng nhập hay chưa
 //     */
     public static boolean isBook() {
-        return Auth.user != null;
+        return Book.user != null;
     }
 //     /**
 //     * Kiểm tra xem có phải là trưởng phòng hay không

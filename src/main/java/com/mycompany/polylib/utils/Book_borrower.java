@@ -33,4 +33,5 @@ public class Book_borrower {
     public static String getBookNM() {
         return user.getMaNM();
     }
+    
 }

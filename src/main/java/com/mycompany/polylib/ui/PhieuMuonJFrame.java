@@ -21,6 +21,7 @@ import com.mycompany.polylib.utils.XDate;
 import com.mycompany.polylib.entity.PhieuMuonChiTiet;
 import com.mycompany.polylib.entity.Sach;
 import com.mycompany.polylib.utils.Book;
+import com.mycompany.polylib.utils.Book_borrower;
 import com.mycompany.polylib.utils.book_loan;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -70,7 +71,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public PhieuMuonJFrame() {
         initComponents();
         txt_usename.setText(Auth.getManagername());
-//        txtTenSach.setText(Book.getBookname());
+        if(Book.isBook()){
+        txtTenSach.setText(Book.getBookname());
+        }else{
+              txtTenSach.setText("");
+        }
         HienThiLenban();
         startDongHo();
     }
@@ -951,7 +956,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        shownguoimuon();
+          new nguoimuonnhanh(this, true).setVisible(true); 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1102,58 +1107,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
         tbl_PhieuMuon.setModel(model);
     }
-//     -----------------------------------------------------------------------------------//
-    JLabel labelcode = new JLabel("Mã người mượn:");
-    JTextField tfcode = new JTextField(20);
-    JLabel labelName = new JLabel("Tên người mượn:");
-    JTextField tfName = new JTextField(20);
-    JLabel labelEmail = new JLabel("Email người mượn:");
-    JTextField tfEmail = new JTextField(20);
-    JButton btnAdd = new JButton("Thêm");
-    
-    public void shownguoimuon() {
-        // Tạo các thành phần chính
-        JTable table = createTable();
-        JPanel panel1 = createPanel1(table);
-        JPanel panel2 = createPanel2();
-        JTabbedPane tabbedPane = createTabbedPane(panel1, panel2);
-        JDialog dialog = createDialog(tabbedPane);
-        dialog.setVisible(true);
-    }
-    NguoiMuonDao NMD = new NguoiMuonDao();
-    List<NguoiMuoi> NML = new ArrayList<>();
-
-    private JTable createTable() {
-        NML = NMD.selectAll();
-        String[] headers = {"Mã Người Mượn", "Tên Người Mượn", "Email"};
-        model = new DefaultTableModel(headers, 0);
-        for (NguoiMuoi nml : NML) {
-            Object[] row = new Object[]{
-                nml.getMaNM(), nml.getTenNM(), nml.getEmail()};
-            model.addRow(row);
-        }
-        JTable table = new JTable(model);
-        table.addMouseListener(new MouseAdapter(){
-           @Override
-           public void  mouseClicked(MouseEvent e){
-              if(e.getClickCount() == 2){
-                  int row = table.getSelectedRow();
-                  if(row >= 0){
-                      String MaNM = (String) model.getValueAt(row,0);
-//                      txtMaNM.setText(MaNM);                      
-                  }
-              } 
-           }
-        });
-        tbl_PhieuMuon.setModel(model);
-        return table;
-    }
-
-    private JPanel createPanel1(JTable table) {
-        JPanel panel1 = new JPanel();
-        panel1.add(new JScrollPane(table));
-        return panel1;
-    }
     SachDao SD = new SachDao();
     List<Sach> SL = new ArrayList<>();
 
@@ -1178,52 +1131,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
         return gia;
     }
-
-    private JPanel createPanel2() {
-        JPanel panel2 = new JPanel();
-        panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); // Sắp xếp theo cột
-        // Tạo các panel nhỏ chứa label và textfield để kiểm soát khoảng cách
-        JPanel panelCode = new JPanel();
-        panelCode.add(labelcode);
-        panelCode.add(tfcode);
-
-        JPanel panelName = new JPanel();
-        panelName.add(labelName);
-        panelName.add(tfName);
-
-        JPanel panelEmail = new JPanel();
-        panelEmail.add(labelEmail);
-        panelEmail.add(tfEmail);
-
-        JPanel panelButton = new JPanel();
-        panelButton.add(btnAdd);
-
-        panel2.add(panelCode);
-        panel2.add(Box.createVerticalStrut(1)); // Khoảng cách 5 pixel giữa các panel
-        panel2.add(panelName);
-        panel2.add(Box.createVerticalStrut(1));
-        panel2.add(panelEmail);
-        panel2.add(Box.createVerticalStrut(1));
-        panel2.add(panelButton);
-        return panel2;
+    //--------------------------//
+        public void updatMANM(String name) {
+        txtMaNM.setText(name);
+        System.out.println("code  vui "+name);
     }
-
-    private JTabbedPane createTabbedPane(JPanel panel1, JPanel panel2) {
-        JTabbedPane tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Thông tin người mượn", panel1);
-        tabbedPane.addTab("Thêm thông tin", panel2);
-        return tabbedPane;
-    }
-
-    private JDialog createDialog(JTabbedPane tabbedPane) {
-        JDialog dialog = new JDialog();
-        dialog.add(tabbedPane);
-        dialog.pack();
-        dialog.setLocationRelativeTo(null);
-        return dialog;
-    }
-
-// -------------------------------------------------------------------------------------//
+        
+    //------------------------------//
     public void bill_PM() throws PrinterException {
 
 //        try {
