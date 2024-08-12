@@ -24,7 +24,6 @@ com\mycompany\polylib\ui\DangNhapJDialog$7.class
 com\mycompany\polylib\ui\NXSJDialog$9.class
 com\mycompany\polylib\ui\SachJFrame$22.class
 com\mycompany\polylib\ui\PhieuMuonJFrame$3.class
-com\mycompany\polylib\ui\SachJFrame$33.class
 com\mycompany\polylib\ui\PhieumuonJDialog$4.class
 com\mycompany\polylib\dao\PolyLibDao.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$2.class
@@ -56,6 +55,7 @@ com\mycompany\polylib\ui\PhieuTraDialog$8.class
 com\mycompany\polylib\utils\MsgBox.class
 com\mycompany\polylib\ui\SachJFrame$19.class
 com\mycompany\polylib\dao\PhieuTraDao.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$35.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$20.class
 com\mycompany\polylib\entity\NguoiMuoi.class
 com\mycompany\polylib\ui\TrangChuJFrame$1.class
@@ -169,6 +169,7 @@ com\mycompany\polylib\utils\Ximage.class
 com\mycompany\polylib\ui\NhanVienJFrame$9.class
 com\mycompany\polylib\ui\ThongkeFrame$2.class
 com\mycompany\polylib\ui\SachJFrame$8.class
+com\mycompany\polylib\ui\PhieuMuonJFrame$36.class
 com\mycompany\polylib\ui\PhieumuonJDialog$5.class
 com\mycompany\polylib\ui\NXSJDialog$3.class
 com\mycompany\polylib\ui\NguoiMuonJFrame$1.class

@@ -80,6 +80,8 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public PhieuMuonJFrame() {
         initComponents();
         txt_usename.setText(Auth.getManagername());
+        HienThiLenbanpm();
+        hienVTthicbo();
         if (Book.isBook()) {
             txtTenSach.setText(Book.getBookname());
         } else {
@@ -90,7 +92,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }
 //tfygyvyg
     PhieuMuonDao PMD = new PhieuMuonDao();
-    List<PhieuMuonDao> PML = new ArrayList<>();
+    List<PhieuMuon> PML = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +110,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_PhieuMuon = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtTenSach = new javax.swing.JTextField();
@@ -139,6 +140,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         bill = new javax.swing.JTextArea();
+        cbo_PM = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbl_pm = new javax.swing.JTable();
         txt_usename = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -214,13 +218,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_PhieuMuon);
 
-        jButton6.setText("Xóa phiếu mượn");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         jButton2.setText("Xuất file xlsx");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,24 +229,21 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 633, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton2))
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
 
         TBP_PM.addTab("Danh sách phiếu mượn chi tiết", jPanel5);
@@ -510,21 +504,69 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         bill.setRows(5);
         jScrollPane3.setViewportView(bill);
 
+        cbo_PM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_PM.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbo_PMMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cbo_PMMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cbo_PMMouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                cbo_PMMouseReleased(evt);
+            }
+        });
+        cbo_PM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_PMActionPerformed(evt);
+            }
+        });
+        cbo_PM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cbo_PMKeyReleased(evt);
+            }
+        });
+
+        tbl_pm.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(tbl_pm);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(227, 227, 227)
+                .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_PM, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cbo_PM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         TBP_PM.addTab("In phiếu mượn chi tiết", jPanel4);
@@ -822,8 +864,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(lblDongHo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -850,10 +891,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btn_INPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_INPMActionPerformed
         try {
@@ -945,27 +982,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        initComponents();
-        String[] columnNames = {"Mã sách", "Tên sách", "Số lượng"};
-        Object[][] data = {
-            {"Row 1, Cell 1", "Row 1, Cell 2", "Row 1, Cell 3"},
-            {"Row 2, Cell 1", "Row 2, Cell 2", "Row 2, Cell 3"}
-        };
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
 
-        // Tạo JTable
-        JTable table = new JTable(model);
-
-        // Tạo JPanel để chứa JTable
-        JPanel panel = new JPanel();
-        panel.add(new JScrollPane(table));
-
-        // Hiển thị thông báo
-        JOptionPane.showMessageDialog(null, panel, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new nguoimuonnhanh(this, true).setVisible(true);
+        nguoimuonnhanh frame = new nguoimuonnhanh(this, true);
+        frame.setPhieuMuon(this);
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1028,6 +1051,37 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtMaPhieuMuonKeyReleased
+
+    private void cbo_PMKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbo_PMKeyReleased
+
+    }//GEN-LAST:event_cbo_PMKeyReleased
+
+    private void cbo_PMMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbo_PMMouseReleased
+
+    }//GEN-LAST:event_cbo_PMMouseReleased
+
+    private void cbo_PMMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbo_PMMouseExited
+
+    }//GEN-LAST:event_cbo_PMMouseExited
+
+    private void cbo_PMMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbo_PMMouseEntered
+
+    }//GEN-LAST:event_cbo_PMMouseEntered
+
+    private void cbo_PMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbo_PMMouseClicked
+
+    }//GEN-LAST:event_cbo_PMMouseClicked
+
+    private void cbo_PMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_PMActionPerformed
+        System.out.println(cbo_PM.getSelectedItem()+" ");
+        try {
+//            TBP_PM.setSelectedIndex(2);
+            bill_PM();
+        } catch (PrinterException ex) {
+            Logger.getLogger(PhieuMuonJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        HienThiLenbanpm();
+    }//GEN-LAST:event_cbo_PMActionPerformed
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override
@@ -1183,19 +1237,24 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         billText.append("Dự án cấp 1\n");
         billText.append("Nhóm 4\n");
         billText.append("------------------------------------------\n");
-        billText.append(String.format("%-20s %-15s %-10s\n", "Tên sách", "Người mượn", "Số lượng"));
-        billText.append("------------------------------------------\n");
-        billText.append(String.format("%-20s %-15s %-10s\n", "Những lời yêu thương", "Phan Huỳnh Ngọc Quý", "2"));
-        billText.append(String.format("%-20s %-15s %-10s\n", "Tình yêu thương", "Phan Huỳnh Ngọc Quý", "1"));
-        billText.append("------------------------------------------\n");
+        
+        
 
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String ngayMuon = dateFormat.format(jdcNgayMuon.getDate());
-        String ngayTra = dateFormat.format(jdcNgayTra.getDate());
-
-        billText.append(String.format("%-20s: %-20s\n", "Ngày mượn", ngayMuon));
-        billText.append(String.format("%-20s: %-20s\n", "Ngày trả", ngayTra));
-        billText.append(String.format("%-20s: %-20s\n", "Nhân viên", "NV001"));
+           DefaultTableModel df = (DefaultTableModel) tbl_pm.getModel();
+               for (int i = 0; i < tbl_pm.getRowCount(); i++) {
+                
+                String name = df.getValueAt(i, 0).toString();
+                String SoLuong = df.getValueAt(i, 1).toString();
+                System.out.println(name +"\t"+SoLuong+"\n");
+//                billText.append(bill.getText() + name +"\t"+SoLuong+"\n");
+                billText.append(String.format("Tên sách: %s, Số lượng: %s\n", name, SoLuong));
+                
+            }
+        billText.append("------------------------------------------\n");
+        billText.append("------------------------------------------\n");
+        billText.append(String.format( "Ngày mượn\n"));
+        billText.append(String.format( "Ngày trả\n"));
+        billText.append(String.format( "Nhân viên", "NV001 \n"));
         billText.append("==========================================\n");
         billText.append("          Thanks For Your Business!       \n");
         billText.append("==========================================\n");
@@ -1203,11 +1262,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
         bill.setText(billText.toString());
 
-        try {
-            bill.print();
-        } catch (PrinterException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            bill.print();
+//        } catch (PrinterException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -1374,7 +1433,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         this.jButton2 = jButton2;
         this.jButton3 = jButton3;
         this.jButton4 = jButton4;
-        this.jButton6 = jButton6;
         this.jFrame1 = jFrame1;
         this.jLabel1 = jLabel1;
         this.jLabel10 = jLabel10;
@@ -1549,6 +1607,29 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         //Phương thức insert sẽ kiểm tra kết quả của isValidated(). Nếu isValidated() trả về true, nghĩa là form hợp lệ và có thể tiếp tục quá trình thêm mới nhân viên. Nếu isValidated() trả về false, nghĩa là có lỗi và sẽ dừng lại.
 
     }
+ //---------------------------//
+        public void hienVTthicbo() {
+        PML = PMD.selectAll();
+        Bcmodel = new DefaultComboBoxModel();
+        cbo_PM.setModel(Bcmodel);
+        for (PhieuMuon ls : PML) {
+            Bcmodel.addElement(ls.getSoPhieuMuon());
+        }
+    }
+ //-----------------------------------//
+        
+        public void HienThiLenbanpm() {
+        PMCTL = PMCTD.selectByMaPm(cbo_PM.getSelectedItem()+"");
+        String[] headers = {"Mã Sách","Số lượng", "Ngày mượn", "Ngày trả"};
+        model = new DefaultTableModel(headers, 0);
+        for (PhieuMuonChiTiet pml : PMCTL) {
+            Object[] row = new Object[]{
+                pml.getSach().getMaSach(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(),"MM/dd/yyyy")};
+            model.addRow(row);
+        }
+        tbl_pm.setModel(model);
+    }
+ 
     
     
 
@@ -1569,12 +1650,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnThongKe;
     private javax.swing.JButton btn_INPM;
     private javax.swing.JButton btn_NguoiMuon;
+    private javax.swing.JComboBox<String> cbo_PM;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1616,11 +1697,13 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private com.toedter.calendar.JDateChooser jdcNgayMuon;
     private com.toedter.calendar.JDateChooser jdcNgayTra;
     private javax.swing.JSpinner jspSoLuong;
     private javax.swing.JLabel lblDongHo;
     private javax.swing.JTable tbl_PhieuMuon;
+    private javax.swing.JTable tbl_pm;
     private javax.swing.JTextArea txtGhiChu;
     private javax.swing.JTextField txtMaNM;
     private javax.swing.JTextField txtMaPhieuMuon;

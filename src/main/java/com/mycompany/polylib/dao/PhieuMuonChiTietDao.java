@@ -26,6 +26,8 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
     final String SELECT_ALL_SQL = "SELECT * FROM PHIEUMUONCHITIET";
     final String SELECT_BY_ID_SQL = "SELECT * FROM PHIEUMUONCHITIET  a INNER JOIN PHIEUMUON b ON a.SoPhieuMuon = b.SoPhieuMuon WHERE a.SOPHIEUMUON=? and MASACH=?";
     final String SELECT_ALL_PM_PMCT = "SELECT * FROM PHIEUMUONCHITIET a INNER JOIN PHIEUMUON b ON a.SoPhieuMuon = b.SoPhieuMuon";
+    final String SELECT_BY_MAPM = "SELECT * FROM PHIEUMUONCHITIET a inner join PHIEUMUON b on a.SOPHIEUMUON = b.SOPHIEUMUON WHERE a.SOPHIEUMUON = ?";
+    
 
     @Override
     public void insert(PhieuMuonChiTiet entity) {
@@ -48,10 +50,16 @@ public class PhieuMuonChiTietDao extends PolyLibDao<PhieuMuonChiTiet, String> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
+    public List<PhieuMuonChiTiet> selectByMaPm(String id) {
+        return this.selectBySql(SELECT_BY_MAPM, id);
+    }
+    
     @Override
     public List<PhieuMuonChiTiet> selectAll() {
         return selectBySql(SELECT_ALL_SQL);
     }
+    
+    
 
     @Override
     protected List<PhieuMuonChiTiet> selectBySql(String sql, Object... args) {
