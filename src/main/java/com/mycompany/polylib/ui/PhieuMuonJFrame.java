@@ -267,6 +267,12 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             }
         });
 
+        txtMaNM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaNMActionPerformed(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Mã người mượn");
 
@@ -982,7 +988,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        ShowSach frame = new ShowSach(this, true);
+        frame.setSach(this);
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1073,7 +1081,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cbo_PMMouseClicked
 
     private void cbo_PMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_PMActionPerformed
-        System.out.println(cbo_PM.getSelectedItem()+" ");
+        System.out.println(cbo_PM.getSelectedItem() + " ");
         try {
 //            TBP_PM.setSelectedIndex(2);
             bill_PM();
@@ -1082,6 +1090,10 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         }
         HienThiLenbanpm();
     }//GEN-LAST:event_cbo_PMActionPerformed
+
+    private void txtMaNMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaNMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaNMActionPerformed
     private void startDongHo() {
         new Timer(1000, new ActionListener() {
             @Override
@@ -1171,9 +1183,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     SachDao SD = new SachDao();
     List<Sach> SL = new ArrayList<>();
 
-    public void laySoLuongSach() {
-    }
-
     public String getGiaByTenS(String ten) {
         SL = SD.selectAll();
         String gia = "";
@@ -1188,7 +1197,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public String getGiaByMaSach(String ten) {
         SL = SD.selectAll();
         String gia = "";
-        for (Sach s : SL) {
+        for (Sach s : SL) {                                                                                                                                                                                                  
             if (s.getTenSach().equals(ten)) {
                 gia = s.getMaSach();
             }
@@ -1200,6 +1209,11 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
     public void updatMANM(String name) {
         txtMaNM.setText(name);
         System.out.println("code  vui " + name);
+    }
+
+    public void updateMAS(String name) {
+        txtTenSach.setText(getGiaByTenS(name));
+         System.out.println("code  vui " + name);
     }
 
     //------------------------------//
@@ -1237,24 +1251,22 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         billText.append("Dự án cấp 1\n");
         billText.append("Nhóm 4\n");
         billText.append("------------------------------------------\n");
-        
-        
 
-           DefaultTableModel df = (DefaultTableModel) tbl_pm.getModel();
-               for (int i = 0; i < tbl_pm.getRowCount(); i++) {
-                
-                String name = df.getValueAt(i, 0).toString();
-                String SoLuong = df.getValueAt(i, 1).toString();
-                System.out.println(name +"\t"+SoLuong+"\n");
+        DefaultTableModel df = (DefaultTableModel) tbl_pm.getModel();
+        for (int i = 0; i < tbl_pm.getRowCount(); i++) {
+
+            String name = df.getValueAt(i, 0).toString();
+            String SoLuong = df.getValueAt(i, 1).toString();
+            System.out.println(name + "\t" + SoLuong + "\n");
 //                billText.append(bill.getText() + name +"\t"+SoLuong+"\n");
-                billText.append(String.format("Tên sách: %s, Số lượng: %s\n", name, SoLuong));
-                
-            }
+            billText.append(String.format("Tên sách: %s, Số lượng: %s\n", name, SoLuong));
+
+        }
         billText.append("------------------------------------------\n");
         billText.append("------------------------------------------\n");
-        billText.append(String.format( "Ngày mượn\n"));
-        billText.append(String.format( "Ngày trả\n"));
-        billText.append(String.format( "Nhân viên", "NV001 \n"));
+        billText.append(String.format("Ngày mượn\n"));
+        billText.append(String.format("Ngày trả\n"));
+        billText.append(String.format("Nhân viên", "NV001 \n"));
         billText.append("==========================================\n");
         billText.append("          Thanks For Your Business!       \n");
         billText.append("==========================================\n");
@@ -1267,7 +1279,6 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 //        } catch (PrinterException e) {
 //            e.printStackTrace();
 //        }
-
     }
 
     private void openFile(String file) {
@@ -1582,7 +1593,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
 
     public boolean isValidated() {
         SachDao daos = new SachDao();
-        Sach s =  daos.selectById(getGiaByMaSach(txtTenSach.getText()));
+        Sach s = daos.selectById(getGiaByMaSach(txtTenSach.getText()));
         Book.user = s;
         int soLuongMuon = (int) jspSoLuong.getValue();
         if (txtTenSach.getText().isBlank()) {
@@ -1597,7 +1608,7 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         } else if (txtGhiChu.getText().isBlank()) {
             MsgBox.alert(this, "Không để trống ghi chú!");
             return false;
-        } else if(Book.getSoLuong() < soLuongMuon){
+        } else if (Book.getSoLuong() < soLuongMuon) {
             MsgBox.alert(this, "Số lượng mượn không được lớn hơn số lượng sách hiện có!");
             return false;
         }
@@ -1607,8 +1618,9 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
         //Phương thức insert sẽ kiểm tra kết quả của isValidated(). Nếu isValidated() trả về true, nghĩa là form hợp lệ và có thể tiếp tục quá trình thêm mới nhân viên. Nếu isValidated() trả về false, nghĩa là có lỗi và sẽ dừng lại.
 
     }
- //---------------------------//
-        public void hienVTthicbo() {
+    //---------------------------//
+
+    public void hienVTthicbo() {
         PML = PMD.selectAll();
         Bcmodel = new DefaultComboBoxModel();
         cbo_PM.setModel(Bcmodel);
@@ -1616,22 +1628,19 @@ public class PhieuMuonJFrame extends javax.swing.JFrame {
             Bcmodel.addElement(ls.getSoPhieuMuon());
         }
     }
- //-----------------------------------//
-        
-        public void HienThiLenbanpm() {
-        PMCTL = PMCTD.selectByMaPm(cbo_PM.getSelectedItem()+"");
-        String[] headers = {"Mã Sách","Số lượng", "Ngày mượn", "Ngày trả"};
+    //-----------------------------------//
+
+    public void HienThiLenbanpm() {
+        PMCTL = PMCTD.selectByMaPm(cbo_PM.getSelectedItem() + "");
+        String[] headers = {"Mã Sách", "Số lượng", "Ngày mượn", "Ngày trả"};
         model = new DefaultTableModel(headers, 0);
         for (PhieuMuonChiTiet pml : PMCTL) {
             Object[] row = new Object[]{
-                pml.getSach().getMaSach(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(),"MM/dd/yyyy")};
+                pml.getSach().getMaSach(), pml.getSoLuong(), XDate.toString(pml.getPhieuMuon().getNgayMuon(), "MM/dd/yyyy"), XDate.toString(pml.getPhieuMuon().getNgayTra(), "MM/dd/yyyy")};
             model.addRow(row);
         }
         tbl_pm.setModel(model);
     }
- 
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
