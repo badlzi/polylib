@@ -242,28 +242,28 @@ public class PhieuTraDialog extends javax.swing.JDialog {
             }
         });
 
-        btnDau.setText("<<");
+        btnDau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next (6).png"))); // NOI18N
         btnDau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDauActionPerformed(evt);
             }
         });
 
-        btnCuoi.setText(">>");
+        btnCuoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next (5).png"))); // NOI18N
         btnCuoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCuoiActionPerformed(evt);
             }
         });
 
-        btnSau.setText(">");
+        btnSau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next (3).png"))); // NOI18N
         btnSau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSauActionPerformed(evt);
             }
         });
 
-        btnTruoc.setText("<");
+        btnTruoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/next (4).png"))); // NOI18N
         btnTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTruocActionPerformed(evt);
@@ -376,11 +376,11 @@ public class PhieuTraDialog extends javax.swing.JDialog {
                             .addComponent(btnTruoc)
                             .addComponent(btnSau)
                             .addComponent(btnCuoi))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
