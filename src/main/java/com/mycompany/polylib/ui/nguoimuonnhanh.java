@@ -11,6 +11,7 @@ import com.mycompany.polylib.utils.Book_borrower;
 import com.mycompany.polylib.utils.XDate;
 import com.mycompany.polylib.utils.book_loan;
 import com.mycompany.polylib.ui.PhieuMuonJFrame;
+import com.mycompany.polylib.utils.MsgBox;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -26,16 +27,23 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
      * Creates new form nguoimuonnhanh
      */
     private PhieuMuonJFrame phieuMuonFrame;
-    
+    private PhieumuonJDialog phieumuonJDialog;
+
+    public void setPhieumuonJDialog(PhieumuonJDialog phieumuonJDialog) {
+        this.phieumuonJDialog = phieumuonJDialog;
+    }
+
     public nguoimuonnhanh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         HienThiLenban();
     }
-    
-    public void setPhieuMuon(PhieuMuonJFrame phieuMuonFrame){
+
+    public void setPhieuMuon(PhieuMuonJFrame phieuMuonFrame) {
         this.phieuMuonFrame = phieuMuonFrame;
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,7 +63,7 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
         txt_MaNM = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txt_TenNM = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtSDT = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -94,7 +102,7 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("Danh sách", jPanel1);
 
         jLabel1.setText("Mã người mượn");
 
@@ -103,6 +111,11 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
         jLabel3.setText("Số điện thoại");
 
         jButton1.setText("Thêm mới");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,7 +126,7 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_MaNM)
                     .addComponent(txt_TenNM)
-                    .addComponent(jTextField1)
+                    .addComponent(txtSDT)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -139,13 +152,13 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jButton1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Thông tin", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,25 +173,58 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- int row ;
- private PhieuMuonJFrame PMJ; 
+ int row;
+    private PhieuMuonJFrame PMJ;
     private void tbl_nmNhanhMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_nmNhanhMousePressed
-         if (evt.getClickCount() == 2) {
-            this.row = tbl_nmNhanh.getSelectedRow();            
+        if (evt.getClickCount() == 2) {
+            this.row = tbl_nmNhanh.getSelectedRow();
             edit();
         }
     }//GEN-LAST:event_tbl_nmNhanhMousePressed
- private void edit() {
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        insert();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void edit() {
 //        PMJ = new PhieuMuonJFrame();
         NguoiMuoi nm = new NguoiMuoi();
         String maPM = (String) tbl_nmNhanh.getValueAt(this.row, 0);
         Book_borrower.user = nm;
-        if (this.phieuMuonFrame != null) {
-          this.phieuMuonFrame.updatMANM(maPM);
-} else {
-         System.out.println("lỗi");  
-    // Xử lý trường hợp PMJ là null
-}
+        if (this.phieuMuonFrame != null ) {
+            this.phieuMuonFrame.updatMANM(maPM);
+        } else {
+            System.out.println("lỗi");
+            // Xử lý trường hợp PMJ là null
+        }
+    }
+    NguoiMuonDao NMD = new NguoiMuonDao();
+    List<NguoiMuoi> NML = new ArrayList<>();
+
+    DefaultTableModel model;
+    DefaultComboBoxModel Bcmodel;
+    NguoiMuoi getForm() {
+        NguoiMuoi nm = new NguoiMuoi();
+        nm.setMaNM(txt_MaNM.getText());
+        nm.setTenNM(txt_TenNM.getText());  
+        nm.setSoDienThoai(txtSDT.getText());
+        return nm;
+    }
+     void clear() {
+        txt_MaNM.setText("");
+        txt_TenNM.setText("");
+        txtSDT.setText("");
+    }
+    void insert() {
+        NguoiMuoi model = getForm();
+        try {
+            NMD.insert(model);
+            this.HienThiLenban();
+            this.clear();
+            MsgBox.alert(this, "Thêm mới thành công!");
+        } catch (Exception e) {
+            MsgBox.alert(this, "Thêm mới thất bại!");
+        }
     }
     /**
      * @param args the command line arguments
@@ -221,22 +267,19 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
             }
         });
     }
-    NguoiMuonDao NMD = new NguoiMuonDao();
-    List<NguoiMuoi> NML = new ArrayList<>();
-       DefaultTableModel model;
-    DefaultComboBoxModel Bcmodel;
-     public void HienThiLenban() {
+
+    public void HienThiLenban() {
         NML = NMD.selectAll();
-        String[] headers = {"Mã Người Mượn", "Tên Người Mượn", "Email"};
+        String[] headers = {"Mã Người Mượn", "Tên Người Mượn", "SDT"};
         model = new DefaultTableModel(headers, 0);
         for (NguoiMuoi nml : NML) {
             Object[] row = new Object[]{
-                nml.getMaNM(), nml.getTenNM(), nml.getEmail()};
+                nml.getMaNM(), nml.getTenNM(), nml.getSoDienThoai()};
             model.addRow(row);
         }
         tbl_nmNhanh.setModel(model);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -246,10 +289,11 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbl_nmNhanh;
+    private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txt_MaNM;
     private javax.swing.JTextField txt_TenNM;
     // End of variables declaration//GEN-END:variables
+
 
 }
