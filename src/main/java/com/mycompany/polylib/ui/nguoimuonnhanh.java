@@ -27,11 +27,6 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
      * Creates new form nguoimuonnhanh
      */
     private PhieuMuonJFrame phieuMuonFrame;
-    private PhieumuonJDialog phieumuonJDialog;
-
-    public void setPhieumuonJDialog(PhieumuonJDialog phieumuonJDialog) {
-        this.phieumuonJDialog = phieumuonJDialog;
-    }
 
     public nguoimuonnhanh(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -182,16 +177,18 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbl_nmNhanhMousePressed
 
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         insert();
     }//GEN-LAST:event_jButton1ActionPerformed
+
     private void edit() {
 //        PMJ = new PhieuMuonJFrame();
         NguoiMuoi nm = new NguoiMuoi();
         String maPM = (String) tbl_nmNhanh.getValueAt(this.row, 0);
         Book_borrower.user = nm;
-        if (this.phieuMuonFrame != null ) {
+        if (this.phieuMuonFrame != null) {
             this.phieuMuonFrame.updatMANM(maPM);
         } else {
             System.out.println("lỗi");
@@ -225,7 +222,9 @@ public class nguoimuonnhanh extends javax.swing.JDialog {
         } catch (Exception e) {
             MsgBox.alert(this, "Thêm mới thất bại!");
         }
+
     }
+
     /**
      * @param args the command line arguments
      */
