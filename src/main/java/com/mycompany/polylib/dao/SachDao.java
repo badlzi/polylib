@@ -4,7 +4,11 @@
  */
 package com.mycompany.polylib.dao;
 
+import com.mycompany.polylib.entity.LoaiSach;
+import com.mycompany.polylib.entity.NhaXuatBan;
 import com.mycompany.polylib.entity.Sach;
+import com.mycompany.polylib.entity.TacGia;
+import com.mycompany.polylib.entity.ViTri;
 import com.mycompany.polylib.utils.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -24,14 +28,12 @@ public class SachDao extends PolyLibDao<Sach, String> {
 
     @Override
     public void insert(Sach entity) {
-        XJdbc.update(INSERT_SQL, entity.getMaSach(), entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(),
-                entity.getGhiChu(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri());
+        XJdbc.update(INSERT_SQL, entity.getMaSach(), entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getGhiChu(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri());
     }
 
     @Override
     public void update(Sach entity) {
-        XJdbc.update(UPDATE_SQL, entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getGhiChu(),
-                entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri(), entity.getMaSach());
+        XJdbc.update(UPDATE_SQL, entity.getTenSach(), entity.getSoTrang(), entity.getSoLuong(), entity.getGhiChu(), entity.getHinh(), entity.getTacGia(), entity.getLoaiSach(), entity.getNhaXuatBan(), entity.getViTri(), entity.getMaSach());
     }
 
     @Override
@@ -67,6 +69,19 @@ public class SachDao extends PolyLibDao<Sach, String> {
                 entity.setSoLuong(rs.getInt("SOLUONGBANSAO"));
                 entity.setGhiChu(rs.getString("GHICHU"));
 
+                TacGia tg = new TacGia();
+                tg.setMaTacGia(rs.getString("MATG"));
+                LoaiSach LS = new LoaiSach();
+                LS.setMaloaiSach(rs.getString("MALOAISACH"));
+                NhaXuatBan nxb = new NhaXuatBan();
+                nxb.setMaNhaXuatBan(rs.getString("MANXB"));
+                ViTri vt = new ViTri();
+                vt.setMaViTri(rs.getString("MAVT"));
+
+                entity.setTacGia(tg);
+                entity.setLoaiSach(LS);
+                entity.setNhaXuatBan(nxb);
+                entity.setViTri(vt);
                 list.add(entity);
             }
         } catch (Exception e) {
@@ -124,8 +139,7 @@ public class SachDao extends PolyLibDao<Sach, String> {
         String sql = "SELECT * FROM SACH WHERE MAVT LIKE ?";
         return this.selectBySql(sql, "%" + mavt + "%");
     }
-    
-   
+
 //    public int laySoLuongSach(String tenSach) {
 //
 //        String sql = "SELECT SOLUONGBANSAO FROM SACH WHERE TENSACH = ?";
