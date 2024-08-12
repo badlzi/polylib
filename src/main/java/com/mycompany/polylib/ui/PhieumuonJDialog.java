@@ -340,7 +340,7 @@ public class PhieumuonJDialog extends javax.swing.JDialog {
                         .addContainerGap())))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Danh sách phiếu mượn:");
+        jPanel1.getAccessibleContext().setAccessibleName("Danh sách phiếu mượn:"); // NOI18N
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -435,6 +435,11 @@ public class PhieumuonJDialog extends javax.swing.JDialog {
 //        Date toDateold = getGiaByTenS(txtPhieuMuon.getText());
 //        System.out.println(toDate +"\n"+ toDateold);
     }//GEN-LAST:event_txtNgayTraKeyReleased
+     public void updatMAmnJD(String name) {
+        txtMa.setText(name);
+        System.out.println("code  vui " + name);
+    }
+    
     void edit() {
         String spm = (String) tbl_PhieuMuon.getValueAt(this.row, 0);
         PhieuMuon pm = PMD.selectById(spm);
